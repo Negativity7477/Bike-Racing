@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-02-21T21:28:55.884Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0" etag="t7JbqWTJmkwbHX71a4Jn" version="23.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-26T14:57:39.158Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="ZR2LBbJxE9zRpULGvDYF" version="23.1.5" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
-    <mxGraphModel dx="1434" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="330" dy="1759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -79,29 +79,67 @@
             <mxPoint x="600" y="270" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="m1OBdF1gImB4O0k4xRKX-3" value="" style="endArrow=block;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;entryX=0.842;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="wvcC62Qd1xTl-urH2v8x-26" target="wvcC62Qd1xTl-urH2v8x-16">
+        <mxCell id="m1OBdF1gImB4O0k4xRKX-3" value="" style="endArrow=block;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;entryX=0.842;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="wvcC62Qd1xTl-urH2v8x-26" target="wvcC62Qd1xTl-urH2v8x-16" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="250" y="410" as="sourcePoint" />
             <mxPoint x="440" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="m1OBdF1gImB4O0k4xRKX-4" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="m1OBdF1gImB4O0k4xRKX-4" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="340" y="400" width="120" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="m1OBdF1gImB4O0k4xRKX-5" value="TotalRace" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="m1OBdF1gImB4O0k4xRKX-4">
+        <mxCell id="m1OBdF1gImB4O0k4xRKX-5" value="TotalRace" style="rounded=0;whiteSpace=wrap;html=1;" parent="m1OBdF1gImB4O0k4xRKX-4" vertex="1">
           <mxGeometry width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="m1OBdF1gImB4O0k4xRKX-6" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="m1OBdF1gImB4O0k4xRKX-4">
+        <mxCell id="m1OBdF1gImB4O0k4xRKX-6" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="m1OBdF1gImB4O0k4xRKX-4" vertex="1">
           <mxGeometry y="30" width="120" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="m1OBdF1gImB4O0k4xRKX-7" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="m1OBdF1gImB4O0k4xRKX-4">
+        <mxCell id="m1OBdF1gImB4O0k4xRKX-7" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="m1OBdF1gImB4O0k4xRKX-4" vertex="1">
           <mxGeometry y="100" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="m1OBdF1gImB4O0k4xRKX-8" value="" style="endArrow=block;html=1;rounded=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="wvcC62Qd1xTl-urH2v8x-16">
+        <mxCell id="m1OBdF1gImB4O0k4xRKX-8" value="" style="endArrow=block;html=1;rounded=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="wvcC62Qd1xTl-urH2v8x-16" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="400" y="400" as="sourcePoint" />
             <mxPoint x="465" y="332" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-1" value="CyclingPortal" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="320" width="290" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="rqDQW1-a-PWC5fzVs6pU-1">
+          <mxGeometry y="26" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-4" value="+ removeRaceByName(String): void&lt;br&gt;+ getRiderGeneralClassificationRank(int): int array&lt;br&gt;+ getGeneralClassificationTimesInRace(int): LocalTime array&lt;br&gt;+ getRidersPointsInRace(int): int array&lt;br&gt;+ getRidersMountainPointsInRace(int): int array&lt;br&gt;+ getRidersPointClassificationRank(int): int array&lt;br&gt;+ getRidersMountainPointClassificationRank(int): int array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="rqDQW1-a-PWC5fzVs6pU-1">
+          <mxGeometry y="34" width="290" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=block;endFill=0;endSize=10;dashed=1;entryX=0.502;entryY=0.996;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="rqDQW1-a-PWC5fzVs6pU-9" target="rqDQW1-a-PWC5fzVs6pU-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="536" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-9" value="BadCyclingPortalImpl" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="705" y="596" width="160" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-10" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="rqDQW1-a-PWC5fzVs6pU-9">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="rqDQW1-a-PWC5fzVs6pU-9">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-12" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="rqDQW1-a-PWC5fzVs6pU-9">
+          <mxGeometry y="60" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-17" value="MiniCyclingPortal" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="630" y="-270" width="300" height="504" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="rqDQW1-a-PWC5fzVs6pU-17">
+          <mxGeometry y="26" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-20" value="+ getRaceIds(): int array&lt;br&gt;+ createRace(String, String): int&lt;br&gt;+ viewRaceDetails(int): String&lt;br&gt;+ removeRaceById(int): void&lt;br&gt;+ getNumberOfStages(int): int&lt;br&gt;+ addStageToRace(int, String, String, double, LocalDateTime, StageType): int&lt;br&gt;+ getRaceStages(int): int array&lt;div&gt;+ getStageLength(int): double&lt;/div&gt;&lt;div&gt;+ removeStageById(int): void&lt;/div&gt;&lt;div&gt;+ addCategorizedClimbToStage(int, Double, CheckpointType, Double, Double): int&lt;/div&gt;&lt;div&gt;+ addIntermediateSprintToStage(int, double): int&lt;/div&gt;&lt;div&gt;+ removeCheckpoint(int): void&lt;/div&gt;&lt;div&gt;+ concludeStagePreparation(int): void&lt;/div&gt;&lt;div&gt;+ getStageCheckpoints(int): int array&lt;/div&gt;&lt;div&gt;+ createTeam(String, String): int&lt;/div&gt;&lt;div&gt;+ removeTeam(int): void&lt;/div&gt;&lt;div&gt;+ getTeams(): int array&lt;/div&gt;&lt;div&gt;+ getTeamRiders(int): int array&lt;/div&gt;&lt;div&gt;+ createRider(int, String, int): int&lt;/div&gt;&lt;div&gt;+ removeRider(int): void&lt;/div&gt;&lt;div&gt;+ registerRiderResultsInStage(int, int, LocalTime): void&lt;/div&gt;&lt;div&gt;+ getRiderResultsInStage(int, int): LocalTime array&lt;/div&gt;&lt;div&gt;+ getRiderAdjustedElapsedTimeInStage(int, int): LocalTime&lt;/div&gt;&lt;div&gt;+ deleteRiderResultsInStage(int, int): void&lt;/div&gt;&lt;div&gt;+ getRidersRankInStage(int): int array&lt;/div&gt;&lt;div&gt;+ getRankedAdjustedElapsedTimeInStage(int): LocalTime array&lt;/div&gt;&lt;div&gt;+ getRidersPointsInStage(int): int array&lt;/div&gt;&lt;div&gt;+ getRidersMountainPointsInStage(int): int array&lt;/div&gt;&lt;div&gt;+ eraseCyclingPortal(): void&lt;/div&gt;&lt;div&gt;+ saveCyclingPortal(String): void&lt;/div&gt;&lt;div&gt;+ loadCyclingPortal(String): void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="rqDQW1-a-PWC5fzVs6pU-17">
+          <mxGeometry y="34" width="300" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="rqDQW1-a-PWC5fzVs6pU-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.517;entryY=1.002;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=block;endFill=0;endSize=10;" edge="1" parent="1" source="rqDQW1-a-PWC5fzVs6pU-1" target="rqDQW1-a-PWC5fzVs6pU-20">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
