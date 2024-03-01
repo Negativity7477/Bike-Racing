@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-01T18:26:01.042Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0" etag="jYIJBOtzo5i6BLe6AQQW" version="23.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-01T18:30:43.885Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0" etag="j_D52t7KGFDiJz1DgLKf" version="23.1.8" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
     <mxGraphModel dx="2385" dy="1913" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -14,28 +14,28 @@
           <mxGeometry y="34" width="160" height="26" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-9" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="-45" y="220" width="205" height="200" as="geometry" />
+          <mxGeometry x="-45" y="220" width="315" height="200" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-10" value="Rider" style="rounded=0;whiteSpace=wrap;html=1;" parent="wvcC62Qd1xTl-urH2v8x-9" vertex="1">
-          <mxGeometry width="205" height="37.5" as="geometry" />
+          <mxGeometry width="315" height="37.5" as="geometry" />
         </mxCell>
-        <mxCell id="wvcC62Qd1xTl-urH2v8x-11" value="-riderID : int&lt;div&gt;-teamID : int&lt;/div&gt;&lt;div&gt;-name : String&lt;/div&gt;&lt;div&gt;-yearOfBirth : int&lt;br&gt;&lt;/div&gt;-stageResultHash : HashMap" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-9" vertex="1">
-          <mxGeometry y="37.5" width="205" height="82.5" as="geometry" />
+        <mxCell id="wvcC62Qd1xTl-urH2v8x-11" value="-riderID : int&lt;div&gt;-teamID : int&lt;/div&gt;&lt;div&gt;-name : String&lt;/div&gt;&lt;div&gt;-yearOfBirth : int&lt;br&gt;&lt;/div&gt;-stageResultHash : HashMap (int : LocalTime Array) " style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-9" vertex="1">
+          <mxGeometry y="37.5" width="315" height="82.5" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-12" value="&lt;div align=&quot;left&quot;&gt;+Rider(int, String, int) : int&lt;br&gt;&lt;/div&gt;+addResults(int, localtime) : void" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-9" vertex="1">
-          <mxGeometry y="120" width="205" height="80" as="geometry" />
+          <mxGeometry y="120" width="315" height="80" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-13" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="354" y="160" width="190" height="290" as="geometry" />
+          <mxGeometry x="354" y="160" width="276" height="290" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-14" value="Race" style="rounded=0;whiteSpace=wrap;html=1;" parent="wvcC62Qd1xTl-urH2v8x-13" vertex="1">
-          <mxGeometry width="190" height="30" as="geometry" />
+          <mxGeometry width="276.00000000000006" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="wvcC62Qd1xTl-urH2v8x-15" value="-raceID: int&lt;br&gt;&lt;div&gt;-numOfStages : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-totalDistance : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;-name : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-description : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-stageIDHash : HashMap&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-13" vertex="1">
-          <mxGeometry y="30" width="190" height="110" as="geometry" />
+        <mxCell id="wvcC62Qd1xTl-urH2v8x-15" value="-raceID: int&lt;br&gt;&lt;div&gt;-numOfStages : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-totalDistance : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;-name : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-description : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-stageIDHash : HashMap (int : stage)&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-13" vertex="1">
+          <mxGeometry y="30" width="276.00000000000006" height="110" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-16" value="+Race(string, string): Constructor&lt;br&gt;&lt;div align=&quot;left&quot;&gt;+getRaceID : Int &lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;+getNumStages: int&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;+getTotalDistance : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;+addStageToRace : void&lt;br&gt;&lt;/div&gt;&lt;div&gt;+getStagesInRace : int array&lt;/div&gt;&lt;div&gt;+removeStageByID: void&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-13" vertex="1">
-          <mxGeometry y="140" width="190" height="150" as="geometry" />
+          <mxGeometry y="140" width="276.00000000000006" height="150" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-29" value="" style="endArrow=open;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;" parent="1" source="ZmkPiaW1iWn0wtLQBJ-h-1" target="wvcC62Qd1xTl-urH2v8x-16" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -85,7 +85,7 @@
         <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-1" value="Stage" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="257" y="530" width="413" height="288" as="geometry" />
         </mxCell>
-        <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-2" value="&lt;div&gt;-stageID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-raceID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-stageName : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-description : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-length : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;-startTime : LocalDateTime&lt;br&gt;&lt;/div&gt;&lt;div&gt;-StageType : StageType&lt;br&gt;&lt;/div&gt;&lt;div&gt;-checkpointIDHash :HashMap&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="ZmkPiaW1iWn0wtLQBJ-h-1" vertex="1">
+        <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-2" value="&lt;div&gt;-stageID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-raceID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-stageName : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-description : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-length : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;-startTime : LocalDateTime&lt;br&gt;&lt;/div&gt;&lt;div&gt;-StageType : StageType&lt;br&gt;&lt;/div&gt;&lt;div&gt;-checkpointIDHash : HashMap (int : checkpointType)&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="ZmkPiaW1iWn0wtLQBJ-h-1" vertex="1">
           <mxGeometry y="26" width="413" height="144" as="geometry" />
         </mxCell>
         <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ZmkPiaW1iWn0wtLQBJ-h-1" vertex="1">
@@ -158,16 +158,16 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-22" value="Team" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
-          <mxGeometry x="-300" y="100" width="160" height="230" as="geometry" />
+          <mxGeometry x="-300" y="100" width="220" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-23" value="-teamID : int&lt;br&gt;-name : String&lt;br&gt;-description : String&lt;br&gt;-ridersHash : HashMap&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="ZmkPiaW1iWn0wtLQBJ-h-22" vertex="1">
-          <mxGeometry y="26" width="160" height="104" as="geometry" />
+        <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-23" value="-teamID : int&lt;br&gt;-name : String&lt;br&gt;-description : String&lt;br&gt;-ridersHash : HashMap (int : Rider)&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="ZmkPiaW1iWn0wtLQBJ-h-22" vertex="1">
+          <mxGeometry y="26" width="220" height="104" as="geometry" />
         </mxCell>
         <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-24" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="ZmkPiaW1iWn0wtLQBJ-h-22" vertex="1">
-          <mxGeometry y="130" width="160" height="8" as="geometry" />
+          <mxGeometry y="130" width="220" height="8" as="geometry" />
         </mxCell>
         <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-25" value="+Team(String, String) : int&lt;br&gt;+getRidersID : int array&lt;br&gt;+addRider(Rider) : void&lt;br&gt;+deleteRider(int) : void&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="ZmkPiaW1iWn0wtLQBJ-h-22" vertex="1">
-          <mxGeometry y="138" width="160" height="92" as="geometry" />
+          <mxGeometry y="138" width="220" height="92" as="geometry" />
         </mxCell>
         <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-30" value="GeneralClassification" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
           <mxGeometry x="390" y="-70" width="160" height="86" as="geometry" />
@@ -184,22 +184,22 @@
         <mxCell id="ZmkPiaW1iWn0wtLQBJ-h-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1.003;exitY=0.686;exitDx=0;exitDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=diamondThin;endFill=1;endSize=10;exitPerimeter=0;" parent="1" source="wvcC62Qd1xTl-urH2v8x-11" target="wvcC62Qd1xTl-urH2v8x-15" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="240" y="314" />
-              <mxPoint x="240" y="290" />
+              <mxPoint x="290" y="314" />
+              <mxPoint x="290" y="290" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="hwwdIdLhgR68eanYseVk-18" value="miscHandling" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="200" y="-410" width="200" height="230" as="geometry" />
+          <mxGeometry x="200" y="-410" width="290" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="hwwdIdLhgR68eanYseVk-19" value="-raceIDHash : HashMap&lt;br&gt;-teamIDHash : HashMap" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="hwwdIdLhgR68eanYseVk-18" vertex="1">
-          <mxGeometry y="26" width="200" height="54" as="geometry" />
+        <mxCell id="hwwdIdLhgR68eanYseVk-19" value="-raceIDHash : HashMap (int : Race)&lt;br&gt;-teamIDHash : HashMap (int : Team)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="hwwdIdLhgR68eanYseVk-18" vertex="1">
+          <mxGeometry y="26" width="290" height="54" as="geometry" />
         </mxCell>
         <mxCell id="hwwdIdLhgR68eanYseVk-20" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="hwwdIdLhgR68eanYseVk-18" vertex="1">
-          <mxGeometry y="80" width="200" height="20" as="geometry" />
+          <mxGeometry y="80" width="290" height="20" as="geometry" />
         </mxCell>
         <mxCell id="hwwdIdLhgR68eanYseVk-21" value="&lt;div&gt;+getRace(int) : Race&lt;/div&gt;&lt;div&gt;+deleteRace(int) : void&lt;br&gt;&lt;/div&gt;+removeTeam(int) : void&lt;br&gt;+addRace() : void&lt;br&gt;+addTeam() : void&lt;div&gt;+getTeam(int) : Team&lt;br&gt;&lt;/div&gt;+getTeamIDs() : int array&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="hwwdIdLhgR68eanYseVk-18" vertex="1">
-          <mxGeometry y="100" width="200" height="130" as="geometry" />
+          <mxGeometry y="100" width="290" height="130" as="geometry" />
         </mxCell>
         <mxCell id="Wf22nLah_3cKTyKCT-Oy-1" value="" style="endArrow=open;html=1;rounded=0;entryX=0.487;entryY=1.001;entryDx=0;entryDy=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="wvcC62Qd1xTl-urH2v8x-14" target="hwwdIdLhgR68eanYseVk-21" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -226,11 +226,11 @@
         <mxCell id="PB-NatL0mStGE4kz69ut-2" value="" style="endArrow=open;html=1;rounded=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;exitX=0.553;exitY=-0.004;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="wvcC62Qd1xTl-urH2v8x-14">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="459" y="170" as="sourcePoint" />
-            <mxPoint x="480" y="20" as="targetPoint" />
+            <mxPoint x="530" y="20" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="459" y="150" />
-              <mxPoint x="480" y="150" />
-              <mxPoint x="480" y="20" />
+              <mxPoint x="507" y="150" />
+              <mxPoint x="530" y="150" />
+              <mxPoint x="530" y="20" />
             </Array>
           </mxGeometry>
         </mxCell>
