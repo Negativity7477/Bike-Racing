@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-01T17:58:50.678Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0" etag="qQlA_qzurfezHhRv4Xe5" version="23.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-01T18:00:33.555Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0" etag="t9aqQSiK3j9_Ap-O27mx" version="23.1.8" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
-    <mxGraphModel dx="5502" dy="3402" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2697" dy="2062" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -198,7 +198,7 @@
         <mxCell id="hwwdIdLhgR68eanYseVk-20" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="hwwdIdLhgR68eanYseVk-18" vertex="1">
           <mxGeometry y="80" width="200" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="hwwdIdLhgR68eanYseVk-21" value="&lt;div&gt;+getRace(int) : Race&lt;/div&gt;&lt;div&gt;+deleteRace(int) : void&lt;br&gt;&lt;/div&gt;+removeTeam(int) : void&lt;br&gt;+addRace() : void&lt;br&gt;+addTeam() : void&lt;div&gt;+getTeam(int) : Team&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="hwwdIdLhgR68eanYseVk-18" vertex="1">
+        <mxCell id="hwwdIdLhgR68eanYseVk-21" value="&lt;div&gt;+getRace(int) : Race&lt;/div&gt;&lt;div&gt;+deleteRace(int) : void&lt;br&gt;&lt;/div&gt;+removeTeam(int) : void&lt;br&gt;+addRace() : void&lt;br&gt;+addTeam() : void&lt;div&gt;+getTeam(int) : Team&lt;br&gt;&lt;/div&gt;+getTeamIDs() : int array&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="hwwdIdLhgR68eanYseVk-18" vertex="1">
           <mxGeometry y="100" width="200" height="130" as="geometry" />
         </mxCell>
         <mxCell id="Wf22nLah_3cKTyKCT-Oy-1" value="" style="endArrow=open;html=1;rounded=0;entryX=0.487;entryY=1.001;entryDx=0;entryDy=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="wvcC62Qd1xTl-urH2v8x-14" target="hwwdIdLhgR68eanYseVk-21" edge="1">
