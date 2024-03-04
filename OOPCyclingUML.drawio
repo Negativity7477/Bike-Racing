@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-01T18:58:38.378Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0" etag="icP8saJO_d-mEZ5fW-8-" version="23.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-04T14:58:32.851Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="qbZhA0719XNjMtqAoRSj" version="23.1.8" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
-    <mxGraphModel dx="1896" dy="1679" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1831" dy="1792" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -14,16 +14,16 @@
           <mxGeometry y="34" width="160" height="26" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-9" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="-45" y="220" width="315" height="200" as="geometry" />
+          <mxGeometry x="-45" y="220" width="315" height="210" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-10" value="Rider" style="rounded=0;whiteSpace=wrap;html=1;" parent="wvcC62Qd1xTl-urH2v8x-9" vertex="1">
-          <mxGeometry width="315" height="37.5" as="geometry" />
+          <mxGeometry width="315" height="39.375" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-11" value="-riderID : int&lt;div&gt;-teamID : int&lt;/div&gt;&lt;div&gt;-name : String&lt;/div&gt;&lt;div&gt;-yearOfBirth : int&lt;br&gt;&lt;/div&gt;-CheckpointTimeHash : HashMap (int : LocalTime array) " style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-9" vertex="1">
-          <mxGeometry y="37.5" width="315" height="92.5" as="geometry" />
+          <mxGeometry y="39.375" width="315" height="97.125" as="geometry" />
         </mxCell>
-        <mxCell id="wvcC62Qd1xTl-urH2v8x-12" value="&lt;div align=&quot;left&quot;&gt;+Rider(int, String, int) : int&lt;br&gt;&lt;/div&gt;+addResults(int, localtime) : void&lt;br&gt;+getStageResult(int) : LocalTime array&lt;br&gt;+calculateStageTime(int) : void" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-9" vertex="1">
-          <mxGeometry y="130" width="315" height="70" as="geometry" />
+        <mxCell id="wvcC62Qd1xTl-urH2v8x-12" value="&lt;div align=&quot;left&quot;&gt;+Rider(int, String, int) : int&lt;br&gt;&lt;/div&gt;+addResults(int, localtime) : void&lt;br&gt;+getStageResult(int) : LocalTime array&lt;br&gt;+calculateStageTime(int) : void&lt;br&gt;+removeStageTime(int) : void" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="wvcC62Qd1xTl-urH2v8x-9" vertex="1">
+          <mxGeometry y="136.5" width="315" height="73.5" as="geometry" />
         </mxCell>
         <mxCell id="wvcC62Qd1xTl-urH2v8x-13" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="354" y="160" width="276" height="290" as="geometry" />
@@ -217,7 +217,7 @@
         <mxCell id="Wf22nLah_3cKTyKCT-Oy-6" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Wf22nLah_3cKTyKCT-Oy-3" vertex="1">
           <mxGeometry y="128" width="230" height="82" as="geometry" />
         </mxCell>
-        <mxCell id="PB-NatL0mStGE4kz69ut-10" value="" style="endArrow=open;html=1;rounded=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
+        <mxCell id="PB-NatL0mStGE4kz69ut-10" value="" style="endArrow=open;html=1;rounded=0;endFill=0;strokeWidth=2;endSize=10;startSize=10;edgeStyle=orthogonalEdgeStyle;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-220" y="96" as="sourcePoint" />
             <mxPoint x="200" y="-320" as="targetPoint" />
@@ -228,7 +228,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="PB-NatL0mStGE4kz69ut-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=-0.004;exitY=0.611;exitDx=0;exitDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=diamondThin;endFill=0;endSize=10;exitPerimeter=0;entryX=1.007;entryY=0.759;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="wvcC62Qd1xTl-urH2v8x-11" target="ZmkPiaW1iWn0wtLQBJ-h-25">
+        <mxCell id="PB-NatL0mStGE4kz69ut-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=-0.004;exitY=0.611;exitDx=0;exitDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=diamondThin;endFill=0;endSize=10;exitPerimeter=0;entryX=1.007;entryY=0.759;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="wvcC62Qd1xTl-urH2v8x-11" target="ZmkPiaW1iWn0wtLQBJ-h-25" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="-50" y="308" />
@@ -236,6 +236,18 @@
             <mxPoint x="-220" y="558" as="sourcePoint" />
             <mxPoint x="-103" y="421" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="yCkwaWTqmW84piZEPmEt-1" value="Ranking" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-500" y="340" width="310" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="yCkwaWTqmW84piZEPmEt-2" value="- stageID : int&lt;br&gt;- stageTimesHash : Hashmap (int : LocalTime)&lt;div&gt;- rankedRiderArray : int array&lt;/div&gt;&lt;div&gt;- rankedTimeArray: LocalTime array&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="yCkwaWTqmW84piZEPmEt-1">
+          <mxGeometry y="26" width="310" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="yCkwaWTqmW84piZEPmEt-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="yCkwaWTqmW84piZEPmEt-1">
+          <mxGeometry y="110" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="yCkwaWTqmW84piZEPmEt-4" value="+ addRiderTime(int, LocalTime array) : void&lt;br&gt;- totalCheckpointTimes(LocalTime array) : LocalTime&lt;br&gt;&lt;div&gt;+ getRiderTime(int) : LocalTime&lt;/div&gt;&lt;div&gt;+ sortRiders() : void&lt;/div&gt;&lt;div&gt;+ adjustTimes() : void&lt;/div&gt;&lt;div&gt;+ removeRiderTime(int) : void&lt;/div&gt;&lt;div&gt;+ getRankedRiderArray : int array&lt;/div&gt;&lt;div&gt;+ sortTimes() : void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="yCkwaWTqmW84piZEPmEt-1">
+          <mxGeometry y="118" width="310" height="142" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
