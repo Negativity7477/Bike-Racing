@@ -9,6 +9,11 @@ public class Team {
     private HashMap<Integer, Rider> ridersHash = new HashMap<Integer, Rider>();
     private static int nextTeamID = 0;
 
+    // Getter for TeamID
+    public int getTeamID() {
+        return teamID;
+    }
+
     // Gets an array of all the rider's IDs in the team
     public int[] getRiderIDArray() {
 
@@ -19,19 +24,29 @@ public class Team {
         for (Integer riderID : ridersHash.keySet()) {
             riderIDArray[position++] = riderID;
         }
-
+        
         return riderIDArray;
     }
 
-    
+    // Adds Rider object as a value in ridersHash with a key of its Rider's ID
+    public void addRider(Rider newRider) {
+
+        Integer riderID = newRider.getRiderID();
+
+        ridersHash.put(riderID, newRider);
+    }
+
+    // Removes Rider object reference which then deletes the object
+    public void deleteRider(int riderID) {
+
+        ridersHash.remove(riderID);
+    }
 
     // Constructor
-    public int Team(String name, String description) {
+    public Team(String name, String description) {
 
         this.name = name;
         this.description = description;
         this.teamID = nextTeamID++;
-
-        return this.teamID;
     }
 }
