@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-13T10:45:28.806Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="ebj-CpN3wHwUUA7--Uhp" version="24.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-13T10:59:19.685Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="XAAUOfr_lDBaSGRkDZqP" version="24.0.5" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
-    <mxGraphModel dx="127" dy="1761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="-266" dy="1517" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -138,7 +138,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-30" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="2460" y="-310" width="315" height="230" as="geometry" />
+          <mxGeometry x="2460" y="-310" width="315" height="260" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-31" value="&lt;b&gt;Rider&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-30" vertex="1">
           <mxGeometry width="315" height="43.12500000000001" as="geometry" />
@@ -146,8 +146,8 @@
         <mxCell id="tfRxmP2xf75DcZiXR_N0-32" value="-riderID : int&lt;div&gt;-teamID : int&lt;/div&gt;&lt;div&gt;-name : String&lt;/div&gt;&lt;div&gt;-yearOfBirth : int&lt;br&gt;&lt;/div&gt;-CheckpointTimeHash : HashMap (int : LocalTime array) " style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="tfRxmP2xf75DcZiXR_N0-30" vertex="1">
           <mxGeometry y="43.13" width="315" height="96.88" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-33" value="&lt;div align=&quot;left&quot;&gt;+Rider(int, String, int) : int&lt;br&gt;&lt;/div&gt;+addResults(int, localtime) : void&lt;br&gt;+getStageResult(int) : LocalTime array&lt;br&gt;+calculateStageTime(int) : void&lt;br&gt;&lt;div&gt;+removeStageTime(int) : void&lt;/div&gt;&lt;div&gt;+totalCheckpointTimes(LocalTime array) : LocalTime&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="tfRxmP2xf75DcZiXR_N0-30" vertex="1">
-          <mxGeometry y="140" width="315" height="90" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-33" value="&lt;div align=&quot;left&quot;&gt;+Rider(int, String, int) : int&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;+getRiderID() : int&lt;/div&gt;+addResults(int, localtime) : void&lt;br&gt;+getStageResult(int) : LocalTime array&lt;br&gt;+calculateStageTime(int) : void&lt;br&gt;&lt;div&gt;+removeStageTime(int) : void&lt;/div&gt;&lt;div&gt;+totalCheckpointTimes(LocalTime array) : LocalTime&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="tfRxmP2xf75DcZiXR_N0-30" vertex="1">
+          <mxGeometry y="140" width="315" height="120" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-35" value="Team" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
           <mxGeometry x="2960" y="-310" width="220" height="230" as="geometry" />
