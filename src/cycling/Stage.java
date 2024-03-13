@@ -10,7 +10,7 @@ public class Stage {
     private double length;
     private LocalTime startTime;
     private StageType stageType;
-    private HashMap<Integer, String> checkpointIDHashMap = new HashMap<Integer, String>();
+    private HashMap<Integer, CheckpointType> checkpointIDHashMap = new HashMap<Integer, CheckpointType>();
     private LocalTime[] totalTimes;
     private static int nextStageID = 0;
 
@@ -30,22 +30,27 @@ public class Stage {
     {
         return length;
     }
-    public int addCheckpoint() ///Check this, think should return ID but is void in UML
-    {
-        int checkPointID = 0;   //This should make a checkpoint to use in stage and return the ID
-        return checkPointID;
-    }
-    public void removeCheckpoint(int checkPointID)
-    {
-                                //This should remove a checkpoint 
-    }
     public void setStageType(StageType Stagetype)
     {
         this.stageType = stageType;
     }
-    public Checkpoint getStageCheckpoints() //Not sure the type
+    public void addCheckpoint() 
     {
-        //This function will have to return some type of checkpoint
-        
+       int checkpointID = Checkpoint.getCheckpointID();
+       CheckpointType checkpointType = Checkpoint.getCheckpointType();
+        addCheckpointToHash(checkpointID, checkpointType);
+    }
+    public void removeCheckpoint(int checkPointID)
+    {
+                                 //This should remove a checkpoint 
+    }
+    public Checkpoint getStageCheckpoints() 
+    {
+    
+    }
+
+    private void addCheckpointToHash(int checkpointID, CheckpointType checkpointType)
+    {
+        checkpointIDHashMap.put(checkpointID, checkpointType);
     }
 }
