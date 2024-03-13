@@ -26,4 +26,24 @@ public class Stage {
 
         return stageID;
     }
+    public double getStageLength()
+    {
+        return length;
+    }
+    public void addCheckpoint()
+    {
+
+    }
+    public void removeCheckpoint(int checkPointID)
+    {
+
+    }
+    public void setStageType(StageType Stagetype)
+    {
+        this.stageType = stageType;
+    }
+    public Checkpoint getStageCheckpoints()
+    {
+        
+    }
 }
