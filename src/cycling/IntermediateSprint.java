@@ -2,13 +2,12 @@ package cycling;
 
 public class IntermediateSprint extends Checkpoint
 {
-    private final CheckpointType type = CheckpointType.SPRINT; 
-    //Type will always be SPRINT
 
     //Constructor for IntermediateSprint
     public IntermediateSprint(int stageID, String location, Double length)
     {
         super(stageID, location, length);
+        this.type = CheckpointType.SPRINT;
     }
 
     //Overriding the abstract getPoints method based on what 

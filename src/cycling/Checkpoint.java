@@ -1,19 +1,17 @@
 package cycling;
 
 public abstract class Checkpoint {
-    protected int stageID;
     protected int checkpointID;
     protected String location;
     protected CheckpointType type;
     protected Double length;
 
-   
     //Constructor for checkpoint, used in subclasses 
     //IntermediateSprint and CategorisedClimb
-     
-    public Checkpoint(int stageID, String location, Double length)
+    
+    public Checkpoint(int checkpointID, String location, Double length)
     {
-        this.stageID = stageID;
+        this.checkpointID = checkpointID;
         this.location = location;
         this.length = length;
     }

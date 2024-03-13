@@ -1,6 +1,7 @@
 package cycling;
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Stage {
     private int stageID;
@@ -13,19 +14,19 @@ public class Stage {
     private HashMap<Integer, CheckpointType> checkpointIDHashMap = new HashMap<Integer, CheckpointType>();
     private LocalTime[] totalTimes;
     private static int nextStageID = 0;
-   
+
     //Constructor
-    public int Stage(int raceID, String stageName, String description, Double length, LocalTime startTime, StageType StageType)
+    public Stage(int raceID, String stageName, String description, Double length, LocalTime startTime, StageType StageType, HashMap<Integer, CheckpointType> checkpointIDHashMap)
     {
         this.raceID = raceID;
         this.stageName = stageName;
         this.description = description;
         this.length = length;
         this.startTime = startTime;
-        this.stageType = stageType;
+        this.stageType = stageType; 
         this.stageID = nextStageID++;
+        this.checkpointIDHashMap = (HashMap<Integer, CheckpointType>)checkpointIDHashMap.clone(); //Only way to create stage out of checkpoints, need to call this with a hashmap from main somehow
 
-        return stageID;
     }
 
     public double getStageLength()
@@ -40,16 +41,11 @@ public class Stage {
     /**
      * Stages are made of checkpoints, this function should add a checkpoint
      * Checkpoints are either an intermediate sprint or a categorised climb
-     * 
-     * Current error is that we need an instance of either intermediate sprint
-     * or categorised climb (we will have to get that initalised from somewhere else)
-     * and use that instance variable instead of the Checkpoint in Checkpoint.getCheckpointID()
+     * This is not the main way we add checkpoints though (constructor does that)
      */
-    public void addCheckpoint() 
+    public void addCheckpoint(int checkpointID, CheckpointType type) 
     {
-        int checkpointID = Checkpoint.getCheckpointID();  
-        CheckpointType checkpointType = Checkpoint.getCheckpointType(); 
-        addCheckpointToHash(checkpointID, checkpointType);      
+        addCheckpointToHash(checkpointID, type);      
     }
     /*
      * This function removes a checkpoint 
@@ -61,9 +57,14 @@ public class Stage {
     /*
      *  Returns the checkpoints in this stage
      */
-    public Checkpoint getStageCheckpoints() 
+    public HashMap<Integer, CheckpointType> getStageCheckpoints() 
     {
-    
+        return checkpointIDHashMap;
+    }
+
+    public String toString()
+    {
+        return checkpointIDHashMap.toString();
     }
 
     /**
