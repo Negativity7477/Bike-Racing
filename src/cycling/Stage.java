@@ -30,20 +30,22 @@ public class Stage {
     {
         return length;
     }
-    public void addCheckpoint()
+    public int addCheckpoint() ///Check this, think should return ID but is void in UML
     {
-
+        int checkPointID = 0;   //This should make a checkpoint to use in stage and return the ID
+        return checkPointID;
     }
     public void removeCheckpoint(int checkPointID)
     {
-
+                                //This should remove a checkpoint 
     }
     public void setStageType(StageType Stagetype)
     {
         this.stageType = stageType;
     }
-    public Checkpoint getStageCheckpoints()
+    public Checkpoint getStageCheckpoints() //Not sure the type
     {
+        //This function will have to return some type of checkpoint
         
     }
 }
