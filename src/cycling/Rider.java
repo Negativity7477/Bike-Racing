@@ -9,7 +9,8 @@ public class Rider {
     private int teamID;
     private String name;
     private int yearOfBirth;
-    private HashMap<Integer, LocalTime[]> checkpointHash = new HashMap<Integer, LocalTime[]>();
+    // Hash of stageIDs to 1 or more checkpoint finishing times
+    private HashMap<Integer, LocalTime[]> checkpointTimeHash = new HashMap<Integer, LocalTime[]>();
     private static int nextRiderID = 0;
 
     // Getter for riderID
@@ -19,12 +20,19 @@ public class Rider {
 
     // Adds a key of a stage ID and a value of all the finishing times of checkpoints for a rider to checkpointHash
     public void addResults(int stageID, LocalTime... results) {
-        checkpointHash.put(stageID, results);
+        checkpointTimeHash.put(stageID, results);
     }
 
     // Getter for a specfied stage's checkpoint times
     public LocalTime[] getStageResults(int stageID) {
-        return checkpointHash.get(stageID);
+        return checkpointTimeHash.get(stageID);
+    }
+
+    // Removes all recorded checkpoint times from a stage
+    public void removeStageCheckpointTimes(int stageID) throws IDNotRecognisedException {
+        if (checkpointTimeHash.remove(stageID) == null) {
+            throw new IDNotRecognisedException("Invalid stageID");
+        }
     }
 
     // Totals an array of LocalTime values
@@ -32,6 +40,7 @@ public class Rider {
 
         LocalTime totalTime = LocalTime.of(0, 0, 0);
 
+        // Loops through hash and adds hours, minutes and seconds to a total
         for (LocalTime i : timeArray) {
             totalTime = totalTime.plusHours(i.getHour());
             totalTime = totalTime.plusMinutes(i.getMinute());
