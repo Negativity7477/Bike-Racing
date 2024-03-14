@@ -11,6 +11,7 @@ public class Stage {
     private double length;
     private LocalTime startTime;
     private StageType stageType;
+    //Hash of checkpointID to checkpointType
     private HashMap<Integer, CheckpointType> checkpointIDHashMap = new HashMap<Integer, CheckpointType>();
     private LocalTime[] totalTimes;
     private static int nextStageID = 0;
