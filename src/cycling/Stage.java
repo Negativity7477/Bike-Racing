@@ -50,9 +50,17 @@ public class Stage {
     /*
      * This function removes a checkpoint 
      */
-    public void removeCheckpoint(int checkPointID)
+    public void removeCheckpoint(int checkPointID) throws IDNotRecognisedException
     {
-                                 //This should remove a checkpoint 
+        if(checkpointIDHashMap.containsKey(checkPointID))
+        {
+            checkpointIDHashMap.remove(checkPointID);
+        }
+        else
+        {
+            throw new IDNotRecognisedException("No Checkpoint correponds to ID");
+        }
+
     }
     /*
      *  Returns the checkpoints in this stage

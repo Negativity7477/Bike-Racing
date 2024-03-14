@@ -5,13 +5,14 @@ public abstract class Checkpoint {
     protected String location;
     protected CheckpointType type;
     protected Double length;
+    protected static int nextCheckpointID;
 
     //Constructor for checkpoint, used in subclasses 
     //IntermediateSprint and CategorisedClimb
     
-    public Checkpoint(int checkpointID, String location, Double length)
+    public Checkpoint(String location, Double length)
     {
-        this.checkpointID = checkpointID;
+        this.checkpointID = nextCheckpointID++;
         this.location = location;
         this.length = length;
     }

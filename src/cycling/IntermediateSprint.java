@@ -4,9 +4,9 @@ public class IntermediateSprint extends Checkpoint
 {
 
     //Constructor for IntermediateSprint
-    public IntermediateSprint(int stageID, String location, Double length)
+    public IntermediateSprint(String location, Double length)
     {
-        super(stageID, location, length);
+        super(location, length);
         this.type = CheckpointType.SPRINT;
     }
 
