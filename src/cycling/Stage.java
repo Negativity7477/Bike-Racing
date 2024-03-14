@@ -87,4 +87,18 @@ public class Stage {
     {
         checkpointIDHashMap.put(checkpointID, checkpointType);
     }
+
+    //Returns every checkpoint ID in a stage as an array
+    public int[] getAllCheckpointID()
+    {
+        int[] allCheckpoints = new int[checkpointIDHashMap.size()];
+        int position = 0;
+
+        // Loops through hash table and adds all checkpointIDs to an array 
+        for (Integer checkpointID : checkpointIDHashMap.keySet())
+        {
+            allCheckpoints[position++] = checkpointID;
+        }
+        return allCheckpoints;
+    }
 }
