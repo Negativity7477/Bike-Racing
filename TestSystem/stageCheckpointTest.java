@@ -4,6 +4,7 @@ import java.time.LocalTime;
 
 
 public class stageCheckpointTest {
+
     public static void main(String args[])
     {
         HashMap<Integer, CheckpointType> checkpointIDHash = new HashMap<Integer, CheckpointType>();
@@ -18,7 +19,7 @@ public class stageCheckpointTest {
         checkpointIDHash.put(CC2.getCheckpointID(), CC2.getCheckpointType());
         checkpointIDHash.put(CC3.getCheckpointID(), CC3.getCheckpointType());
         
-        Stage stage = new Stage(0, "Bob", "This shit sucks", 46.0, LocalTime.now(), StageType.FLAT, checkpointIDHash);
+        Stage stage = new Stage(0, "Bob", "This shit sucks", 46.0, LocalTime.now(), checkpointIDHash);
 
         System.out.println(CC1.determineClimbType(CC1.getAverageGradient(), CC1.getLength()));
         System.out.println(CC2.determineClimbType(CC2.getAverageGradient(), CC2.getLength()));
