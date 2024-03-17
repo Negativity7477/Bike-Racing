@@ -11,7 +11,8 @@ public class Stage {
     private double length;
     private LocalTime startTime;
     private StageType stageType;
-    private HashMap<Integer, CheckpointType> checkpointIDHashMap = new HashMap<Integer, CheckpointType>();
+    //Hash of checkpointID to checkpointType
+    private HashMap<Integer, Checkpoint> checkpointIDHashMap = new HashMap<Integer, Checkpoint>();
     private LocalTime[] totalTimes;
     private static int nextStageID = 0;
 
@@ -28,20 +29,17 @@ public class Stage {
      * 
      * Constructor for stage
      */
-    public Stage(int raceID, String stageName, String description, Double length, LocalTime startTime, HashMap<Integer, CheckpointType> checkpointIDHashMap)
+    public Stage(int raceID, String stageName, String description, LocalTime startTime, StageType StageType, HashMap<Integer, Checkpoint> checkpointIDHashMap)
     {
 
         this.raceID = raceID;
         this.stageName = stageName;
         this.description = description;
-        this.length = length;
         this.startTime = startTime;
+        this.stageType = stageType;
         this.stageID = nextStageID++;
-        this.checkpointIDHashMap = (HashMap<Integer, CheckpointType>)checkpointIDHashMap.clone();
-        
-        CheckpointType[] types = returnCheckpointTypes(checkpointIDHashMap);
-        this.stageType = findStageType(types);
-        
+        this.checkpointIDHashMap = (HashMap<Integer, Checkpoint>)checkpointIDHashMap.clone();
+        this.length = getStageLength(checkpointIDHashMap);
     }
 
     /**
@@ -55,6 +53,11 @@ public class Stage {
         return length;
     }
 
+
+    public int getStageID()
+    {
+        return stageID;
+    }
 
     /**
      * 
@@ -72,7 +75,7 @@ public class Stage {
      * Checkpoints are either an intermediate sprint or a categorised climb
      * This is not the main way we add checkpoints though (constructor does that)
      */
-    public void addCheckpoint(int checkpointID, CheckpointType type) 
+    public void addCheckpoint(int checkpointID, Checkpoint type) 
     {
         addCheckpointToHash(checkpointID, type);      
     }
@@ -82,9 +85,17 @@ public class Stage {
     /*
      * This function removes a checkpoint 
      */
-    public void removeCheckpoint(int checkPointID)
+    public void removeCheckpoint(int checkPointID) throws IDNotRecognisedException
     {
-        
+        if(checkpointIDHashMap.containsKey(checkPointID))
+        {
+            checkpointIDHashMap.remove(checkPointID);
+        }
+        else
+        {
+            throw new IDNotRecognisedException("No Checkpoint correponds to ID");
+        }
+
     }
 
 
@@ -93,11 +104,10 @@ public class Stage {
     /*
      *  Returns the checkpoints in this stage
      */
-    public HashMap<Integer, CheckpointType> getStageCheckpoints() 
+    public HashMap<Integer, Checkpoint> getStageCheckpoints() 
     {
         return checkpointIDHashMap;
     }
-
 
 
     /**
@@ -108,9 +118,6 @@ public class Stage {
         return checkpointIDHashMap.toString();
     }
 
-
-
-
     /**
      * 
      * @param checkpointID - Each checkpoint's unique identifier
@@ -119,64 +126,51 @@ public class Stage {
      * This function is used to generate the hash, showing what checkpoint is what type
      * This hash should be used in anywhere we need to determine type of checkpoint
      */
-    private void addCheckpointToHash(int checkpointID, CheckpointType checkpointType)
+    private void addCheckpointToHash(int checkpointID, Checkpoint checkpointType)
     {
         checkpointIDHashMap.put(checkpointID, checkpointType);
     }
 
-
-/**
- * 
- * @param checkpointHash - The hash of checkpointID to checkpointType
- * @return - All the checkpointIDs in the hash
- * 
- * This function extracts the IDs out of the hashmap and returns them
- * To do this we need to follow this conversion route 
- * Object -> Integer[] -> Integer -> int -> int[]
- */
-    private int[] returnCheckpointIDs(HashMap<Integer, CheckpointType> checkpointHash)
+    /**
+     * 
+     * @return - Array of all checkpointIDs making up a stage
+     * 
+     * get all checkpointIDs as an array
+     */
+    public int[] getAllCheckpointID()
     {
-        Integer[] wrappedCheckpointIDs = (Integer[]) checkpointHash.keySet().toArray(); //create a Wrapped
-        //integer array of all our checkpointIDs because java returns them as objects and we need to convert
+        int[] allCheckpoints = new int[checkpointIDHashMap.size()];
+        int position = 0;
 
-        int[] checkpointIDs = new int[checkpointHash.size()]; //Create the array to return
-        Integer holder = 0; //Create a wrapped integer object to convert between Integer[] and int[]
-
-        for(int i = 0; i < checkpointHash.size(); i++)  //We need to loop to unwrap our IDs
+        // Loops through hash table and adds all checkpointIDs to an array 
+        for (Integer checkpointID : checkpointIDHashMap.keySet())
         {
-            holder = wrappedCheckpointIDs[i]; //Storing each array value into a wrapped Integer variable to convert it
-            checkpointIDs[i] = holder; //Converting Integer to int which is added to the array
+            allCheckpoints[position++] = checkpointID;
         }
-        return checkpointIDs;
+        return allCheckpoints;
     }
 
-
-    /**
-     * 
-     * @param checkpointHash - Hash of checkpointID to checkpointType
-     * @return - An array of all checkpointTypes in the hash
-     * 
-     * Returns all the CheckpointTypes that make up this stage
-     */
-    private CheckpointType[] returnCheckpointTypes(HashMap<Integer, CheckpointType> checkpointHash)
+    public Checkpoint[] returnAllCheckpoints(HashMap<Integer, Checkpoint> checkpointHashMap)
     {
-        CheckpointType[] checkpointTypes = checkpointHash.values().toArray(new CheckpointType[0]);
-        return checkpointTypes;
+        Checkpoint[] allCheckpoints = new Checkpoint[checkpointHashMap.size()];
+        int position = 0;
+
+        for (Checkpoint checkpoint: checkpointHashMap.values())
+        {
+            allCheckpoints[position++] = checkpoint;
+        }
+        return allCheckpoints;
     }
 
-
-
-
-    /**
-     * 
-     * @param checkpointTypes - An array of all checkpoint types in this stage
-     * @return - Returns what stage type this stage is
-     * 
-     * Determines the proportion of categorised climb to return the correct type
-     */
-    private StageType findStageType(CheckpointType[] checkpointTypes)
+    private Double getStageLength(HashMap<Integer, Checkpoint> checkpointHashMap)
     {
+        Double totalDistance = 0.0;
+        Checkpoint[] allCheckpoints = returnAllCheckpoints(checkpointHashMap);
+        for(int i = 0; i < allCheckpoints.length; i++)
+        {
+            totalDistance += allCheckpoints[i].getCheckpointLength();
+        }
 
-        return stageType.FLAT;
+        return totalDistance;
     }
 }

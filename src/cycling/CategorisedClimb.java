@@ -5,9 +5,9 @@ public class CategorisedClimb extends Checkpoint
     private Double averageGradient;
 
     //Constructor
-    public CategorisedClimb(int stageID, String location, Double length, Double averageGradient)
+    public CategorisedClimb(String location, Double length, Double averageGradient)
     {
-        super(stageID, location, length);
+        super(location, length);
         this.averageGradient = averageGradient;
         this.type = determineClimbType(averageGradient, length);
     }
