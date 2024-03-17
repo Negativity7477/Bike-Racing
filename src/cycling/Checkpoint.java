@@ -26,6 +26,11 @@ public abstract class Checkpoint {
     {
         return type;
     }
+
+    public Double getCheckpointLength()
+    {
+        return length;
+    }
     
     //An abstract method used to get points
     //based on the checkpoint 

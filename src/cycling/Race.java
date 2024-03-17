@@ -6,6 +6,7 @@ public class Race {
     private double totalDistance;
     private String name;
     private String description;
+    private static int nextRaceID = 0; 
     private HashMap<Integer, Stage> stageIDHash = new HashMap<Integer, Stage>();
 
     /**
@@ -15,10 +16,14 @@ public class Race {
      * 
      * Constructor for race
      */
-    public Race(String name, String description)
+    public Race(String name, String description, HashMap<Integer, Stage> stageIDHash)
     {
         this.name = name;
         this.description = description;
+        this.stageIDHash = (HashMap<Integer, Stage>) stageIDHash.clone();
+        this.numOfStages = stageIDHash.size();
+        this.raceID = nextRaceID++;
+        this.totalDistance = calculateDistance(stageIDHash);
     }
 
 
@@ -56,12 +61,11 @@ public class Race {
     }
 
     /**
-     * stage make up a race, this function should allow us to create a stage
-     * and use it in this race
+     * A function to add more stages to race later if needed
      */
-    public void addStageToRace()
+    public void addStageToRace(int stageID, Stage stage)
     {
-        
+        addToStageHash(stageID, stage);
     }
 
     /**
@@ -79,8 +83,57 @@ public class Race {
      * 
      * Removes a stage in this race
      */
-    public void removeStageByID(int stageID)
+    public void removeStageByID(int stageID) throws IDNotRecognisedException
     {
-
+        if(stageIDHash.containsKey(stageID))
+        {
+            stageIDHash.remove(stageID);
+        }
+        else
+        {
+            throw new IDNotRecognisedException("No stage correponds to ID");
+        }
     }
+
+    private void addToStageHash(int stageID, Stage stage)
+    {
+        stageIDHash.put(stageID, stage);
+    }
+
+    private Double calculateDistance(HashMap<Integer,Stage> stageHashMap)
+    {
+        Double totalDistance = 0.0;
+        Stage[] allStages = returnAllStages(stageHashMap);
+        for(int i = 0; i < allStages.length; i++)
+        {
+            totalDistance += allStages[i].getStageLength();
+        }
+
+        return totalDistance;
+    }
+
+    private int[] returnStageIDs(HashMap<Integer,Stage> stageHashMap)
+    {
+        int[] allStages = new int[stageHashMap.size()];
+        int position = 0;
+
+        for (Integer stageID : stageHashMap.keySet())
+        {
+            allStages[position++] = stageID;
+        }
+        return allStages;
+    }
+
+    private Stage[] returnAllStages(HashMap<Integer,Stage> stageHashMap)
+    {
+        Stage[] allStages = new Stage[stageHashMap.size()];
+        int position = 0;
+
+        for (Stage stage : stageHashMap.values())
+        {
+            allStages[position++] = stage;
+        }
+        return allStages;
+    }
+
 }
