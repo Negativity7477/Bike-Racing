@@ -4,12 +4,17 @@ import java.util.HashMap;
 
 public class Team {
     private int teamID;
-    private String name;
+    private String name; 
     private String description;
+    // Hash of rider IDs to their respective rider object
     private HashMap<Integer, Rider> ridersHash = new HashMap<Integer, Rider>();
     private static int nextTeamID = 0;
 
-    // Getter for TeamID
+    /**
+     * Getter for TeamID
+     * 
+     * @return A unique ID for the team being queried
+     */
     public int getTeamID() {
         return teamID;
     }
@@ -29,11 +34,14 @@ public class Team {
     }
 
     // Adds Rider object as a value in ridersHash with a key of its Rider's ID
-    public void addRider(Rider newRider) {
+    public void addRider(Rider newRider) throws DuplicatedResultException
+    {
 
         Integer riderID = newRider.getRiderID();
 
-        ridersHash.put(riderID, newRider);
+        if (ridersHash.put(riderID, newRider) != null) {
+            throw new DuplicatedResultException("Bad ID");
+        } 
     }
 
     // Removes Rider object reference which then deletes the object
