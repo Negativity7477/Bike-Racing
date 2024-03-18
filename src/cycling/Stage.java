@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 public class Stage {
     private int stageID;
-    private int raceID;
     private String stageName;
     private String description; 
     private double length;
@@ -29,10 +28,8 @@ public class Stage {
      * 
      * Constructor for stage
      */
-    public Stage(int raceID, String stageName, String description, LocalTime startTime, StageType StageType, HashMap<Integer, Checkpoint> checkpointIDHashMap)
+    public Stage(String stageName, String description, LocalTime startTime, StageType StageType, HashMap<Integer, Checkpoint> checkpointIDHashMap)
     {
-
-        this.raceID = raceID;
         this.stageName = stageName;
         this.description = description;
         this.startTime = startTime;
@@ -54,6 +51,33 @@ public class Stage {
     }
 
 
+    /**
+     * @return - Name of stage
+     * 
+     * Allows us to get the stage name 
+     */
+    public String getStageName()
+    {
+        return stageName;
+    }
+
+
+    /**
+     * @return - Description of stage
+     * 
+     * Allows us to get the stage description
+     */
+    public String getStageDescription()
+    {
+        return description;
+    }
+
+
+    /**
+     * @return - Unique identifier of stage
+     * 
+     * Allows us to get the stage identifier 
+     */
     public int getStageID()
     {
         return stageID;
@@ -102,7 +126,8 @@ public class Stage {
 
 
     /*
-     *  Returns the checkpoints in this stage
+     * @return - the hashmap containing checkpointID and checkpoint
+     * Returns the checkpoints in this stage
      */
     public HashMap<Integer, Checkpoint> getStageCheckpoints() 
     {
@@ -150,7 +175,14 @@ public class Stage {
         return allCheckpoints;
     }
 
-    public Checkpoint[] returnAllCheckpoints(HashMap<Integer, Checkpoint> checkpointHashMap)
+    
+    /**
+     * @param checkpointHashMap - Hashmap of checkpointID to the checkpoint
+     * @return - an array of all checkpoints in stage
+     * 
+     * Allows us to get every checkpoint in a stage
+     */
+    private Checkpoint[] returnAllCheckpoints(HashMap<Integer, Checkpoint> checkpointHashMap)
     {
         Checkpoint[] allCheckpoints = new Checkpoint[checkpointHashMap.size()];
         int position = 0;
@@ -162,6 +194,14 @@ public class Stage {
         return allCheckpoints;
     }
 
+    
+    /**
+     * @param checkpointHashMap - Hashmap of checkpointID to the checkpoint
+     * @return = the distance of the stage
+     * 
+     * Allows us to work out the total length of the stage from the checkpoints
+     * making up the stage 
+     */
     private Double getStageLength(HashMap<Integer, Checkpoint> checkpointHashMap)
     {
         Double totalDistance = 0.0;

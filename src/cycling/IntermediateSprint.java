@@ -9,7 +9,6 @@ public class IntermediateSprint extends Checkpoint
         super(location, length);
         this.type = CheckpointType.SPRINT;
     }
-
     //Overriding the abstract getPoints method based on what 
     //the intermediate sprint should give 
     @Override

@@ -44,18 +44,18 @@ public class Race {
      * 
      * Allows us to find name of race
      */
-    public String getName()
+    public String getRaceName()
     {
         return name;
     }
 
-    
+
 /**
      * @return - description of race
      * 
      * Allows us to find description of race
      */
-    public String getDescription()
+    public String getRaceDescription()
     {
         return description;
     }
