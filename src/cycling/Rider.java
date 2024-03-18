@@ -10,7 +10,7 @@ public class Rider {
     private String name;
     private int yearOfBirth;
     // Hash of stageIDs to 1 or more checkpoint finishing times
-    private HashMap<Integer, LocalTime[]> checkpointTimeHash = new HashMap<Integer, LocalTime[]>();
+    private HashMap<Integer, LocalTime[]> checkpointTimeHash;
     private static int nextRiderID = 0;
 
     /**
@@ -109,6 +109,7 @@ public class Rider {
         this.teamID = teamID;
         this.name = name;
         this.yearOfBirth = yearOfBirth;
+        this.checkpointTimeHash = new HashMap<Integer, LocalTime[]>();
     }
 
 }

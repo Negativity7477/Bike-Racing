@@ -7,7 +7,7 @@ public class Team {
     private String name; 
     private String description;
     // Hash of rider IDs to their respective rider object
-    private HashMap<Integer, Rider> ridersHash = new HashMap<Integer, Rider>();
+    private HashMap<Integer, Rider> ridersHash;
     private static int nextTeamID = 0;
 
     /**
@@ -80,5 +80,6 @@ public class Team {
         this.name = name;
         this.description = description;
         this.teamID = nextTeamID++;
+        this.ridersHash = new HashMap<Integer, Rider>();
     }
 }
