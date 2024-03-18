@@ -23,7 +23,8 @@ public class Team {
      * Gets an array of all the rider's IDs in the team, 
      * If there are no riders than an empty array is returned
      * 
-     * @return An array of the IDs of all the riders in the team being queried
+     * @return An array of the IDs of all the riders in the team being queried,
+     *         if there are no riders then an empty array is returned
      */
     public int[] getRiderIDArray() {
 
