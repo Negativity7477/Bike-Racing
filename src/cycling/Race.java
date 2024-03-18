@@ -38,6 +38,29 @@ public class Race {
         return raceID;
     }
 
+
+    /**
+     * @return - name of race
+     * 
+     * Allows us to find name of race
+     */
+    public String getName()
+    {
+        return name;
+    }
+
+    
+/**
+     * @return - description of race
+     * 
+     * Allows us to find description of race
+     */
+    public String getDescription()
+    {
+        return description;
+    }
+ 
+
     /**
      * 
      * @return - Number of stages making up the race 
