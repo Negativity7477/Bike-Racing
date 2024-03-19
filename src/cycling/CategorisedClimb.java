@@ -4,33 +4,48 @@ public class CategorisedClimb extends Checkpoint
 {
     private Double averageGradient;
 
-    //Constructor
+    /**
+     * 
+     * @param location - location of checkpoint
+     * @param length - length of checkpoint 
+     * @param averageGradient - average gradient of the checkpoint
+     * 
+     * Constructor 
+     */
     public CategorisedClimb(String location, Double length, Double averageGradient)
     {
         super(location, length);
         this.averageGradient = averageGradient;
         this.type = determineClimbType(averageGradient, length);
     }
-    
+
+
+    /**
+     * 
+     * @return - average gradient of checkpoint
+     * 
+     * Getter for average gradient 
+     */
     public Double getAverageGradient()
     {
         return averageGradient;
     }
 
-    /**
-    *This function is kinda obselete
-    */
-    public void setType()
-    {
-        this.type = determineClimbType(averageGradient, length);
-    }
     
+    /**
+     * 
+     * @return - length of checkpoint
+     * Gets the length of the checkpoint
+     */
     public  double getLength()
     {
         return length;
     }
+
+    
     //Overriding the abstract getPoints method based on what 
     //the categorise climb should give (for each category)
+    //Not ready yet
     @Override 
     public int getPoints()
     {
@@ -39,8 +54,12 @@ public class CategorisedClimb extends Checkpoint
     }
 
     /*
+     * @param - Average gradient of the checkpoint
+     * @param - Length of the gradient 
      * This method is used in order to set checkpoint type as there are 
      * multiple different types of categorised climb.
+     * 
+     * @return - The type of climb this checkpoint is
      */
     public CheckpointType determineClimbType(Double averageGradient, Double length)
     {

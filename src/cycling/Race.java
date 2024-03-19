@@ -23,7 +23,7 @@ public class Race {
         this.stageIDHash = (HashMap<Integer, Stage>) stageIDHash.clone();
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
-        this.totalDistance = calculateDistance(stageIDHash);
+        this.totalDistance = calculateDistance();
     }
 
 
@@ -84,6 +84,9 @@ public class Race {
     }
 
     /**
+     * 
+     * @param stageID - Unique identifier of the stage
+     * @param stage - The stage making up the race
      * A function to add more stages to race later if needed
      */
     public void addStageToRace(int stageID, Stage stage)
@@ -92,7 +95,7 @@ public class Race {
     }
 
     /**
-     * @return - 
+     * @return - An array of all stageIDs
      * This function returns an array of all stages in this race
      */
     public int[] getStagesInRace()
@@ -118,15 +121,26 @@ public class Race {
         }
     }
 
+    /**
+     * 
+     * @param stageID - unique identifier for stage
+     * @param stage - the stages that makes up the race 
+     * Allows us to add to the hash in a private method
+     */
     private void addToStageHash(int stageID, Stage stage)
     {
         stageIDHash.put(stageID, stage);
     }
 
-    private Double calculateDistance(HashMap<Integer,Stage> stageHashMap)
+    /**
+     * 
+     * @return - total distance of the race
+     * This function calculates the race distance based on the stage's distance
+     */
+    private Double calculateDistance()
     {
         Double totalDistance = 0.0;
-        Stage[] allStages = returnAllStages(stageHashMap);
+        Stage[] allStages = returnAllStages();
         for(int i = 0; i < allStages.length; i++)
         {
             totalDistance += allStages[i].getStageLength();
@@ -135,24 +149,34 @@ public class Race {
         return totalDistance;
     }
 
-    private int[] returnStageIDs(HashMap<Integer,Stage> stageHashMap)
+    /**
+     * 
+     * @return - All stages in the race as an int array
+     * Allows us to get all stage identifiers that make up the race
+     */
+    private int[] returnStageIDs()
     {
-        int[] allStages = new int[stageHashMap.size()];
+        int[] allStages = new int[stageIDHash.size()];
         int position = 0;
 
-        for (Integer stageID : stageHashMap.keySet())
+        for (Integer stageID : stageIDHash.keySet())
         {
             allStages[position++] = stageID;
         }
         return allStages;
     }
 
-    private Stage[] returnAllStages(HashMap<Integer,Stage> stageHashMap)
+    /**
+     * 
+     * @return - All stage objects in race
+     * Returns all stages that makes up a race
+     */
+    private Stage[] returnAllStages()
     {
-        Stage[] allStages = new Stage[stageHashMap.size()];
+        Stage[] allStages = new Stage[stageIDHash.size()];
         int position = 0;
 
-        for (Stage stage : stageHashMap.values())
+        for (Stage stage : stageIDHash.values())
         {
             allStages[position++] = stage;
         }

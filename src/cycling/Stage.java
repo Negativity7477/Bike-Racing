@@ -36,19 +36,9 @@ public class Stage {
         this.stageType = stageType;
         this.stageID = nextStageID++;
         this.checkpointIDHashMap = (HashMap<Integer, Checkpoint>)checkpointIDHashMap.clone();
-        this.length = getStageLength(checkpointIDHashMap);
+        this.length = getStageLength();
     }
 
-    /**
-     * 
-     * @return - Length of stage
-     * 
-     * Allows us to get the stage length
-     */
-    public double getStageLength()
-    {
-        return length;
-    }
 
 
     /**
@@ -182,12 +172,12 @@ public class Stage {
      * 
      * Allows us to get every checkpoint in a stage
      */
-    private Checkpoint[] returnAllCheckpoints(HashMap<Integer, Checkpoint> checkpointHashMap)
+    private Checkpoint[] returnAllCheckpoints()
     {
-        Checkpoint[] allCheckpoints = new Checkpoint[checkpointHashMap.size()];
+        Checkpoint[] allCheckpoints = new Checkpoint[checkpointIDHashMap.size()];
         int position = 0;
 
-        for (Checkpoint checkpoint: checkpointHashMap.values())
+        for (Checkpoint checkpoint: checkpointIDHashMap.values())
         {
             allCheckpoints[position++] = checkpoint;
         }
@@ -202,10 +192,10 @@ public class Stage {
      * Allows us to work out the total length of the stage from the checkpoints
      * making up the stage 
      */
-    private Double getStageLength(HashMap<Integer, Checkpoint> checkpointHashMap)
+    public Double getStageLength()
     {
         Double totalDistance = 0.0;
-        Checkpoint[] allCheckpoints = returnAllCheckpoints(checkpointHashMap);
+        Checkpoint[] allCheckpoints = returnAllCheckpoints();
         for(int i = 0; i < allCheckpoints.length; i++)
         {
             totalDistance += allCheckpoints[i].getCheckpointLength();
