@@ -122,6 +122,23 @@ public class Race {
     }
 
     /**
+     * Getter for a stage object using its unique ID
+     * 
+     * @param stage A unique ID linked to the stage
+     * @return stage object that is linked to the ID given
+     * 
+     * @throws IDNotRecognisedException If the ID is not in the stage hashmap
+     */
+    public Stage getStage(int stageID) throws IDNotRecognisedException
+    {
+        Stage stageObject = stageIDHash.get(stageID);
+        if (stageObject == null) {
+            throw new IDNotRecognisedException("The stage requested is not in the hashmap");
+        }
+        return stageObject;
+    }
+
+    /**
      * 
      * @param stageID - unique identifier for stage
      * @param stage - the stages that makes up the race 

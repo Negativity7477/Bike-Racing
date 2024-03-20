@@ -28,7 +28,7 @@ public class Stage {
      * 
      * Constructor for stage
      */
-    public Stage(String stageName, String description, LocalTime startTime, StageType StageType, int RaceID)
+    public Stage(String stageName, String description, LocalTime startTime, StageType StageType, int RaceID) throws IDNotRecognisedException
     {
         this.stageName = stageName;
         this.description = description;
@@ -37,7 +37,11 @@ public class Stage {
         this.stageID = nextStageID++;
         this.length = getStageLength();
 
-        
+        //We can get the race we are add this stage to via 
+        //the static class at the top level
+        Race race = MiscHandling.getRace(RaceID);
+        //We can add the stage to this race
+        race.addStageToRace(this);
     }
 
 
