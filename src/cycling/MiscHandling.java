@@ -2,12 +2,13 @@ package cycling;
 
 import java.util.HashMap;
 
+// Functions as a static class
 public class MiscHandling {
     
     // Hash of team IDs to their respective team object
-    private HashMap<Integer, Team> teamsHash;
+    private static HashMap<Integer, Team> teamsHash = new HashMap<Integer, Team>();
     // Hash of race IDs to their respective race object
-    private HashMap<Integer, Race> racesHash;
+    private static HashMap<Integer, Race> racesHash = new HashMap<Integer, Race>();
 
     /**
      * Adds a team object linked to its ID into a team hashmap
@@ -16,7 +17,7 @@ public class MiscHandling {
      * 
      * @throws DuplicatedResultException If the object has already been added
      */
-    public void add(Team teamObject) throws DuplicatedResultException {
+    public static void add(Team teamObject) throws DuplicatedResultException {
 
         Integer teamID = teamObject.getTeamID();
 
@@ -32,8 +33,7 @@ public class MiscHandling {
      * 
      * @throws DuplicatedResultException If the object has already been added
      */
-
-    public void add(Race raceObject) throws DuplicatedResultException{
+    public static void add(Race raceObject) throws DuplicatedResultException{
 
         Integer raceID = raceObject.getRaceID();
 
@@ -49,7 +49,7 @@ public class MiscHandling {
      * 
      * @throws IDNotRecognisedException If the team requested is not in the hashmap
      */
-    public void removeTeam(int teamID) throws IDNotRecognisedException {
+    public static void removeTeam(int teamID) throws IDNotRecognisedException {
 
         if (teamsHash.remove(teamID) == null) {
             throw new IDNotRecognisedException("The team requested is not in the hashmap");
@@ -63,7 +63,7 @@ public class MiscHandling {
      * 
      * @throws IDNotRecognisedException If the race requested is not in the hashmap
      */
-    public void removeRace(int raceID) throws IDNotRecognisedException {
+    public static void removeRace(int raceID) throws IDNotRecognisedException {
 
         if (racesHash.remove(raceID) == null) {
             throw new IDNotRecognisedException("The race requested is not in the hashmap");
@@ -78,7 +78,7 @@ public class MiscHandling {
      * 
      * @throws IDNotRecognisedException If the ID is not in the team hashmap
      */
-    public Team getTeam(int teamID) throws IDNotRecognisedException {
+    public static Team getTeam(int teamID) throws IDNotRecognisedException {
 
         Team teamObject = teamsHash.get(teamID);
         if (teamObject == null) {
@@ -95,7 +95,7 @@ public class MiscHandling {
      * 
      * @throws IDNotRecognisedException If the ID is not in the race hashmap
      */
-    public Race getRace(int raceID) throws IDNotRecognisedException {
+    public static Race getRace(int raceID) throws IDNotRecognisedException {
 
         Race raceObject = racesHash.get(raceID);
         if (raceObject == null) {
@@ -109,7 +109,7 @@ public class MiscHandling {
      * 
      * @return An array of all the IDs of the teams in the team hashmap
      */
-    public int[] getTeamIDs() {
+    public static int[] getTeamIDs() {
 
         int[] teamIDArray = new int[teamsHash.size()];
         int position = 0;
@@ -127,7 +127,7 @@ public class MiscHandling {
      * 
      * @return An array of all the IDs of the races in the race hashmap
      */
-    private int[] getRaceIDs() {
+    private static int[] getRaceIDs() {
 
         int[] raceIDArray = new int[racesHash.size()];
         int position = 0;
@@ -148,9 +148,9 @@ public class MiscHandling {
      * 
      * @throws InvalidNameException
      */
-    public int getRaceIDFromName(String name) throws InvalidNameException {
+    public static int getRaceIDFromName(String name) throws InvalidNameException {
         
-        int[] raceIDArray = this.getRaceIDs();
+        int[] raceIDArray = getRaceIDs();
         Race raceObject;
 
         // Loops through all race IDs and selects their respective object
@@ -158,21 +158,12 @@ public class MiscHandling {
             raceObject = racesHash.get(raceID);
 
             // Checks for a name match
-            if (raceObject.getRaceName().equals(name)) {
+            if (raceObject.getName() == name) {
                 return raceID;
             }
         }
 
         // If no matches were found then this error is raised
         throw new InvalidNameException("Given name is not recognised");
-    }
-
-    /**
-     * Constructor
-     */
-    public MiscHandling() {
-
-        this.teamsHash = new HashMap<Integer, Team>();
-        this.racesHash = new HashMap<Integer, Race>();
     }
 }
