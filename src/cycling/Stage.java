@@ -28,15 +28,16 @@ public class Stage {
      * 
      * Constructor for stage
      */
-    public Stage(String stageName, String description, LocalTime startTime, StageType StageType, HashMap<Integer, Checkpoint> checkpointIDHashMap)
+    public Stage(String stageName, String description, LocalTime startTime, StageType StageType, int RaceID)
     {
         this.stageName = stageName;
         this.description = description;
         this.startTime = startTime;
         this.stageType = stageType;
         this.stageID = nextStageID++;
-        this.checkpointIDHashMap = (HashMap<Integer, Checkpoint>)checkpointIDHashMap.clone();
         this.length = getStageLength();
+
+        
     }
 
 
@@ -87,10 +88,10 @@ public class Stage {
     /**
      * Stages are made of checkpoints, this function should add a checkpoint
      * Checkpoints are either an intermediate sprint or a categorised climb
-     * This is not the main way we add checkpoints though (constructor does that)
      */
-    public void addCheckpoint(int checkpointID, Checkpoint type) 
+    public void addCheckpoint(Checkpoint type) 
     {
+        int checkpointID = type.getCheckpointID();
         addCheckpointToHash(checkpointID, type);      
     }
 

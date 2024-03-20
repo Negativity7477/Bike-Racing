@@ -12,7 +12,7 @@ public class CategorisedClimb extends Checkpoint
      * 
      * Constructor 
      */
-    public CategorisedClimb(String location, Double length, Double averageGradient)
+    public CategorisedClimb(String location, Double length, Double averageGradient, int stageID)
     {
         super(location, length);
         this.averageGradient = averageGradient;

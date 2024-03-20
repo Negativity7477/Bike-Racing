@@ -1,7 +1,4 @@
-import cycling.BadMiniCyclingPortalImpl;
-import cycling.IllegalNameException;
-import cycling.InvalidNameException;
-import cycling.MiniCyclingPortal;
+import cycling.*;
 
 /**
  * A short program to illustrate an app testing some minimal functionality of a

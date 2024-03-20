@@ -16,11 +16,10 @@ public class Race {
      * 
      * Constructor for race
      */
-    public Race(String name, String description, HashMap<Integer, Stage> stageIDHash)
+    public Race(String name, String description)
     {
         this.name = name;
         this.description = description;
-        this.stageIDHash = (HashMap<Integer, Stage>) stageIDHash.clone();
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
         this.totalDistance = calculateDistance();
@@ -59,7 +58,7 @@ public class Race {
     {
         return description;
     }
- 
+
 
     /**
      * 
@@ -89,8 +88,9 @@ public class Race {
      * @param stage - The stage making up the race
      * A function to add more stages to race later if needed
      */
-    public void addStageToRace(int stageID, Stage stage)
+    public void addStageToRace(Stage stage)
     {
+        int stageID = stage.getStageID();
         addToStageHash(stageID, stage);
     }
 

@@ -32,6 +32,7 @@ public class MiscHandling {
      * 
      * @throws DuplicatedResultException If the object has already been added
      */
+
     public void add(Race raceObject) throws DuplicatedResultException{
 
         Integer raceID = raceObject.getRaceID();
@@ -157,7 +158,7 @@ public class MiscHandling {
             raceObject = racesHash.get(raceID);
 
             // Checks for a name match
-            if (raceObject.getName() == name) {
+            if (raceObject.getRaceName().equals(name)) {
                 return raceID;
             }
         }
