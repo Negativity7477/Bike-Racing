@@ -95,6 +95,17 @@ public class Rider {
         return totalTime;
     }
 
+    private void addRiderToTeam(int teamID) throws IDNotRecognisedException, DuplicatedResultException {
+
+        try {
+            Team teamObject = MiscHandling.getTeam(teamID);
+            teamObject.addRider(this);
+
+        // Rethrows exceptions
+        } catch(IDNotRecognisedException e) {throw e;
+        } catch(DuplicatedResultException e) {throw e;}
+    }
+
     /**
      * Constructor
      * 
@@ -102,7 +113,7 @@ public class Rider {
      * @param name Name of the rider
      * @param yearOfBirth Birth year of the rider
      */
-    public Rider(int teamID, String name, int yearOfBirth) {
+    public Rider(int teamID, String name, int yearOfBirth) throws IDNotRecognisedException, DuplicatedResultException {
 
         // Increments value with every new object so that each ID is unique
         this.riderID = nextRiderID++;
@@ -110,6 +121,12 @@ public class Rider {
         this.name = name;
         this.yearOfBirth = yearOfBirth;
         this.checkpointTimeHash = new HashMap<Integer, LocalTime[]>();
+
+        try {
+            this.addRiderToTeam(teamID);
+        } catch(IDNotRecognisedException e) {throw e;
+        } catch(DuplicatedResultException e) {throw e;}
+            
     }
 
 }

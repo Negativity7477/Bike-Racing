@@ -76,11 +76,15 @@ public class Team {
      * @param name A name for the team
      * @param description A description for the team
      */
-    public Team(String name, String description) {
+    public Team(String name, String description) throws DuplicatedResultException {
 
         this.name = name;
         this.description = description;
         this.teamID = nextTeamID++;
         this.ridersHash = new HashMap<Integer, Rider>();
+
+        try {
+        MiscHandling.add(this);
+        } catch(DuplicatedResultException e) {throw e;}
     }
 }
