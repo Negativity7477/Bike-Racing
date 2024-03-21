@@ -7,7 +7,7 @@ public class Race {
     private String name;
     private String description;
     private static int nextRaceID = 0; 
-    private HashMap<Integer, Stage> stageIDHash = new HashMap<Integer, Stage>();
+    private HashMap<Integer, Stage> stageIDHash;
 
     /**
      * 
@@ -23,6 +23,7 @@ public class Race {
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
         this.totalDistance = calculateDistance();
+        this.stageIDHash = new HashMap<Integer, Stage>();
     }
 
 
