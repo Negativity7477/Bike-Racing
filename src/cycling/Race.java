@@ -16,11 +16,10 @@ public class Race {
      * 
      * Constructor for race
      */
-    public Race(String name, String description, HashMap<Integer, Stage> stageIDHash)
+    public Race(String name, String description)
     {
         this.name = name;
         this.description = description;
-        this.stageIDHash = (HashMap<Integer, Stage>) stageIDHash.clone();
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
         this.totalDistance = calculateDistance();
@@ -59,7 +58,7 @@ public class Race {
     {
         return description;
     }
- 
+
 
     /**
      * 
@@ -89,8 +88,9 @@ public class Race {
      * @param stage - The stage making up the race
      * A function to add more stages to race later if needed
      */
-    public void addStageToRace(int stageID, Stage stage)
+    public void addStageToRace(Stage stage)
     {
+        int stageID = stage.getStageID();
         addToStageHash(stageID, stage);
     }
 
@@ -119,6 +119,23 @@ public class Race {
         {
             throw new IDNotRecognisedException("No stage correponds to ID");
         }
+    }
+
+    /**
+     * Getter for a stage object using its unique ID
+     * 
+     * @param stage A unique ID linked to the stage
+     * @return stage object that is linked to the ID given
+     * 
+     * @throws IDNotRecognisedException If the ID is not in the stage hashmap
+     */
+    public Stage getStage(int stageID) throws IDNotRecognisedException
+    {
+        Stage stageObject = stageIDHash.get(stageID);
+        if (stageObject == null) {
+            throw new IDNotRecognisedException("The stage requested is not in the hashmap");
+        }
+        return stageObject;
     }
 
     /**

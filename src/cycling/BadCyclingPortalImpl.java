@@ -23,13 +23,19 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public int createRace(String name, String description) throws IllegalNameException, InvalidNameException {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		//Create a new race
+		Race race = new Race(name, description);
+
+		//
+
+		//Return a raceID
+		return race.getRaceID();
 	}
 
 	@Override
 	public String viewRaceDetails(int raceId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

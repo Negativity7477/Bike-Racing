@@ -28,15 +28,20 @@ public class Stage {
      * 
      * Constructor for stage
      */
-    public Stage(String stageName, String description, LocalTime startTime, StageType StageType, HashMap<Integer, Checkpoint> checkpointIDHashMap)
+    public Stage(String stageName, String description, LocalTime startTime, StageType StageType, int RaceID) throws IDNotRecognisedException
     {
         this.stageName = stageName;
         this.description = description;
         this.startTime = startTime;
         this.stageType = stageType;
         this.stageID = nextStageID++;
-        this.checkpointIDHashMap = (HashMap<Integer, Checkpoint>)checkpointIDHashMap.clone();
         this.length = getStageLength();
+
+        //We can get the race we are add this stage to via 
+        //the static class at the top level
+        Race race = MiscHandling.getRace(RaceID);
+        //We can add the stage to this race
+        race.addStageToRace(this);
     }
 
 
@@ -87,10 +92,10 @@ public class Stage {
     /**
      * Stages are made of checkpoints, this function should add a checkpoint
      * Checkpoints are either an intermediate sprint or a categorised climb
-     * This is not the main way we add checkpoints though (constructor does that)
      */
-    public void addCheckpoint(int checkpointID, Checkpoint type) 
+    public void addCheckpoint(Checkpoint type) 
     {
+        int checkpointID = type.getCheckpointID();
         addCheckpointToHash(checkpointID, type);      
     }
 
