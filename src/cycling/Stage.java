@@ -11,7 +11,7 @@ public class Stage {
     private LocalTime startTime;
     private StageType stageType;
     //Hash of checkpointID to checkpointType
-    private HashMap<Integer, Checkpoint> checkpointIDHashMap = new HashMap<Integer, Checkpoint>();
+    private HashMap<Integer, Checkpoint> checkpointIDHashMap;
     private LocalTime[] totalTimes;
     private static int nextStageID = 0;
 
@@ -36,6 +36,7 @@ public class Stage {
         this.stageType = stageType;
         this.stageID = nextStageID++;
         this.length = getStageLength();
+        this.checkpointIDHashMap = new HashMap<Integer, Checkpoint>();
 
         //We can get the race we are add this stage to via 
         //the static class at the top level
