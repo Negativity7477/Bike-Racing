@@ -27,8 +27,6 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		//Create a new race
 		Race race = new Race(name, description);
 
-		//
-
 		//Return a raceID
 		return race.getRaceID();
 	}
