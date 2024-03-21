@@ -158,7 +158,7 @@ public class MiscHandling {
             raceObject = racesHash.get(raceID);
 
             // Checks for a name match
-            if (raceObject.getName() == name) {
+            if (raceObject.getRaceName() == name) {
                 return raceID;
             }
         }
