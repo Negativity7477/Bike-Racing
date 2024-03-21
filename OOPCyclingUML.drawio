@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-21T02:37:21.236Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="o6taCK2jycCnj7kNdYG0" version="24.0.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-21T14:48:49.362Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="iUkk_LBJxsYGljJ7RQj_" version="24.0.7" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
-    <mxGraphModel dx="127" dy="1761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="445" dy="2025" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -44,7 +44,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-1" value="miscHandling" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="3300" width="290" height="230" as="geometry" />
+          <mxGeometry x="3300" width="290" height="300" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-2" value="-raceIDHash : HashMap (int : Race)&lt;br&gt;-teamIDHash : HashMap (int : Team)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-1" vertex="1">
           <mxGeometry y="26" width="290" height="54" as="geometry" />
@@ -52,32 +52,32 @@
         <mxCell id="tfRxmP2xf75DcZiXR_N0-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="tfRxmP2xf75DcZiXR_N0-1" vertex="1">
           <mxGeometry y="80" width="290" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-4" value="&lt;div&gt;+getRace(int) : Race&lt;/div&gt;&lt;div&gt;+deleteRace(int) : void&lt;br&gt;&lt;/div&gt;+removeTeam(int) : void&lt;br&gt;+addRace() : void&lt;br&gt;+addTeam() : void&lt;div&gt;+getTeam(int) : Team&lt;br&gt;&lt;/div&gt;+getTeamIDs() : int array&lt;div&gt;-getIDFromName(String) : int&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-1" vertex="1">
-          <mxGeometry y="100" width="290" height="130" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-4" value="&lt;div&gt;+getRace(int) : Race&lt;/div&gt;&lt;div&gt;+deleteRace(int) : void&lt;br&gt;&lt;/div&gt;+removeTeam(int) : void&lt;br&gt;+addRace() : void&lt;br&gt;+addTeam() : void&lt;div&gt;+getTeam(int) : Team&lt;br&gt;&lt;/div&gt;+getTeamIDs() : int array&lt;div&gt;-getIDFromName(String) : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ nameChecker()&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-1" vertex="1">
+          <mxGeometry y="100" width="290" height="200" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-5" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="2900" width="276" height="290" as="geometry" />
+          <mxGeometry x="2900" width="276" height="470" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-6" value="&lt;b&gt;Race&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-5" vertex="1">
-          <mxGeometry width="276.00000000000006" height="30" as="geometry" />
+          <mxGeometry width="276.00000000000006" height="40.3448275862069" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-7" value="-raceID: int&lt;br&gt;&lt;div&gt;-numOfStages : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-totalDistance : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;-name : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-description : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-stageIDHash : HashMap (int : stage)&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="tfRxmP2xf75DcZiXR_N0-5" vertex="1">
-          <mxGeometry y="30" width="276.00000000000006" height="110" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-7" value="-raceID: int&lt;br&gt;&lt;div&gt;-numOfStages : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-totalDistance : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;-name : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-description : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;-stageIDHash : HashMap (int : stage)&lt;br&gt;&lt;/div&gt;&lt;div&gt;- riderTimesHash : HashMap (int : LocalTime)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="tfRxmP2xf75DcZiXR_N0-5" vertex="1">
+          <mxGeometry y="40.3448275862069" width="276.00000000000006" height="147.93103448275863" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-8" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;+Race(string, string): Constructor&lt;div&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;+getRaceID : Int &lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;+getNumStages: int&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;+getTotalDistance : Double&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ addStageToRace : void&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ getRaceStages : int array&lt;/div&gt;&lt;div&gt;+ removeStage(int): void&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="tfRxmP2xf75DcZiXR_N0-5" vertex="1">
-          <mxGeometry y="140" width="276" height="150" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-8" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;+Race(string, string): Constructor&lt;div&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;+ getRaceID : Int &lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;+ getNumStages: int&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;+ getTotalDistance : Double&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;+ getName() : String&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ addStage(Stage) : void&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ getStage(int) : Stage&lt;/div&gt;&lt;div&gt;+ removeStage(int): void&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ getRaceStages : int array&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ addRiderTime(int, LocalTime) : void&lt;/div&gt;&lt;div&gt;+ getRiderTime(int) : LocalTime&lt;/div&gt;&lt;div&gt;+ removeRiderTime(int) : void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="tfRxmP2xf75DcZiXR_N0-5" vertex="1">
+          <mxGeometry y="188.28" width="276" height="281.72" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-10" value="Stage" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2360" width="413" height="420" as="geometry" />
+          <mxGeometry x="2360" width="413" height="470" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-11" value="&lt;div&gt;-stageID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-raceID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;-stageName : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-description : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;-length : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;-startTime : LocalDateTime&lt;br&gt;&lt;/div&gt;&lt;div&gt;-StageType : StageType&lt;br&gt;&lt;/div&gt;&lt;div&gt;-checkpointIDHash : HashMap (int : checkpointType)&lt;br&gt;&lt;/div&gt;-totalTimes : localTime array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-10" vertex="1">
-          <mxGeometry y="26" width="413" height="144" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-11" value="&lt;div&gt;- stageID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;- raceID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;- stageName : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;- description : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;- length : Double&lt;br&gt;&lt;/div&gt;&lt;div&gt;- startTime : LocalDateTime&lt;br&gt;&lt;/div&gt;&lt;div&gt;- stageType : StageType&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- checkpointIDHash : HashMap (int : checkpointType)&lt;br&gt;&lt;/div&gt;&lt;div&gt;- riderTimesHash : HashMap (int : LocalTime)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-10" vertex="1">
+          <mxGeometry y="26" width="413" height="194" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-12" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="tfRxmP2xf75DcZiXR_N0-10" vertex="1">
-          <mxGeometry y="170" width="413" height="8" as="geometry" />
+          <mxGeometry y="220" width="413" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-13" value="&lt;div&gt;+Stage(int, String, String, Double, LocalDateTime, StageType) : Constructor&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+getStageLength: Double&lt;/div&gt;&lt;div&gt;+setStageType(StageType) : void&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+addCheckpoint(Checkpoint) : void&lt;/div&gt;&lt;div&gt;+removeCheckpoint(int) : void&lt;/div&gt;+getStageCheckpoints() : int []" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-10" vertex="1">
-          <mxGeometry y="178" width="413" height="242" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-13" value="&lt;div&gt;+Stage(int, String, String, Double, LocalDateTime, StageType) : Constructor&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+getStageLength: Double&lt;/div&gt;&lt;div&gt;+getStageType() : StageType&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+addCheckpoint(Checkpoint) : void&lt;/div&gt;&lt;div&gt;+ getCheckpoint(int) : Checkpoint&lt;/div&gt;&lt;div&gt;+removeCheckpoint(int) : void&lt;/div&gt;+getStageCheckpoints() : int []&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ addRiderTime(int, LocalTime) : void&lt;/div&gt;&lt;div&gt;+ getRiderTime(int) : LocalTime&lt;/div&gt;&lt;div&gt;+ removeRiderTime(int) : void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-10" vertex="1">
+          <mxGeometry y="228" width="413" height="242" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=diamondThin;endFill=0;endSize=10;" parent="1" source="tfRxmP2xf75DcZiXR_N0-13" target="tfRxmP2xf75DcZiXR_N0-8" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -88,16 +88,16 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-24" value="Checkpoint" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1920" y="20" width="230" height="210" as="geometry" />
+          <mxGeometry x="1820" y="20" width="330" height="430" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-25" value="&lt;div&gt;~stageID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;~checkpointID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;~location : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;~type : CheckpointType&lt;br&gt;&lt;/div&gt;&lt;div&gt;~length : Double&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-24" vertex="1">
-          <mxGeometry y="26" width="230" height="94" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-25" value="&lt;div&gt;- stageID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;- checkpointID : int&lt;br&gt;&lt;/div&gt;&lt;div&gt;- location : String&lt;br&gt;&lt;/div&gt;&lt;div&gt;- type : CheckpointType&lt;br&gt;&lt;/div&gt;&lt;div&gt;- length : Double&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- riderTimesHash : HashMap (int : LocalTime)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-24" vertex="1">
+          <mxGeometry y="26" width="330" height="174" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-26" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="tfRxmP2xf75DcZiXR_N0-24" vertex="1">
-          <mxGeometry y="120" width="230" height="8" as="geometry" />
+          <mxGeometry y="200" width="330" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-27" value="+ Checkpoint(int, int, String, Double, Double)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-24" vertex="1">
-          <mxGeometry y="128" width="230" height="82" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-27" value="+ Checkpoint(int, int, String, Double, Double)&lt;div&gt;+ getCheckpointType() : CheckpointType&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ addRiderTime(int, LocalTime) : void&lt;/div&gt;&lt;div&gt;+ getRiderTime(int) : LocalTime&lt;/div&gt;&lt;div&gt;+ removeRiderTime(int) : void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-24" vertex="1">
+          <mxGeometry y="208" width="330" height="222" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-30" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="2460" y="-310" width="315" height="260" as="geometry" />
@@ -241,10 +241,52 @@
         <mxCell id="tfRxmP2xf75DcZiXR_N0-79" value="+ TotalPoints() : void&lt;div&gt;+ SortRiders(): void&lt;/div&gt;&lt;div&gt;+ getSortedRiders(): int array&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-76" vertex="1">
           <mxGeometry y="88" width="370" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="mWGUqCNX3oqDIndH8GYK-1" value="MiscHandling can be officially turned to a static class, which could be preferable however it does require that MiscHandling become a nested class (A class formed within a class) and it would then need to referenced through the rest of the program with that outer class (MiscHandling -&amp;gt; Outer.MiscHandling). It&#39;s a small change but I&#39;m not sure if we should go through with it," style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+        <mxCell id="mWGUqCNX3oqDIndH8GYK-1" value="MiscHandling can be officially turned to a static class, which could be preferable however it does require that MiscHandling become a nested class (A class formed within a class) and it would then need to referenced through the rest of the program with that outer class (MiscHandling -&amp;gt; Outer.MiscHandling). It&#39;s a small change but I&#39;m not sure if we should go through with it," style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
           <mxGeometry x="3730" y="-10" width="260" height="212" as="geometry" />
         </mxCell>
-        <mxCell id="mWGUqCNX3oqDIndH8GYK-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.01;entryY=0.676;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;dashed=1;" edge="1" parent="1" source="mWGUqCNX3oqDIndH8GYK-1" target="tfRxmP2xf75DcZiXR_N0-2">
+        <mxCell id="mWGUqCNX3oqDIndH8GYK-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.01;entryY=0.676;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;dashed=1;" parent="1" source="mWGUqCNX3oqDIndH8GYK-1" target="tfRxmP2xf75DcZiXR_N0-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-1" value="GeneralClassification" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="310" width="160" height="164" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-2" value="+ raceID : int&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="award6y_DOidWldGOrNe-1">
+          <mxGeometry y="26" width="160" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="award6y_DOidWldGOrNe-1">
+          <mxGeometry y="130" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-4" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="award6y_DOidWldGOrNe-1">
+          <mxGeometry y="138" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-6" value="SprinterClassification" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="520" width="160" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-7" value="+ stageID : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="award6y_DOidWldGOrNe-6">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-8" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="award6y_DOidWldGOrNe-6">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-9" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="award6y_DOidWldGOrNe-6">
+          <mxGeometry y="60" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.519;entryY=0.987;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=block;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-6" target="award6y_DOidWldGOrNe-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-11" value="MountainClassification" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="660" width="160" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-12" value="+ checkpointID : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="award6y_DOidWldGOrNe-11">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="award6y_DOidWldGOrNe-11">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-14" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="award6y_DOidWldGOrNe-11">
+          <mxGeometry y="60" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.527;entryY=0.962;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=block;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-11" target="award6y_DOidWldGOrNe-9">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
