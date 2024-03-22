@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-22T23:04:45.041Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="edlSnLmjJQGfzDEGIj5v" version="24.0.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-22T23:07:24.307Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="Jf-RwX1cOhdxLDRPUbAP" version="24.0.7" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
-    <mxGraphModel dx="2353" dy="3309" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="233" dy="1882" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -136,18 +136,6 @@
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=diamondThin;endFill=0;endSize=10;" parent="1" source="tfRxmP2xf75DcZiXR_N0-38" target="tfRxmP2xf75DcZiXR_N0-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-76" value="PointRanking" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="3308" y="508" width="370" height="138" as="geometry" />
-        </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-77" value="-RiderPointHash : Hashmap (int : int array)&lt;div&gt;&lt;div&gt;-RiderTotaledPointArray : 2D int array&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-76" vertex="1">
-          <mxGeometry y="26" width="370" height="54" as="geometry" />
-        </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-78" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="tfRxmP2xf75DcZiXR_N0-76" vertex="1">
-          <mxGeometry y="80" width="370" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-79" value="+ TotalPoints() : void&lt;div&gt;+ SortRiders(): void&lt;/div&gt;&lt;div&gt;+ getSortedRiders(): int array&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-76" vertex="1">
-          <mxGeometry y="88" width="370" height="50" as="geometry" />
         </mxCell>
         <mxCell id="mWGUqCNX3oqDIndH8GYK-1" value="MiscHandling can be officially turned to a static class, which could be preferable however it does require that MiscHandling become a nested class (A class formed within a class) and it would then need to referenced through the rest of the program with that outer class (MiscHandling -&amp;gt; Outer.MiscHandling). It&#39;s a small change but I&#39;m not sure if we should go through with it," style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
           <mxGeometry x="3730" y="-10" width="260" height="212" as="geometry" />
