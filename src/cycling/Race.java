@@ -1,5 +1,6 @@
 package cycling;
 import java.util.HashMap;
+import java.util.regex.*;
 public class Race {
     private int raceID;
     private int numOfStages;
@@ -16,15 +17,22 @@ public class Race {
      * 
      * Constructor for race
      */
-    public Race(String name, String description)
+    public Race(String name, String description) throws InvalidNameException
     {
+        try{
+        this.checkName(name);
         this.name = name;
         this.description = description;
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
         this.totalDistance = calculateDistance();
         this.stageIDHash = new HashMap<Integer, Stage>();
+        }
+
+        catch (Exception e) {throw e;}    
     }
+       
+    
 
 
     /**
@@ -155,7 +163,7 @@ public class Race {
      * @return - total distance of the race
      * This function calculates the race distance based on the stage's distance
      */
-    private Double calculateDistance()
+    private Double calculateDistance() throws InvalidLengthException
     {
         Double totalDistance = 0.0;
         Stage[] allStages = returnAllStages();
@@ -163,7 +171,10 @@ public class Race {
         {
             totalDistance += allStages[i].getStageLength();
         }
-
+        if (totalDistance < 5) 
+        {
+            throw new InvalidLengthException("Invalid length");    
+        }
         return totalDistance;
     }
 
@@ -184,6 +195,33 @@ public class Race {
         return allStages;
     }
 
+
+    /**
+     * 
+     * @param name - Name of race
+     * @return - Only return if the name is valid
+     * @throws InvalidNameException - name cannot contain whitespace or be null
+     * 
+     * This function checks if the name is valid to call race
+     */
+    private Boolean checkName(String name) throws InvalidNameException
+    {
+        if(name != null)
+        {
+            for(int i = 0; i < name.length(); i++)
+            {
+                if(Character.isWhitespace(name.charAt(i)))
+                {
+                    throw new InvalidNameException("Name does not fit the convetion");
+                }
+            }
+        return true;
+        }
+
+        throw new InvalidNameException("Name does not fit the convetion");
+    }
+     
+
     /**
      * 
      * @return - All stage objects in race
@@ -200,5 +238,7 @@ public class Race {
         }
         return allStages;
     }
+
+    
 
 }

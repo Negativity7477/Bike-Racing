@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 
+
 /**
  * BadCyclingPortal is a minimally compiling, but non-functioning implementor
  * of the CyclingPortal interface.
@@ -23,37 +24,72 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public int createRace(String name, String description) throws IllegalNameException, InvalidNameException {
-		
 		//Create a new race
+		try 
+		{
 		Race race = new Race(name, description);
-
-		//Return a raceID
+		MiscHandling.add(race);
 		return race.getRaceID();
+		} 
+		catch (InvalidNameException e) {throw e;}
+		//Return a raceID
 	}
 
 	@Override
 	public String viewRaceDetails(int raceId) throws IDNotRecognisedException {
 		
-		return null;
+		try {
+			Race race = MiscHandling.getRace(raceId);
+		String name = race.getRaceName();
+		String description = race.getRaceDescription();
+		int numStages = race.getNumStage();
+		double distance = race.getTotalDistance();
+
+		return "RaceID = " + raceId + 
+		"\n Name = " + name + 
+		"\n Description = " + description + 
+		"\n NumStages = " + numStages +
+		"\n distance = " + distance;
+		} catch (IDNotRecognisedException e) {
+			throw e;
+		}
+		
 	}
 
 	@Override
 	public void removeRaceById(int raceId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
+		try {
+			MiscHandling.removeRace(raceId);
+		} catch (IDNotRecognisedException e) {
+			throw e;
+		}
 
 	}
 
 	@Override
 	public int getNumberOfStages(int raceId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return 0;
+		try {
+			Race race = MiscHandling.getRace(raceId);
+		return race.getNumStage();
+		} catch (IDNotRecognisedException e) {
+			throw e;
+		}
+		
 	}
 
 	@Override
 	public int addStageToRace(int raceId, String stageName, String description, double length, LocalDateTime startTime,
 			StageType type)
 			throws IDNotRecognisedException, IllegalNameException, InvalidNameException, InvalidLengthException {
-		// TODO Auto-generated method stub
+		try {
+			Race race = MiscHandling.getRace(raceId);
+		Stage stage = new Stage(stageName, description, startTime, type, raceId);
+		race.addStageToRace(stage);
+		} catch (Exception e) {
+			throw e;
+		}
+		
+
 		return 0;
 	}
 

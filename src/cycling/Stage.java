@@ -1,5 +1,6 @@
 package cycling;
 import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 
@@ -8,12 +9,13 @@ public class Stage {
     private String stageName;
     private String description; 
     private double length;
-    private LocalTime startTime;
+    private LocalDateTime startTime;
     private StageType stageType;
     //Hash of checkpointID to checkpointType
     private HashMap<Integer, Checkpoint> checkpointIDHashMap;
     private LocalTime[] totalTimes;
     private static int nextStageID = 0;
+    
 
     /**
      * 
@@ -28,7 +30,7 @@ public class Stage {
      * 
      * Constructor for stage
      */
-    public Stage(String stageName, String description, LocalTime startTime, StageType StageType, int RaceID) throws IDNotRecognisedException
+    public Stage(String stageName, String description, LocalDateTime startTime, StageType StageType, int RaceID) throws IDNotRecognisedException
     {
         this.stageName = stageName;
         this.description = description;
