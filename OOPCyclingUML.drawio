@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-03-23T06:58:30.461Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="Ne3E6C_ctLd6If26JrL0" version="24.0.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-23T07:15:35.292Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="V4AywgFgXABLp__9HV_4" version="24.0.7" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
-    <mxGraphModel dx="233" dy="1882" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1468" dy="2157" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -156,16 +156,16 @@
           <mxGeometry y="88" width="160" height="42" as="geometry" />
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-6" value="SprinterClassification" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1160" y="140" width="290" height="150" as="geometry" />
+          <mxGeometry x="1100" y="890" width="290" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="award6y_DOidWldGOrNe-7" value="&lt;div&gt;~ raceID : int&lt;/div&gt;~ riderPointsHash : HashMap (int : int)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="award6y_DOidWldGOrNe-6">
-          <mxGeometry y="26" width="290" height="44" as="geometry" />
+        <mxCell id="award6y_DOidWldGOrNe-7" value="&lt;div&gt;~ raceID : int&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;~ riderPointsHash : HashMap (int : int)&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="award6y_DOidWldGOrNe-6">
+          <mxGeometry y="26" width="290" height="74" as="geometry" />
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-8" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="award6y_DOidWldGOrNe-6">
-          <mxGeometry y="70" width="290" height="8" as="geometry" />
+          <mxGeometry y="100" width="290" height="8" as="geometry" />
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-9" value="+ TotalPoints() : void&lt;div&gt;+ getRiderPoints(int) : int&lt;/div&gt;&lt;div&gt;+ addRiderPoints(int) : void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="award6y_DOidWldGOrNe-6">
-          <mxGeometry y="78" width="290" height="72" as="geometry" />
+          <mxGeometry y="108" width="290" height="72" as="geometry" />
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.519;entryY=0.987;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=block;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-16" target="award6y_DOidWldGOrNe-4">
           <mxGeometry relative="1" as="geometry" />
@@ -178,24 +178,24 @@
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=block;endFill=0;endSize=10;entryX=0.568;entryY=1.034;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="award6y_DOidWldGOrNe-11" target="award6y_DOidWldGOrNe-9">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1340" y="380" as="targetPoint" />
+            <mxPoint x="1280" y="1130" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1300" y="380" />
-              <mxPoint x="1325" y="380" />
+              <mxPoint x="1240" y="1130" />
+              <mxPoint x="1265" y="1130" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-16" value="PointHandling" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
-          <mxGeometry x="1560" y="151" width="220" height="240" as="geometry" />
+          <mxGeometry x="1500" y="901" width="220" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="award6y_DOidWldGOrNe-17" value="~ stageID : int&lt;div&gt;~ positionArray : int []&lt;/div&gt;&lt;div&gt;- stageType : StageType&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;~ pointsHash : HashMap (int : int)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="award6y_DOidWldGOrNe-16">
-          <mxGeometry y="26" width="220" height="74" as="geometry" />
+        <mxCell id="award6y_DOidWldGOrNe-17" value="~ stageID : int&lt;div&gt;~ positionArray : int []&lt;/div&gt;&lt;div&gt;~&amp;nbsp;&lt;/div&gt;&lt;div&gt;- stageType : StageType&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;~ pointsHash : HashMap (int : int)&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="award6y_DOidWldGOrNe-16">
+          <mxGeometry y="26" width="220" height="94" as="geometry" />
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-18" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="award6y_DOidWldGOrNe-16">
-          <mxGeometry y="100" width="220" height="8" as="geometry" />
+          <mxGeometry y="120" width="220" height="8" as="geometry" />
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-19" value="+ adjustTimes() : void&lt;div&gt;+ submitRiderPoints() : void&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;+ addRiderPoints(int, int) : void&lt;div&gt;+ removeRider(int) : void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ getRiderPoints(int) : int&lt;/div&gt;&lt;div&gt;- getRiders() : int []&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="award6y_DOidWldGOrNe-16">
-          <mxGeometry y="108" width="220" height="132" as="geometry" />
+          <mxGeometry y="128" width="220" height="132" as="geometry" />
         </mxCell>
         <mxCell id="award6y_DOidWldGOrNe-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=circlePlus;endFill=0;endSize=5;" edge="1" parent="1" source="award6y_DOidWldGOrNe-17" target="award6y_DOidWldGOrNe-7">
           <mxGeometry relative="1" as="geometry" />
@@ -213,6 +213,41 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1380" y="549" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-28" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-27" target="award6y_DOidWldGOrNe-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-27" value="setRiderTimes() - pulls all the riderIDs and their times from the required race and puts them in the arrays where the index of each rider matches their time&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;rankRiders() - orders the times along with the riderIDs from fastest at 0 to slowest at the other end&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="570" width="240" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-34" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=80;exitDy=65;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-33" target="award6y_DOidWldGOrNe-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-35" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=80;exitDy=65;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-33" target="award6y_DOidWldGOrNe-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-36" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=80;exitDy=65;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-33" target="award6y_DOidWldGOrNe-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-33" value="One of these per race" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="810" y="940" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-38" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-37" target="award6y_DOidWldGOrNe-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-39" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-37" target="award6y_DOidWldGOrNe-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-37" value="I dont think we will need to permanently store these as we are just adding to a total of points for each rider in the super class" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="1030" width="170" height="222" as="geometry" />
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-41" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=85;exitDy=0;exitPerimeter=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=none;endFill=0;endSize=10;" edge="1" parent="1" source="award6y_DOidWldGOrNe-40">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1340" y="1290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="award6y_DOidWldGOrNe-40" value="This means nested class. So one class is defined inside the other" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="1380" width="200" height="160" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
