@@ -1,6 +1,8 @@
 package cycling;
 import java.util.HashMap;
 import java.util.regex.*;
+import java.time.LocalTime;
+
 public class Race {
     private int raceID;
     private int numOfStages;
@@ -9,6 +11,7 @@ public class Race {
     private String description;
     private static int nextRaceID = 0; 
     private HashMap<Integer, Stage> stageIDHash;
+    private HashMap<Integer, LocalTime> riderTimesHash;
 
     /**
      * 
@@ -22,16 +25,16 @@ public class Race {
         try{
         this.checkName(name);
         this.name = name;
+        this.totalDistance = calculateDistance();
         this.description = description;
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
-        this.totalDistance = calculateDistance();
         this.stageIDHash = new HashMap<Integer, Stage>();
         }
 
-        catch (Exception e) {throw e;}    
+        catch (InvalidNameException e) {throw e;}    
     }
-       
+    
     
 
 
@@ -97,20 +100,28 @@ public class Race {
      * @param stage - The stage making up the race
      * A function to add more stages to race later if needed
      */
-    public void addStageToRace(Stage stage)
+    public void addStage(Stage stage)
     {
         int stageID = stage.getStageID();
-        addToStageHash(stageID, stage);
+        stageIDHash.put(stageID, stage);
     }
 
     /**
      * @return - An array of all stageIDs
      * This function returns an array of all stages in this race
+     * in order they were added
      */
-    public int[] getStagesInRace()
+    public int[] getRaceStages()
     {
-        int[] stageIDArray = new int[1];
-        return stageIDArray;
+        int[] allStageIDs = new int[getNumStage()];
+        int position = 0;
+
+        // Loops through hash table and adds all stage IDs to an array
+        for (Integer stageID : stageIDHash.keySet()) {
+            allStageIDs[position++] = stageID;
+        }
+        
+        return allStageIDs;
     }
     /**
      * 
@@ -118,7 +129,7 @@ public class Race {
      * 
      * Removes a stage in this race
      */
-    public void removeStageByID(int stageID) throws IDNotRecognisedException
+    public void removeStage(int stageID) throws IDNotRecognisedException
     {
         if(stageIDHash.containsKey(stageID))
         {
@@ -149,21 +160,10 @@ public class Race {
 
     /**
      * 
-     * @param stageID - unique identifier for stage
-     * @param stage - the stages that makes up the race 
-     * Allows us to add to the hash in a private method
-     */
-    private void addToStageHash(int stageID, Stage stage)
-    {
-        stageIDHash.put(stageID, stage);
-    }
-
-    /**
-     * 
      * @return - total distance of the race
      * This function calculates the race distance based on the stage's distance
      */
-    private Double calculateDistance() throws InvalidLengthException
+    private Double calculateDistance()// throws InvalidLengthException
     {
         Double totalDistance = 0.0;
         Stage[] allStages = returnAllStages();
@@ -173,28 +173,10 @@ public class Race {
         }
         if (totalDistance < 5) 
         {
-            throw new InvalidLengthException("Invalid length");    
+           // throw new InvalidLengthException("Invalid length of stage");    
         }
         return totalDistance;
     }
-
-    /**
-     * 
-     * @return - All stages in the race as an int array
-     * Allows us to get all stage identifiers that make up the race
-     */
-    private int[] returnStageIDs()
-    {
-        int[] allStages = new int[stageIDHash.size()];
-        int position = 0;
-
-        for (Integer stageID : stageIDHash.keySet())
-        {
-            allStages[position++] = stageID;
-        }
-        return allStages;
-    }
-
 
     /**
      * 
@@ -204,7 +186,7 @@ public class Race {
      * 
      * This function checks if the name is valid to call race
      */
-    private Boolean checkName(String name) throws InvalidNameException
+    private void checkName(String name) throws InvalidNameException
     {
         if(name != null)
         {
@@ -215,12 +197,12 @@ public class Race {
                     throw new InvalidNameException("Name does not fit the convetion");
                 }
             }
-        return true;
         }
-
+        else{
         throw new InvalidNameException("Name does not fit the convetion");
+        }
     }
-     
+    
 
     /**
      * 
@@ -239,6 +221,42 @@ public class Race {
         return allStages;
     }
 
-    
 
+
+    /**
+     * 
+     * @param riderID - unique identifier of the rider
+     * @param riderTime - the time to add to the hash for this race
+     * Adds the time the rider got in this race to the hashmap storing them
+     */
+    public void addRiderRaceTime(int riderID, LocalTime riderTime)
+    {
+        riderTimesHash.put(riderID, riderTime);
+    }
+
+    
+    /**
+     * 
+     * @param riderID - unique identifier of the rider
+     * @return - the time to complete the race for a given rider
+     * 
+     * returns the time the rider took to complete the race
+     */
+    public LocalTime getRiderRaceTime(int riderID)
+    {
+        LocalTime riderTime = riderTimesHash.get(riderID);
+        return riderTime;
+    }
+
+
+    /**
+     * 
+     * @param riderID- unique identifier of the rider
+     * 
+     * removes the rider and their time's from the hash
+     */
+    public void removeRiderRaceTime(int riderID)
+    {
+        riderTimesHash.remove(riderID);
+    }
 }

@@ -1,15 +1,20 @@
 package cycling;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashMap;
 
 public class Checkpoint
 {
-    protected int checkpointID;
-    protected String location;
-    protected CheckpointType type;
-    protected Double length;
+    private int checkpointID;
+    private int stageID;
+    private int raceID;
+    private String location;
+    private CheckpointType type;
+    private Double length;
     private Double averageGradient;
-    private LocalTime startTime;
+    private LocalDateTime startTime;
     private static int nextCheckpointID;
+    private HashMap<Integer, LocalTime> riderTimesHash;
 
     /**
      * 
@@ -19,14 +24,16 @@ public class Checkpoint
      * 
      * Constructor 
      */
-    public Checkpoint(String location, Double length, Double averageGradient, LocalTime startTime, int stageID, int raceID) throws IDNotRecognisedException
+    public Checkpoint(String location, Double length, Double averageGradient, LocalDateTime startTime, int stageID, int raceID) throws IDNotRecognisedException
     {
         this.checkpointID = nextCheckpointID++;
         this.location = location;
         this.length = length;
         this.averageGradient = averageGradient;
         this.startTime = startTime;
-        this.type = determineClimbType(averageGradient, length);
+        this.type = determineClimbType();
+        this.stageID = stageID;
+        this.raceID = raceID;
 
         //We can get the race object for finding which stage this checkpoint
         //should be added to by using our static class that acts as a top level
@@ -81,17 +88,6 @@ public class Checkpoint
         return averageGradient;
     }
 
-    
-    /**
-     * 
-     * @return - length of checkpoint
-     * Gets the length of the checkpoint
-     */
-    public  double getLength()
-    {
-        return length;
-    }
-
 
     /*
      * @param - Average gradient of the checkpoint
@@ -101,7 +97,7 @@ public class Checkpoint
      * 
      * @return - The type of climb this checkpoint is
      */
-    public CheckpointType determineClimbType(Double averageGradient, Double length)
+    private CheckpointType determineClimbType()
     {
         if (averageGradient < 6  && averageGradient > 4 && length < 2 || averageGradient < 4 && length < 5)
         {
@@ -123,5 +119,40 @@ public class Checkpoint
         {
             return CheckpointType.HC;
         }
+    }
+
+    /**
+     * 
+     * @param riderID - unique identifier of the rider
+     * @param riderTime - the time to add to the hash for this checkpoint
+     * Adds the time the rider got in this checkpoint to the hashmap storing them
+     */
+    public void addRiderCheckpointTime(int riderID, LocalTime riderTime)
+    {
+        riderTimesHash.put(riderID, riderTime);
+    }
+
+    /**
+     * 
+     * @param riderID - unique identifier of the rider
+     * @return - the time to complete the checkpoint for a given rider
+     * 
+     * returns the time the rider took to complete the checkpoint
+     */
+    public LocalTime getRiderCheckpointTime(int riderID)
+    {
+        LocalTime riderTime = riderTimesHash.get(riderID);
+        return riderTime;
+    }
+
+    /**
+     * 
+     * @param riderID- unique identifier of the rider
+     * 
+     * removes the rider and their time's from the hash
+     */
+    public void removeRiderCheckpointTime(int riderID)
+    {
+        riderTimesHash.remove(riderID);
     }
 }

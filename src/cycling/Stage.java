@@ -13,8 +13,9 @@ public class Stage {
     private StageType stageType;
     //Hash of checkpointID to checkpointType
     private HashMap<Integer, Checkpoint> checkpointIDHashMap;
-    private LocalTime[] totalTimes;
     private static int nextStageID = 0;
+    private int raceID;
+    private HashMap<Integer, LocalTime> riderTimesHash;
     
 
     /**
@@ -30,8 +31,10 @@ public class Stage {
      * 
      * Constructor for stage
      */
-    public Stage(String stageName, String description, LocalDateTime startTime, StageType StageType, int RaceID) throws IDNotRecognisedException
+    public Stage(String stageName, String description, LocalDateTime startTime, StageType StageType, int RaceID) throws IDNotRecognisedException, InvalidNameException
     {
+        try {
+        this.checkName(stageName);
         this.stageName = stageName;
         this.description = description;
         this.startTime = startTime;
@@ -45,8 +48,10 @@ public class Stage {
         Race race = MiscHandling.getRace(RaceID);
         //We can add the stage to this race
         race.addStageToRace(this);
+        } catch (Exception e) {throw e;}
+        
     }
-
+    
 
 
     /**
@@ -82,17 +87,6 @@ public class Stage {
     }
 
     /**
-     * 
-     * @param Stagetype - This Stage's type based on checkpoints that make it up
-     * 
-     * Allows us to set stage type if we need to
-     */
-    public void setStageType(StageType Stagetype)
-    {
-        this.stageType = stageType;
-    }
-
-    /**
      * Stages are made of checkpoints, this function should add a checkpoint
      * Checkpoints are either an intermediate sprint or a categorised climb
      */
@@ -118,28 +112,6 @@ public class Stage {
             throw new IDNotRecognisedException("No Checkpoint correponds to ID");
         }
 
-    }
-
-
-
-
-    /*
-     * @return - the hashmap containing checkpointID and checkpoint
-     * Returns the checkpoints in this stage
-     */
-    public HashMap<Integer, Checkpoint> getStageCheckpoints() 
-    {
-        return checkpointIDHashMap;
-    }
-
-
-    /**
-     * Allows conversion to string 
-     */
-    public String toString()
-    {
-        return checkpointIDHashMap.toString();
-    }
 
     /**
      * 
@@ -149,9 +121,9 @@ public class Stage {
      * This function is used to generate the hash, showing what checkpoint is what type
      * This hash should be used in anywhere we need to determine type of checkpoint
      */
-    private void addCheckpointToHash(int checkpointID, Checkpoint checkpointType)
+    private void addCheckpointToHash(Checkpoint checkpoint)
     {
-        checkpointIDHashMap.put(checkpointID, checkpointType);
+        checkpointIDHashMap.put(checkpoint.getCheckpointID(), checkpoint);
     }
 
     /**
@@ -160,7 +132,7 @@ public class Stage {
      * 
      * get all checkpointIDs as an array
      */
-    public int[] getAllCheckpointID()
+    public int[] getStageCheckpoints()
     {
         int[] allCheckpoints = new int[checkpointIDHashMap.size()];
         int position = 0;
@@ -210,5 +182,60 @@ public class Stage {
         }
 
         return totalDistance;
+    }
+
+    private void checkName(String name) throws InvalidNameException
+    {
+        if(name != null)
+        {
+            for(int i = 0; i < name.length(); i++)
+            {
+                if(Character.isWhitespace(name.charAt(i)))
+                {
+                    throw new InvalidNameException("Name does not fit the convention");
+                }
+            }
+        }
+        else{
+        throw new InvalidNameException("Name does not fit the convention");
+        }
+    }
+
+    
+    /**
+     * 
+     * @param riderID - unique identifier of the rider
+     * @param riderTime - the time to add to the hash for this stage
+     * Adds the time the rider got in this stage to the hashmap storing them
+     */
+    public void addRiderStageTime(int riderID, LocalTime riderTime)
+    {
+        riderTimesHash.put(riderID, riderTime);
+    }
+
+    
+    /**
+     * 
+     * @param riderID - unique identifier of the rider
+     * @return - the time to complete the stage for a given rider
+     * 
+     * returns the time the rider took to complete the stage
+     */
+    public LocalTime getRiderStageTime(int riderID)
+    {
+        LocalTime riderTime = riderTimesHash.get(riderID);
+        return riderTime;
+    }
+
+
+    /**
+     * 
+     * @param riderID- unique identifier of the rider
+     * 
+     * removes the rider and their time's from the hash
+     */
+    public void removeRiderStageTime(int riderID)
+    {
+        riderTimesHash.remove(riderID);
     }
 }

@@ -22,34 +22,43 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		return new int[] {};
 	}
 
+//We need to implement IllegalNameException for this method
 	@Override
 	public int createRace(String name, String description) throws IllegalNameException, InvalidNameException {
-		//Create a new race
 		try 
 		{
+		//Create a new race, an error will be thrown if the name is invalid or illegal
 		Race race = new Race(name, description);
+		//Add the race to the handling class at the top of the hierarchy
 		MiscHandling.add(race);
+		//return the ID of the race as the method requires
 		return race.getRaceID();
 		} 
-		catch (InvalidNameException e) {throw e;}
-		//Return a raceID
+		//In the case there is an invalid race name, throw an exception
+		catch (InvalidNameException e) {throw e;} 
 	}
 
 	@Override
 	public String viewRaceDetails(int raceId) throws IDNotRecognisedException {
-		
 		try {
-			Race race = MiscHandling.getRace(raceId);
+		//Get the race out of the handling class
+		//If there is no race with the ID, this will throw an error
+		Race race = MiscHandling.getRace(raceId);
+		//Call the getters for the required details
 		String name = race.getRaceName();
 		String description = race.getRaceDescription();
 		int numStages = race.getNumStage();
 		double distance = race.getTotalDistance();
 
+		//return a formatted string of all the details
 		return "RaceID = " + raceId + 
 		"\n Name = " + name + 
 		"\n Description = " + description + 
 		"\n NumStages = " + numStages +
 		"\n distance = " + distance;
+		
+		//Incase and error is thrown when finding the race,
+		//rethrow the error
 		} catch (IDNotRecognisedException e) {
 			throw e;
 		}
@@ -59,7 +68,12 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	@Override
 	public void removeRaceById(int raceId) throws IDNotRecognisedException {
 		try {
+			//call the method to remove the race,
+			//will throw an error if there is no race
+			//with the given ID
 			MiscHandling.removeRace(raceId);
+			//In the case there is no race with this ID
+			//rethrow the error
 		} catch (IDNotRecognisedException e) {
 			throw e;
 		}
@@ -69,34 +83,58 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	@Override
 	public int getNumberOfStages(int raceId) throws IDNotRecognisedException {
 		try {
+			//Get the race out of the handling class
+			//If there is no race with the ID, this will throw an error
 			Race race = MiscHandling.getRace(raceId);
-		return race.getNumStage();
+			//return the number of stages
+			return race.getNumStage();
+			//if ID is not found, rethrow the error
 		} catch (IDNotRecognisedException e) {
 			throw e;
 		}
 		
 	}
 
+
+	//We need to implement IllegalNameException for this method
+	//I think i might also have to look over InvalidLengthException,
+	//Not entirely sure on how to implement yet
+	//Just going to go for functionality for now though
 	@Override
 	public int addStageToRace(int raceId, String stageName, String description, double length, LocalDateTime startTime,
 			StageType type)
-			throws IDNotRecognisedException, IllegalNameException, InvalidNameException, InvalidLengthException {
+			throws IDNotRecognisedException, IllegalNameException, InvalidNameException, InvalidLengthException{
 		try {
-			Race race = MiscHandling.getRace(raceId);
+		//Get the race out of the handling class,
+		//This will throw an error if the ID is not recognised
+		Race race = MiscHandling.getRace(raceId);
+		//Create the stage to add to the race
+		//This will throw an exception if the raceID does not exist 
+		//or if the stageName is wrong
 		Stage stage = new Stage(stageName, description, startTime, type, raceId);
-		race.addStageToRace(stage);
+		race.addStage(stage);
+		int stageID = stage.getStageID();
+		//return the stageID 
+		return stageID;
+
+		//Because we are dealing with lots of exceptions,
+		//we throw a generic one 
 		} catch (Exception e) {
 			throw e;
 		}
-		
-
-		return 0;
 	}
+
+
 
 	@Override
 	public int[] getRaceStages(int raceId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+		//Get the race out of the handler
+		//will throw error if ID is not valid
+		Race race = MiscHandling.getRace(raceId);
+		return race.getRaceStages();
+		} catch (Exception e) {throw e;}
+		
 	}
 
 	@Override
@@ -115,7 +153,9 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	public int addCategorizedClimbToStage(int stageId, Double location, CheckpointType type, Double averageGradient,
 			Double length) throws IDNotRecognisedException, InvalidLocationException, InvalidStageStateException,
 			InvalidStageTypeException {
-		// TODO Auto-generated method stub
+		
+			
+
 		return 0;
 	}
 
