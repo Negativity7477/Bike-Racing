@@ -155,4 +155,5 @@ public class Checkpoint
     {
         riderTimesHash.remove(riderID);
     }
+
 }

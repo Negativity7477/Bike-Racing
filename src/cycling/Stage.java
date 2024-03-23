@@ -47,7 +47,8 @@ public class Stage {
         //the static class at the top level
         Race race = MiscHandling.getRace(RaceID);
         //We can add the stage to this race
-        race.addStageToRace(this);
+        race.addStage(this);
+
         } catch (Exception e) {throw e;}
         
     }
@@ -93,7 +94,7 @@ public class Stage {
     public void addCheckpoint(Checkpoint type) 
     {
         int checkpointID = type.getCheckpointID();
-        addCheckpointToHash(checkpointID, type);      
+        addCheckpointToHash(type);      
     }
 
 
@@ -238,4 +239,5 @@ public class Stage {
     {
         riderTimesHash.remove(riderID);
     }
+
 }
