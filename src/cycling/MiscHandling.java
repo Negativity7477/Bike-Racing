@@ -166,4 +166,60 @@ public class MiscHandling {
         // If no matches were found then this error is raised
         throw new InvalidNameException("Given name is not recognised");
     }
+    
+    /**
+     * Finds the race ID of a stage using its stage ID
+     * 
+     * @param stageID ID of the stage being queried
+     * @return ID of the race that the stage belongs to
+     * 
+     * @throws IDNotRecognisedException If the stage ID is not present in the program
+     */
+    public static int getRaceIDFromStageID(int stageID) throws IDNotRecognisedException {
+
+        // Loops through all races and the stage IDs that they contain
+        for (Race raceObject : racesHash.values()) {
+            for (int queriedStageID : raceObject.getStagesInRace()) {
+
+                if (queriedStageID == stageID) {
+                    return raceObject.getRaceID();
+                }
+            }
+        }
+
+        throw new IDNotRecognisedException("stageID given is not recognised");
+    }
+
+    /**
+     * Finds the race ID and stage ID of a checkpoint using its checkpoint ID
+     * 
+     * @param checkpointID ID of the checkpoint being queried
+     * @return An array of IDs in the format [race ID, stage ID] where race ID
+     *         and stage ID belong to the race that contains the stage that
+     *         contains checkpoint queried
+     * 
+     * @throws IDNotRecognisedException If 
+     */
+    public static int[] getStageIDFromCheckpointID(int checkpointID) throws IDNotRecognisedException {
+        
+        Stage stageObject;
+        int[] IDArray = new int[2];
+
+        // Loops through all races, their stages and their checkpoints
+        for (Race raceObject : racesHash.values()) {
+            for (int stageID : raceObject.getStagesInRace()) {
+                stageObject = raceObject.getStage(stageID);
+                for (int queriedCheckpointID : stageObject.getAllCheckpointID()) {
+
+                    // When a matching checkpoint ID is found, the respective stage and race ID is returned
+                    if (queriedCheckpointID == checkpointID) {
+                        IDArray[0] = raceObject.getRaceID();
+                        IDArray[1] = stageID;
+                        return IDArray;
+                    }
+                }
+            }
+        }
+        throw new IDNotRecognisedException("checkpoitnID given is not recognised");
+    }
 }
