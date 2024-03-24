@@ -8,11 +8,10 @@ public class Checkpoint
     private int checkpointID;
     private int stageID;
     private int raceID;
-    private String location;
+    private Double location;
     private CheckpointType type;
     private Double length;
     private Double averageGradient;
-    private LocalDateTime startTime;
     private static int nextCheckpointID;
     private HashMap<Integer, LocalTime> riderTimesHash;
 
@@ -24,24 +23,25 @@ public class Checkpoint
      * 
      * Constructor 
      */
-    public Checkpoint(String location, Double length, Double averageGradient, LocalDateTime startTime, int stageID, int raceID) throws IDNotRecognisedException
+    public Checkpoint(Double location, Double length, Double averageGradient, CheckpointType checkpointType, int stageID, int raceID) throws IDNotRecognisedException
     {
-        this.checkpointID = nextCheckpointID++;
-        this.location = location;
-        this.length = length;
-        this.averageGradient = averageGradient;
-        this.startTime = startTime;
-        this.type = determineClimbType();
-        this.stageID = stageID;
-        this.raceID = raceID;
+            this.checkpointID = nextCheckpointID++;
+            this.location = location;
+            this.length = length;
+            this.averageGradient = averageGradient;
+            this.type = checkpointType;
+            this.stageID = stageID;
+            this.raceID = raceID;
+        
 
-        //We can get the race object for finding which stage this checkpoint
-        //should be added to by using our static class that acts as a top level
-        Race race = MiscHandling.getRace(raceID);
-        //We need the stage object from the correct race fed into the constructor
-        Stage stage = race.getStage(stageID);
-        //Now we can add this checkpoint to the stage
-        stage.addCheckpoint(this);
+            //We can get the race object for finding which stage this checkpoint
+            //should be added to by using our static class that acts as a top level
+            Race race = MiscHandling.getRace(raceID);
+            //We need the stage object from the correct race fed into the constructor
+            Stage stage = race.getStage(stageID);
+            //Now we can add this checkpoint to the stage
+            stage.addCheckpoint(this);
+    
 
     }
 
@@ -96,6 +96,9 @@ public class Checkpoint
      * multiple different types of categorised climb.
      * 
      * @return - The type of climb this checkpoint is
+     * 
+     * 
+     * Now realising this function is obselete as we get checkpointType from constructor in interface implementation
      */
     private CheckpointType determineClimbType()
     {
