@@ -179,7 +179,7 @@ public class MiscHandling {
 
         // Loops through all races and the stage IDs that they contain
         for (Race raceObject : racesHash.values()) {
-            for (int queriedStageID : raceObject.getStagesInRace()) {
+            for (int queriedStageID : raceObject.getRaceStages()) {
 
                 if (queriedStageID == stageID) {
                     return raceObject.getRaceID();
@@ -207,9 +207,9 @@ public class MiscHandling {
 
         // Loops through all races, their stages and their checkpoints
         for (Race raceObject : racesHash.values()) {
-            for (int stageID : raceObject.getStagesInRace()) {
+            for (int stageID : raceObject.getRaceStages()) {
                 stageObject = raceObject.getStage(stageID);
-                for (int queriedCheckpointID : stageObject.getAllCheckpointID()) {
+                for (int queriedCheckpointID : stageObject.getStageCheckpoints()) {
 
                     // When a matching checkpoint ID is found, the respective stage and race ID is returned
                     if (queriedCheckpointID == checkpointID) {
@@ -220,6 +220,6 @@ public class MiscHandling {
                 }
             }
         }
-        throw new IDNotRecognisedException("checkpoitnID given is not recognised");
+        throw new IDNotRecognisedException("checkpointID given is not recognised");
     }
 }

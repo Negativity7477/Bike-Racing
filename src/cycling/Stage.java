@@ -87,6 +87,11 @@ public class Stage {
         return stageID;
     }
 
+    public StageType getStageType()
+    {
+        return stageType;
+    }
+
     /**
      * Stages are made of checkpoints, this function should add a checkpoint
      * Checkpoints are either an intermediate sprint or a categorised climb
@@ -112,6 +117,7 @@ public class Stage {
         {
             throw new IDNotRecognisedException("No Checkpoint correponds to ID");
         }
+    }
 
 
     /**

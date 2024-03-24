@@ -86,18 +86,25 @@ public class SprinterClassification {
              * 
              * @param raceID - unique identifier for race
              * @param stageID - unique identifier for stage
+             * 
              * Constructor for PointHandling, inherits from GeneralClassification
              */
-            public PointHandling(int raceID, int stageID)
+            public PointHandling(int raceID, int stageID) throws IDNotRecognisedException
             {
                 super(raceID);
-                this.stageID = stageID;
-                this.stageType = MiscHandling.getRaceIDFromStageID(stageID);//call the miscHandling method to assign this
-                this.pointsHash = new HashMap<Integer,Integer>();
-                
+                try {
+                    MiscHandling.getRaceIDFromStageID(stageID);
+                    Race race = MiscHandling.getRace(raceID);
+                    Stage stage = race.getStage(stageID);
+                    this.stageID = stageID;
+                    this.stageType = stage.getStageType();
+                    this.pointsHash = new HashMap<Integer,Integer>();
+                } catch (Exception e) {throw e;}
+            
+            
             }
 
-            public void calculateTimes()
+            public void calculatePoints()
             {
 
             }
