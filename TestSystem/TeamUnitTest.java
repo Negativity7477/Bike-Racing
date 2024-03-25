@@ -1,11 +1,12 @@
 
 
 import cycling.DuplicatedResultException;
+import cycling.IDNotRecognisedException;
 import cycling.Rider;
 import cycling.Team;
 
 public class TeamUnitTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DuplicatedResultException, IDNotRecognisedException{
 
         // Testing team ID uniqueness
         Team[] teamArray = new Team[3];
