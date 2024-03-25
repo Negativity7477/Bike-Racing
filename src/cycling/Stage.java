@@ -16,6 +16,7 @@ public class Stage {
     private static int nextStageID = 0;
     private int raceID;
     private HashMap<Integer, LocalTime> riderTimesHash;
+    private String stageState;
     
 
     /**
@@ -41,6 +42,7 @@ public class Stage {
         this.stageType = stageType;
         this.stageID = nextStageID++;
         this.length = getStageLength();
+        this.stageState = "Stage has been created";
         this.checkpointIDHashMap = new HashMap<Integer, Checkpoint>();
 
         //We can get the race we are add this stage to via 
@@ -77,6 +79,11 @@ public class Stage {
     }
 
 
+    public void setStageState(String state)
+    {
+        this.stageState = state;
+    }
+
     /**
      * @return - Unique identifier of stage
      * 
@@ -87,14 +94,19 @@ public class Stage {
         return stageID;
     }
 
+    public StageType getStageType()
+    {
+        return stageType;
+    }
+
     /**
      * Stages are made of checkpoints, this function should add a checkpoint
      * Checkpoints are either an intermediate sprint or a categorised climb
      */
-    public void addCheckpoint(Checkpoint type) 
+    public void addCheckpoint(Checkpoint checkpoint) 
     {
-        int checkpointID = type.getCheckpointID();
-        addCheckpointToHash(type);      
+        int checkpointID = checkpoint.getCheckpointID();
+        addCheckpointToHash(checkpoint);      
     }
 
 
@@ -112,6 +124,7 @@ public class Stage {
         {
             throw new IDNotRecognisedException("No Checkpoint correponds to ID");
         }
+    }
 
 
     /**
