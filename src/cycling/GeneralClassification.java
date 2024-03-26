@@ -60,7 +60,7 @@ public class GeneralClassification {
         //and if they are we change them in the array
         for(long times : rankedArrayInMiliSeconds)
         {
-            if(placeHolderArray[(int) times] - placeHolderArray[(int) ++times] > -100)
+            if(placeHolderArray[(int) times] - placeHolderArray[(int) ++times] >= -100)
             {
                 rankedArrayInMiliSeconds[(int) ++times] = rankedArrayInMiliSeconds[(int) times];
             }
