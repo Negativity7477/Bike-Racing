@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 
-
 /**
  * BadCyclingPortal is a minimally compiling, but non-functioning implementor
  * of the CyclingPortal interface.
@@ -309,24 +308,28 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public LocalTime[] getRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		
-		MiscHandling.getRaceIDFromStageID(stageId);
-		Race race = MiscHandling.getRace(riderId);
-		Stage stage = race.getStage(stageId);
-
-		return stage.getRiderStageTime(riderId);
-	}
-
-	@Override
-	public LocalTime getRiderAdjustedElapsedTimeInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
+	public LocalTime getRiderAdjustedElapsedTimeInStage(int stageId, int riderId) throws IDNotRecognisedException {
+		try{
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		GeneralClassification generalClassification = new GeneralClassification(raceID);
+		return generalClassification.getAdjustedTimes(riderId);
+		}
+		catch(IDNotRecognisedException e){throw e;}
+	}
 
+	@Override
+	public void deleteRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
+		try{
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		Race race = MiscHandling.getRace(raceID);
+		Stage stage = race.getStage(stageId);
+		stage.removeRiderStageTime(riderId);
+		}
+		catch(IDNotRecognisedException e){throw e;}
 	}
 
 	@Override

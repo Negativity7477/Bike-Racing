@@ -248,9 +248,16 @@ public class Stage {
      * 
      * removes the rider and their time's from the hash
      */
-    public void removeRiderStageTime(int riderID)
+    public void removeRiderStageTime(int riderID) throws IDNotRecognisedException
     {
-        riderTimesHash.remove(riderID);
+        if (riderTimesHash.get(riderID) == null)
+        {
+            throw new IDNotRecognisedException("ID not in hash");
+        }
+        else
+        {
+            riderTimesHash.remove(riderID);
+        }
     }
 
 }
