@@ -30,7 +30,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		//Create a new race, an error will be thrown if the name is invalid or illegal
 		Race race = new Race(name, description);
 		//Add the race to the handling class at the top of the hierarchy
-		MiscHandling.add(race);
+		MiscHandling.addRace(race);
 		//return the ID of the race as the method requires
 		return race.getRaceID();
 		} 

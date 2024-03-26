@@ -8,7 +8,7 @@ public class Checkpoint
     private int checkpointID;
     private int stageID;
     private int raceID;
-    private String location;
+    private Double location;
     private CheckpointType type;
     private Double length;
     private Double averageGradient;
@@ -24,7 +24,7 @@ public class Checkpoint
      * 
      * Constructor 
      */
-    public Checkpoint(String location, Double length, Double averageGradient, LocalDateTime startTime, int stageID, int raceID) throws IDNotRecognisedException
+    public Checkpoint(Double location, Double length, Double averageGradient, LocalDateTime startTime, int stageID, int raceID) throws IDNotRecognisedException
     {
         this.checkpointID = nextCheckpointID++;
         this.location = location;
@@ -76,6 +76,14 @@ public class Checkpoint
         return type;
     }
 
+    /**
+     * Getter for location
+     * 
+     * @return location of the checkpoint
+     */
+    public Double getCheckpointLocation() {
+        return location;
+    }
 
     /**
      * 

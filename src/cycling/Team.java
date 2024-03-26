@@ -20,6 +20,24 @@ public class Team {
     }
 
     /**
+     * Getter for team name
+     * 
+     * @return Name of the team being queried
+     */
+    public String getTeamName() {
+        return name;
+    }
+
+    /**
+     * Getter for the number of riders in a team
+     * 
+     * @return number of riders in a team
+     */
+    public int getTeamSize() {
+        return ridersHash.size();
+    }
+
+    /**
      * Gets an array of all the rider's IDs in the team, 
      * If there are no riders than an empty array is returned
      * 
@@ -57,6 +75,16 @@ public class Team {
     }
 
     /**
+     * Gets a rider object based on the ID provided
+     * 
+     * @param riderID ID of the rider wanted
+     * @return An object representing the rider with the specified ID given
+     */
+    public Rider getRider(int riderID) {
+        return ridersHash.get(riderID);
+    }
+
+    /**
      * Removes Rider object reference which then deletes the object
      * 
      * @param riderID The ID of the rider to be removed from the rider hash
@@ -76,7 +104,7 @@ public class Team {
      * @param name A name for the team
      * @param description A description for the team
      */
-    public Team(String name, String description) throws DuplicatedResultException {
+    public Team(String name, String description) throws IllegalNameException {
 
         this.name = name;
         this.description = description;
@@ -84,7 +112,7 @@ public class Team {
         this.ridersHash = new HashMap<Integer, Rider>();
 
         try {
-        MiscHandling.add(this);
-        } catch(DuplicatedResultException e) {throw e;}
+        MiscHandling.addTeam(this);
+        } catch(IllegalNameException e) {throw e;}
     }
 }
