@@ -306,9 +306,15 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	}
 
+	//Need to look over this
 	@Override
 	public LocalTime[] getRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		return null;
+		MiscHandling.getRaceIDFromStageID(stageId);
+		Race race = MiscHandling.getRace(riderId);
+		Stage stage = race.getStage(stageId);
+
+
+		return stage.getRiderStageTime(riderId);
 	}
 
 	@Override

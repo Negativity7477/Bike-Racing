@@ -5,7 +5,7 @@ import cycling.IDNotRecognisedException;
 import cycling.Rider;
 import cycling.Team;
 
-public class TeamUnitTest {
+public class TeamRiderUnitTest {
     public static void main(String[] args) throws DuplicatedResultException, IDNotRecognisedException{
 
         // Testing team ID uniqueness
@@ -29,11 +29,22 @@ public class TeamUnitTest {
             riderObject[i] = new Rider(4, nameArray[i], yearArray[i]);
             try {
                 teamObject.addRider(riderObject[i]);
-            } catch(DuplicatedResultException e) {
+            } catch(Exception e) {
                 assert false
                 : "Unexpected issue with rider IDs, investigate Rider class";
             }
         }
+        
+            try{
+                teamObject.deleteRider(0);
+            }
+            catch(Exception e)
+            {
+                assert false 
+                    :"A problem occurred in removing rider";
+            }
+
+        
 
     }
 }

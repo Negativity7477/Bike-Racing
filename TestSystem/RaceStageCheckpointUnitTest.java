@@ -1,10 +1,6 @@
 import cycling.*;
 import java.util.HashMap;
-
-import org.omg.PortableServer.IdAssignmentPolicyValue;
-
 import java.time.LocalTime;
-import java.net.IDN;
 import java.time.LocalDateTime;
 
 
@@ -13,7 +9,7 @@ public class RaceStageCheckpointUnitTest {
 public static void main(String args[]) throws IDNotRecognisedException, InvalidNameException
 {        
         
-        //Declare all classes for a test
+        //Declare all classes for a test, do it outside a for loop because i think it makes it easier to test and more readable and it literally doesn't matter
         Race race = new Race("test_race", "a race to test functions"); //Race ID should be 0 i think
         Race race2 = new Race("A second test race", "A race to test secondary functions"); //THis should cause error (white space in name)
         Race race3 = new Race("last_race", "the last testing");
@@ -40,7 +36,35 @@ public static void main(String args[]) throws IDNotRecognisedException, InvalidN
                 :"MiscHandling is not throwing exceptions properly";
         assert(MiscHandling.getRaceIDFromName(race3.getRaceName()) == race3.getRaceID())
                 :"MiscHandling is not returning raceID properly";
-        //assert(MiscHandling.add(race)) would love to test this but dont know how :D, same with removeRac
+
+        //Try catch clauses for testing adding races and deleting races
+        try{
+                MiscHandling.add(race3);
+        }
+        catch(Exception e)
+        {
+                assert false 
+                        :"A problem has occurred with adding race";
+        }
+
+        try{
+                MiscHandling.removeRace(2);
+        }
+        catch(Exception e) //Generic exceptions, we don't want to test that our thrown exceptions work because they will by java's design
+        {
+                assert false 
+                        :"There was a problem removing race";
+        }
+        try{
+                MiscHandling.removeRace(6); //Should throw an error!
+                assert false
+                        :"Removing a non existent raceID";
+        }
+        catch(Exception e)
+        {
+                System.out.println("Removing a non existing ID throws an error (good)");
+        }
+
         assert(MiscHandling.getRaceIDFromStageID(4) == race3.getRaceID())
                 :"MiscHandling is not returning raceID from stageID properly";
 
@@ -60,7 +84,7 @@ public static void main(String args[]) throws IDNotRecognisedException, InvalidN
         int[] StageIDsInRace = {0,1,2};
         assert(race.getRaceStages() == StageIDsInRace)
                 :"returning all stageIDs from the race is not working";
-        //assert(race.getTotalDistance() = ) respecfully kys if you think im checking this
+        //assert(race.getTotalDistance() = ) respectfully kys if you think im checking this
 
         assert(imSpr1.getCheckpointID() == 0)
                 :"CheckpointID is returning wrong";
@@ -76,6 +100,8 @@ public static void main(String args[]) throws IDNotRecognisedException, InvalidN
                 :"CheckpointType is returning wrong";
         assert(CC3.getCheckpointType() == CheckpointType.C3)
                 :"CheckpointType is returning wrong";
+        assert(CC3.getAverageGradient() == 1.2)
+                :"Average gradient is returning wrong";
 }
 }
 
