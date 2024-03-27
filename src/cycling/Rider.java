@@ -125,4 +125,12 @@ public class Rider {
             
     }
 
+    /**
+     * Reset the static ID counter
+     */
+    public static void resetRiderIDCount()
+    {
+        nextRiderID = 0;
+    }
+
 }

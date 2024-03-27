@@ -153,7 +153,7 @@ public class MiscHandling{
      * 
      * @return An array of all the IDs of the races in the race hashmap
      */
-    private static int[] getRaceIDs() {
+    public static int[] getRaceIDs() {
 
         int[] raceIDArray = new int[racesHash.size()];
         int position = 0;
@@ -343,5 +343,9 @@ public class MiscHandling{
         return totalTime;
     }
 
-    
+    public static void resetHash()
+    {
+        teamsHash = null;
+        racesHash = null;
+    }
 }

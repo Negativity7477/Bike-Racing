@@ -17,11 +17,9 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public int[] getRaceIds() {
-		// TODO Auto-generated method stub
-		return new int[] {};
+		return MiscHandling.getRaceIDs();
 	}
 
-//We need to implement IllegalNameException for this method
 	@Override
 	public int createRace(String name, String description) throws IllegalNameException, InvalidNameException {
 		try 
@@ -95,10 +93,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	}
 
 
-	//We need to implement IllegalNameException for this method
-	//I think i might also have to look over InvalidLengthException,
-	//Not entirely sure on how to implement yet
-	//Just going to go for functionality for now though
+	//No time to check for invalidLengthException
 	@Override
 	public int addStageToRace(int raceId, String stageName, String description, double length, LocalDateTime startTime,
 			StageType type)
@@ -111,7 +106,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		//This will throw an exception if the raceID does not exist 
 		//or if the stageName is wrong
 		Stage stage = new Stage(stageName, description, startTime, type, raceId);
-		race.addStage(stage);
+		race.addStage(stage); 
 		int stageID = stage.getStageID();
 		//return the stageID 
 		return stageID;
@@ -186,7 +181,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 			
 
 	}
-
+	
 	@Override
 	public int addIntermediateSprintToStage(int stageId, double location) throws IDNotRecognisedException,
 			InvalidLocationException, InvalidStageStateException, InvalidStageTypeException {
@@ -387,7 +382,15 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public void eraseCyclingPortal() {
-		// TODO Auto-generated method stub
+		//Functions to reset the static counter
+		Team.resetTeamIDCount();
+		Race.resetRaceIDCount();
+		Checkpoint.resetCheckpointIDCount();
+		Stage.resetStageIDCount();
+		Rider.resetRiderIDCount();
+		
+		//Reset the hash storing everything 
+		MiscHandling.resetHash();
 
 	}
 

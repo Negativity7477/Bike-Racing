@@ -33,10 +33,10 @@ public class Serialiser implements java.io.Serializable{
             throw e;
         }
     }
-
+    
     public void eraseFile() 
     {
-        
+
     }
 
     public void loadFile(String fileName) throws IOException, ClassNotFoundException

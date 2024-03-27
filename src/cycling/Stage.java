@@ -260,6 +260,8 @@ public class Stage {
      * removes the rider and their time's from the hash
      */
     public void removeRiderStageTime(int riderID) throws IDNotRecognisedException
+
+
     {
         if (riderTimesHash.get(riderID) == null)
         {
@@ -271,4 +273,12 @@ public class Stage {
         }
     }
 
+    /**
+     * Reset the static ID counter
+     */
+    public static void resetStageIDCount()
+    {
+        nextStageID = 0;
+    }
 }
+

@@ -268,4 +268,13 @@ public class Race {
         riderTimesHash.remove(riderID);
     }
 
+    /**
+     * Reset the static ID counter
+     */
+    public static void resetRaceIDCount()
+    {
+        nextRaceID = 0;
+    }
+
+    
 }

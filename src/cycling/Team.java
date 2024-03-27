@@ -114,4 +114,12 @@ public class Team {
         MiscHandling.addTeam(this);
         } catch(IllegalNameException e) {throw e;}
     }
+
+    /**
+     * Reset the static ID counter
+     */
+    public static void resetTeamIDCount()
+    {
+        nextTeamID = 0;
+    }
 }
