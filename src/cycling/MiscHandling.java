@@ -16,7 +16,7 @@ public class MiscHandling {
      * 
      * @param teamObject The object to be added to the array
      * 
-     * @throws DuplicatedResultException If the object has already been added
+     * @throws IllegalNameException If the object's name is already used
      */
     public static void addTeam(Team teamObject) throws IllegalNameException {
 
@@ -152,7 +152,7 @@ public class MiscHandling {
      * 
      * @return An array of all the IDs of the races in the race hashmap
      */
-    private static int[] getRaceIDs() {
+    public static int[] getRaceIDs() {
 
         int[] raceIDArray = new int[racesHash.size()];
         int position = 0;
@@ -245,7 +245,25 @@ public class MiscHandling {
                 }
             }
         }
-        throw new IDNotRecognisedException("checkpoitnID given is not recognised");
+        throw new IDNotRecognisedException("checkpointID given is not recognised");
+    }
+
+    /**
+     * Finds the team ID of a rider 
+     * @param riderID
+     * @return
+     * @throws IDNotRecognisedException
+     */
+    public static int getTeamIDFromRiderID(int riderID) throws IDNotRecognisedException {
+        for (Team teamObject : teamsHash.values()) {
+            for (int riderIDQuery : teamObject.getRiderIDArray()) {
+
+                if (riderID == riderIDQuery) {
+                    return teamObject.getTeamID();
+                }
+            }
+        }
+        throw new IDNotRecognisedException("riderID given is not recognised");
     }
 
     /**
