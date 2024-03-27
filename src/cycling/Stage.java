@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 
 public class Stage {
+    private HashMap<Integer, LocalTime> riderTimesHash;
+    private HashMap<Integer, Checkpoint> checkpointIDHashMap;
     private int stageID;
     private String stageName;
     private String description; 
@@ -12,10 +14,8 @@ public class Stage {
     private LocalDateTime startTime;
     private StageType stageType;
     //Hash of checkpointID to checkpointType
-    private HashMap<Integer, Checkpoint> checkpointIDHashMap;
     private static int nextStageID = 0;
     private int raceID;
-    private HashMap<Integer, LocalTime> riderTimesHash;
     private String stageState;
     
 
@@ -35,6 +35,7 @@ public class Stage {
     public Stage(String stageName, String description, LocalDateTime startTime, StageType StageType, int RaceID) throws IDNotRecognisedException, InvalidNameException
     {
         try {
+        this.checkpointIDHashMap = new HashMap<Integer, Checkpoint>();
         this.checkName(stageName);
         this.stageName = stageName;
         this.description = description;
@@ -43,7 +44,6 @@ public class Stage {
         this.stageID = nextStageID++;
         this.length = getStageLength();
         this.stageState = "Stage has been created";
-        this.checkpointIDHashMap = new HashMap<Integer, Checkpoint>();
 
         //We can get the race we are add this stage to via 
         //the static class at the top level

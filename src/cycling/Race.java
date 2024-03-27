@@ -20,16 +20,17 @@ public class Race {
      * 
      * Constructor for race
      */
-    public Race(String name, String description) throws InvalidNameException
+    public Race(String name, String description) throws InvalidNameException, DuplicatedResultException
     {
         try{
+        this.stageIDHash = new HashMap<Integer, Stage>();
         this.checkName(name);
         this.name = name;
         this.totalDistance = calculateDistance();
         this.description = description;
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
-        this.stageIDHash = new HashMap<Integer, Stage>();
+        MiscHandling.add(this);
         }
 
         catch (InvalidNameException e) {throw e;}    

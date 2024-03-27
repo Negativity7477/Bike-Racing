@@ -5,8 +5,13 @@ import cycling.IDNotRecognisedException;
 import cycling.Rider;
 import cycling.Team;
 
+
+//THIS CODE HAS RUN WITH NO ERRORS 
+//THIS IS AS OF 27/03/2024 13:37
+
 public class TeamRiderUnitTest {
     public static void main(String[] args) throws DuplicatedResultException, IDNotRecognisedException{
+
 
         // Testing team ID uniqueness
         Team[] teamArray = new Team[3];
@@ -26,7 +31,7 @@ public class TeamRiderUnitTest {
 
         Rider[] riderObject = new Rider[3];
         for (int i=0; i < 3; i++) {
-            riderObject[i] = new Rider(4, nameArray[i], yearArray[i]);
+            riderObject[i] = new Rider(1, nameArray[i], yearArray[i]);
             try {
                 teamObject.addRider(riderObject[i]);
             } catch(Exception e) {

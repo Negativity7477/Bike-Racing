@@ -5,12 +5,12 @@ import java.time.LocalTime;
 
 public class Rider {
 
+    // Hash of stageIDs to 1 or more checkpoint finishing times
+    private HashMap<Integer, LocalTime[]> checkpointTimeHash;
     private int riderID;
     private int teamID;
     private String name;
     private int yearOfBirth;
-    // Hash of stageIDs to 1 or more checkpoint finishing times
-    private HashMap<Integer, LocalTime[]> checkpointTimeHash;
     private static int nextRiderID = 0;
 
     /**
