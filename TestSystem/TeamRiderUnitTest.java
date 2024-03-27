@@ -2,6 +2,7 @@
 
 import cycling.DuplicatedResultException;
 import cycling.IDNotRecognisedException;
+import cycling.IllegalNameException;
 import cycling.Rider;
 import cycling.Team;
 
@@ -10,7 +11,7 @@ import cycling.Team;
 //THIS IS AS OF 27/03/2024 13:37
 
 public class TeamRiderUnitTest {
-    public static void main(String[] args) throws DuplicatedResultException, IDNotRecognisedException{
+    public static void main(String[] args) throws DuplicatedResultException, IDNotRecognisedException, IllegalNameException{
 
 
         // Testing team ID uniqueness

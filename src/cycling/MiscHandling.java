@@ -1,9 +1,11 @@
 package cycling;
 
+import java.time.LocalTime;
 import java.util.HashMap;
 
+
 // Functions as a static class
-public class MiscHandling {
+public class MiscHandling{
     
     // Hash of team IDs to their respective team object
     private static HashMap<Integer, Team> teamsHash = new HashMap<Integer, Team>();
@@ -17,13 +19,25 @@ public class MiscHandling {
      * 
      * @throws DuplicatedResultException If the object has already been added
      */
-    public static void add(Team teamObject) throws DuplicatedResultException {
+    public static void addTeam(Team teamObject) throws IllegalNameException {
 
         Integer teamID = teamObject.getTeamID();
 
-        if (teamsHash.put(teamID, teamObject) != null) {
-            throw new DuplicatedResultException("This team has already been added");
+        String teamName;
+        String teamNameQuery;
+
+        // Checks if the race name given has been used before
+        teamName = teamObject.getTeamName();
+        for (Team teamObjectQuery : teamsHash.values()) {
+            teamNameQuery = teamObjectQuery.getTeamName();
+
+            if (teamName.equals(teamNameQuery)) {
+                throw new IllegalNameException("The name given has been used for a team before");
+            }
         }
+        // Duplicate objects could be put into the hashtable however the logic
+        // linking team ID and the object means no problem would be caused
+        teamsHash.put(teamID, teamObject);
     }
 
     /**
@@ -31,15 +45,27 @@ public class MiscHandling {
      * 
      * @param raceObject The object to be added to the array
      * 
-     * @throws DuplicatedResultException If the object has already been added
+     * @throws IllegalNameException If name of the race has been used before
      */
-    public static void add(Race raceObject) throws DuplicatedResultException{
+    public static void addRace(Race raceObject) throws IllegalNameException {
 
         Integer raceID = raceObject.getRaceID();
 
-        if (racesHash.put(raceID, raceObject) != null) {
-            throw new DuplicatedResultException("This race has already been added");
+        String raceName;
+        String raceNameQuery;
+
+        // Checks if the race name given has been used before
+        raceName = raceObject.getRaceName();
+        for (Race raceObjectQuery : racesHash.values()) {
+            raceNameQuery = raceObjectQuery.getRaceName();
+
+            if (raceName.equals(raceNameQuery)) {
+                throw new IllegalNameException("The name given has been used for a race before");
+            }
         }
+        // Duplicate objects could be put into the hashtable however the logic
+        // linking race ID and the object means no problem would be caused
+        racesHash.put(raceID, raceObject);
     }
 
     /**
@@ -200,7 +226,7 @@ public class MiscHandling {
      * 
      * @throws IDNotRecognisedException If 
      */
-    public static int[] getStageIDFromCheckpointID(int checkpointID) throws IDNotRecognisedException {
+    public static int[] getRaceStageIDFromCheckpointID(int checkpointID) throws IDNotRecognisedException {
         
         Stage stageObject;
         int[] IDArray = new int[2];
@@ -220,6 +246,102 @@ public class MiscHandling {
                 }
             }
         }
-        throw new IDNotRecognisedException("checkpointID given is not recognised");
+        throw new IDNotRecognisedException("checkpoitnID given is not recognised");
     }
+
+    /**
+     * Converts localTime to a long in nanoseconds
+     * 
+     * @param timeObject the time to be converted
+     * @return represents the time in the parameter but in nanoseconds
+     */
+    public static long localTimeToLong(LocalTime timeObject) {
+
+        long nanoseconds = 0L;
+
+        nanoseconds += timeObject.getHour();
+        nanoseconds *= 60;
+        nanoseconds += timeObject.getMinute();
+        nanoseconds *= 60;
+        nanoseconds += timeObject.getSecond();
+        nanoseconds *= 1000000000L;
+        nanoseconds += timeObject.getNano();
+
+        return nanoseconds;
+    }
+
+    /**
+     * Converts nanoseconds to hours, minutes, seconds and nanoseconds in the form of an object
+     * 
+     * @param nanoseconds the nanoseconds to be converted
+     * @return object that represents the nanoseconds
+     */
+    public static LocalTime longToLocalTime(long nanoseconds) {
+
+        LocalTime totalTime = LocalTime.of(0, 0, 0, 0);
+        long modulo;
+
+        modulo = nanoseconds / 3600000000000L;
+        totalTime = totalTime.plusHours(modulo);
+        nanoseconds -= modulo * 3600000000000L;
+
+        modulo = nanoseconds / 60000000000L;
+        totalTime = totalTime.plusMinutes(modulo);
+        nanoseconds -= modulo * 60000000000L;
+
+        modulo = nanoseconds / 1000000000L;
+        totalTime = totalTime.plusSeconds(modulo);
+        nanoseconds -= modulo * 1000000000L;
+
+        totalTime = totalTime.plusNanos(nanoseconds);
+
+        return totalTime;
+    }
+
+    /**
+     * Getter for an array of all the riderIDs in the program
+     * @return
+     */
+    public static Rider[] getRiderArray() {
+
+        int numRiders = 0;
+        for (Team teamObject : teamsHash.values()) {
+            numRiders += teamObject.getTeamSize();
+        }
+
+        Rider[] riderArray = new Rider[numRiders];
+        int counter = 0;
+        for (Team teamObject : teamsHash.values()) {
+            for (int riderID : teamObject.getRiderIDArray()) {
+                riderArray[counter] = teamObject.getRider(riderID);
+                counter++;
+            }
+        }
+
+        return riderArray;
+    }
+
+    /**
+     * Finds the sum of times as a time
+     * 
+     * @param timesToTotal Array of localTimes to be summed
+     * @return the total time as one time
+     */
+    public static LocalTime totalTimes(LocalTime[] timesToTotal) {
+
+        long totalNanoTime = 0;
+        LocalTime totalTime;
+
+        // Converts and totals time in a long format
+        for (LocalTime timeObject : timesToTotal) {
+            totalNanoTime += localTimeToLong(timeObject);
+        }
+
+        // Converts back to LocalTime object
+        totalTime = longToLocalTime(totalNanoTime);
+
+        return totalTime;
+    }
+
+    
 }

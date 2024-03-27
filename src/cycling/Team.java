@@ -20,6 +20,24 @@ public class Team {
     }
 
     /**
+     * Getter for team name
+     * 
+     * @return Name of the team being queried
+     */
+    public String getTeamName() {
+        return name;
+    }
+
+    /**
+     * Getter for the number of riders in a team
+     * 
+     * @return number of riders in a team
+     */
+    public int getTeamSize() {
+        return ridersHash.size();
+    }
+
+    /**
      * Gets an array of all the rider's IDs in the team, 
      * If there are no riders than an empty array is returned
      * 
@@ -46,14 +64,23 @@ public class Team {
      * 
      * @throws DuplicatedResultException If the rider being added has already been added
      */
-    public void addRider(Rider newRider) throws DuplicatedResultException
+    public void addRider(Rider newRider)
     {
 
         Integer riderID = newRider.getRiderID();
 
-        if (ridersHash.put(riderID, newRider) != null) {
-            throw new DuplicatedResultException("This rider has already been added to this team");
-        } 
+        ridersHash.put(riderID, newRider);
+    
+    }
+
+    /**
+     * Gets a rider object based on the ID provided
+     * 
+     * @param riderID ID of the rider wanted
+     * @return An object representing the rider with the specified ID given
+     */
+    public Rider getRider(int riderID) {
+        return ridersHash.get(riderID);
     }
 
     /**
@@ -76,14 +103,15 @@ public class Team {
      * @param name A name for the team
      * @param description A description for the team
      */
-    public Team(String name, String description) throws DuplicatedResultException {
-        
-        try {
+    public Team(String name, String description) throws IllegalNameException {
+
         this.name = name;
         this.description = description;
         this.teamID = nextTeamID++;
         this.ridersHash = new HashMap<Integer, Rider>();
-        MiscHandling.add(this);
-        } catch(DuplicatedResultException e) {throw e;}
+
+        try {
+        MiscHandling.addTeam(this);
+        } catch(IllegalNameException e) {throw e;}
     }
 }

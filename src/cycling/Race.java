@@ -20,9 +20,16 @@ public class Race {
      * 
      * Constructor for race
      */
-    public Race(String name, String description) throws InvalidNameException, DuplicatedResultException
+    public Race(String name, String description) throws InvalidNameException, IllegalNameException
     {
         try{
+            try{
+                if (MiscHandling.getRaceIDFromName(name) > -99999)
+                    {
+                        throw new IllegalNameException("This name is taken");
+                    }
+            }
+            catch(Exception e){}
         this.stageIDHash = new HashMap<Integer, Stage>();
         this.checkName(name);
         this.name = name;
@@ -30,7 +37,7 @@ public class Race {
         this.description = description;
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
-        MiscHandling.add(this);
+        MiscHandling.addRace(this);
         }
 
         catch (InvalidNameException e) {throw e;}    

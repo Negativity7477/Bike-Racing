@@ -85,6 +85,17 @@ public class Stage {
     }
 
     /**
+     * 
+     * @return - state of the stage
+     * 
+     * getter for stagestate
+     */
+    public String getStageState()
+    {
+        return stageState;
+    }
+
+    /**
      * @return - Unique identifier of stage
      * 
      * Allows us to get the stage identifier 

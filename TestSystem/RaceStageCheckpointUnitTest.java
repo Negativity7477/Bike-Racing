@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 
 public class RaceStageCheckpointUnitTest {
 
-public static void main(String args[]) throws IDNotRecognisedException, InvalidNameException, DuplicatedResultException
+public static void main(String args[]) throws IDNotRecognisedException, InvalidNameException, IllegalNameException
 {        
         
         //Declare all classes for a test, do it outside a for loop because i think it makes it easier to test and more readable and it literally doesn't matter
         Race race = new Race("test_race", "a race to test functions"); //Race ID should be 0 i think
         //Race race2 = new Race("A second test race", "A race to test secondary functions"); //THis should cause error (white space in name) -- IVE RUN THIS, EXCEPTION IS THROWN
-        Race race3 = new Race("last_race", "the last testing");
+        Race race3 = new Race("test_race", "the last testing");
 
         Stage stage = new Stage("first_stage", "should be in race1", LocalDateTime.now(), StageType.HIGH_MOUNTAIN, 0);
         //Stage stage2 = new Stage("SHOULD THROW", "should throw error", LocalDateTime.now(), StageType.FLAT, 0); //Should throw invalid name
@@ -53,7 +53,7 @@ public static void main(String args[]) throws IDNotRecognisedException, InvalidN
 
         //Try catch clauses for testing adding races and deleting races
         try{
-                MiscHandling.add(race3);
+                MiscHandling.addRace(race3);
         }
         catch(Exception e)
         {
@@ -84,7 +84,7 @@ public static void main(String args[]) throws IDNotRecognisedException, InvalidN
                 :"MiscHandling is not returning raceID from stageID properly";
 
         int[] RaceIDStageID = {0,0};
-        assert(MiscHandling.getStageIDFromCheckpointID(0) == RaceIDStageID)
+        assert(MiscHandling.getRaceStageIDFromCheckpointID(0) == RaceIDStageID)
                 :"MiscHandling is not returning stageID or raceID from checkpointID properly"; //Note i cannot test the abstraction because how this function returns >:(
         
 
