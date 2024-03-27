@@ -64,14 +64,23 @@ public class Team {
      * 
      * @throws DuplicatedResultException If the rider being added has already been added
      */
-    public void addRider(Rider newRider) throws DuplicatedResultException
+    public void addRider(Rider newRider)
     {
 
         Integer riderID = newRider.getRiderID();
 
-        if (ridersHash.put(riderID, newRider) != null) {
-            throw new DuplicatedResultException("This rider has already been added to this team");
-        } 
+        ridersHash.put(riderID, newRider);
+    
+    }
+
+    /**
+     * Gets a rider object based on the ID provided
+     * 
+     * @param riderID ID of the rider wanted
+     * @return An object representing the rider with the specified ID given
+     */
+    public Rider getRider(int riderID) {
+        return ridersHash.get(riderID);
     }
 
     /**
@@ -114,5 +123,13 @@ public class Team {
         try {
         MiscHandling.addTeam(this);
         } catch(IllegalNameException e) {throw e;}
+    }
+
+    /**
+     * Reset the static ID counter
+     */
+    public static void resetTeamIDCount()
+    {
+        nextTeamID = 0;
     }
 }

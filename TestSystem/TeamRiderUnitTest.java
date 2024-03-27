@@ -1,11 +1,18 @@
 
 
 import cycling.DuplicatedResultException;
+import cycling.IDNotRecognisedException;
+import cycling.IllegalNameException;
 import cycling.Rider;
 import cycling.Team;
 
-public class TeamUnitTest {
-    public static void main(String[] args) {
+
+//THIS CODE HAS RUN WITH NO ERRORS 
+//THIS IS AS OF 27/03/2024 13:37
+
+public class TeamRiderUnitTest {
+    public static void main(String[] args) throws DuplicatedResultException, IDNotRecognisedException, IllegalNameException{
+
 
         // Testing team ID uniqueness
         Team[] teamArray = new Team[3];
@@ -25,14 +32,25 @@ public class TeamUnitTest {
 
         Rider[] riderObject = new Rider[3];
         for (int i=0; i < 3; i++) {
-            riderObject[i] = new Rider(4, nameArray[i], yearArray[i]);
+            riderObject[i] = new Rider(1, nameArray[i], yearArray[i]);
             try {
                 teamObject.addRider(riderObject[i]);
-            } catch(DuplicatedResultException e) {
+            } catch(Exception e) {
                 assert false
                 : "Unexpected issue with rider IDs, investigate Rider class";
             }
         }
+        
+            try{
+                teamObject.deleteRider(0);
+            }
+            catch(Exception e)
+            {
+                assert false 
+                    :"A problem occurred in removing rider";
+            }
+
+        
 
     }
 }

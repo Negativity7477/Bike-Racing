@@ -5,12 +5,12 @@ import java.time.LocalTime;
 
 public class Rider {
 
+    // Hash of stageIDs to 1 or more checkpoint finishing times
+    private HashMap<Integer, LocalTime[]> checkpointTimeHash;
     private int riderID;
     private int teamID;
     private String name;
     private int yearOfBirth;
-    // Hash of stageIDs to 1 or more checkpoint finishing times
-    private HashMap<Integer, LocalTime[]> checkpointTimeHash;
     private static int nextRiderID = 0;
 
     /**
@@ -34,10 +34,8 @@ public class Rider {
      *                                   for the rider being queried. The data for the
      *                                   stage is replaced anyway.
      */
-    public void addResults(int stageID, LocalTime... results) throws DuplicatedResultException {
-        if (checkpointTimeHash.put(stageID, results) != null) {
-            throw new DuplicatedResultException("This stage ID is already in use");
-        }
+    public void addResults(int stageID, LocalTime... results) {
+        checkpointTimeHash.put(stageID, results);
     }
 
     /**
@@ -95,15 +93,14 @@ public class Rider {
         return totalTime;
     }
 
-    private void addRiderToTeam(int teamID) throws IDNotRecognisedException, DuplicatedResultException {
+    private void addRiderToTeam(int teamID) throws IDNotRecognisedException  {
 
         try {
             Team teamObject = MiscHandling.getTeam(teamID);
             teamObject.addRider(this);
 
         // Rethrows exceptions
-        } catch(IDNotRecognisedException e) {throw e;
-        } catch(DuplicatedResultException e) {throw e;}
+        } catch(IDNotRecognisedException e) {throw e;}
     }
 
     /**
@@ -113,7 +110,7 @@ public class Rider {
      * @param name Name of the rider
      * @param yearOfBirth Birth year of the rider
      */
-    public Rider(int teamID, String name, int yearOfBirth) throws IDNotRecognisedException, DuplicatedResultException {
+    public Rider(int teamID, String name, int yearOfBirth) throws IDNotRecognisedException  {
 
         // Increments value with every new object so that each ID is unique
         this.riderID = nextRiderID++;
@@ -124,9 +121,16 @@ public class Rider {
 
         try {
             this.addRiderToTeam(teamID);
-        } catch(IDNotRecognisedException e) {throw e;
-        } catch(DuplicatedResultException e) {throw e;}
+        } catch(IDNotRecognisedException e) {throw e;}
             
+    }
+
+    /**
+     * Reset the static ID counter
+     */
+    public static void resetRiderIDCount()
+    {
+        nextRiderID = 0;
     }
 
 }

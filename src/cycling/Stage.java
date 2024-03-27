@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 
 public class Stage {
+    private HashMap<Integer, LocalTime> riderTimesHash;
+    private HashMap<Integer, Checkpoint> checkpointIDHashMap;
     private int stageID;
     private String stageName;
     private String description; 
@@ -12,10 +14,10 @@ public class Stage {
     private LocalDateTime startTime;
     private StageType stageType;
     //Hash of checkpointID to checkpointType
-    private HashMap<Integer, Checkpoint> checkpointIDHashMap;
     private static int nextStageID = 0;
     private int raceID;
-    private HashMap<Integer, LocalTime> riderTimesHash;
+
+    private String stageState;
 
     
 
@@ -35,6 +37,7 @@ public class Stage {
     public Stage(String stageName, String description, LocalDateTime startTime, StageType StageType, int RaceID) throws IDNotRecognisedException, InvalidNameException
     {
         try {
+        this.checkpointIDHashMap = new HashMap<Integer, Checkpoint>();
         this.checkName(stageName);
         this.stageName = stageName;
         this.description = description;
@@ -42,7 +45,7 @@ public class Stage {
         this.stageType = stageType;
         this.stageID = nextStageID++;
         this.length = getStageLength();
-        this.checkpointIDHashMap = new HashMap<Integer, Checkpoint>();
+        this.stageState = "Stage has been created";
 
         //We can get the race we are add this stage to via 
         //the static class at the top level
@@ -78,6 +81,22 @@ public class Stage {
     }
 
 
+    public void setStageState(String state)
+    {
+        this.stageState = state;
+    }
+
+    /**
+     * 
+     * @return - state of the stage
+     * 
+     * getter for stagestate
+     */
+    public String getStageState()
+    {
+        return stageState;
+    }
+
     /**
      * @return - Unique identifier of stage
      * 
@@ -88,14 +107,19 @@ public class Stage {
         return stageID;
     }
 
+    public StageType getStageType()
+    {
+        return stageType;
+    }
+
     /**
      * Stages are made of checkpoints, this function should add a checkpoint
      * Checkpoints are either an intermediate sprint or a categorised climb
      */
-    public void addCheckpoint(Checkpoint type) 
+    public void addCheckpoint(Checkpoint checkpoint) 
     {
-        int checkpointID = type.getCheckpointID();
-        addCheckpointToHash(type);      
+        int checkpointID = checkpoint.getCheckpointID();
+        addCheckpointToHash(checkpoint);      
     }
 
 
@@ -114,6 +138,7 @@ public class Stage {
             throw new IDNotRecognisedException("No Checkpoint correponds to ID");
         }
     }
+
 
     /**
      * 
@@ -236,12 +261,22 @@ public class Stage {
      * 
      * removes the rider and their time's from the hash
      */
-    public void removeRiderStageTime(int riderID)
+    public void removeRiderStageTime(int riderID) throws IDNotRecognisedException
+
+
     {
-        riderTimesHash.remove(riderID);
+        if (riderTimesHash.get(riderID) == null)
+        {
+            throw new IDNotRecognisedException("ID not in hash");
+        }
+        else
+        {
+            riderTimesHash.remove(riderID);
+        }
     }
 
     /**
+
      * Orders checkpoints based on their location
      * 
      * @return
@@ -320,5 +355,13 @@ public class Stage {
         // Totals times and adds them to a hashmap
         riderTime = MiscHandling.totalTimes(checkpointTimeArray);
         addRiderStageTime(riderID, riderTime);
+
+     * Reset the static ID counter
+     */
+    public static void resetStageIDCount()
+    {
+        nextStageID = 0;
+
     }
 }
+

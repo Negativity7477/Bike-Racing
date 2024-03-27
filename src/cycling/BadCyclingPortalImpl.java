@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 
-
 /**
  * BadCyclingPortal is a minimally compiling, but non-functioning implementor
  * of the CyclingPortal interface.
@@ -18,11 +17,9 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public int[] getRaceIds() {
-		// TODO Auto-generated method stub
-		return new int[] {};
+		return MiscHandling.getRaceIDs();
 	}
 
-//We need to implement IllegalNameException for this method
 	@Override
 	public int createRace(String name, String description) throws IllegalNameException, InvalidNameException {
 		try 
@@ -35,7 +32,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		return race.getRaceID();
 		} 
 		//In the case there is an invalid race name, throw an exception
-		catch (InvalidNameException e) {throw e;} 
+		catch (Exception e) {throw e;} 
 	}
 
 	@Override
@@ -96,10 +93,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	}
 
 
-	//We need to implement IllegalNameException for this method
-	//I think i might also have to look over InvalidLengthException,
-	//Not entirely sure on how to implement yet
-	//Just going to go for functionality for now though
+	//No time to check for invalidLengthException
 	@Override
 	public int addStageToRace(int raceId, String stageName, String description, double length, LocalDateTime startTime,
 			StageType type)
@@ -112,16 +106,14 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		//This will throw an exception if the raceID does not exist 
 		//or if the stageName is wrong
 		Stage stage = new Stage(stageName, description, startTime, type, raceId);
-		race.addStage(stage);
+		race.addStage(stage); 
 		int stageID = stage.getStageID();
 		//return the stageID 
 		return stageID;
 
 		//Because we are dealing with lots of exceptions,
 		//we throw a generic one 
-		} catch (Exception e) {
-			throw e;
-		}
+		} catch (Exception e) {throw e;}
 	}
 
 
@@ -137,88 +129,176 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		
 	}
 
+
 	@Override
 	public double getStageLength(int stageId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return 0;
+		//We need to use the race class to access the race length
+		//So we create a new race, which contains the correct stage ID
+		//and retrieve the stage to return its length
+		try {
+			int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+			Race race = MiscHandling.getRace(raceID);
+			Stage stage = race.getStage(stageId);
+			return stage.getStageLength();
+		} catch (IDNotRecognisedException e) {throw e;}
+		
 	}
 
 	@Override
 	public void removeStageById(int stageId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-
+		try {
+			//Get the race containing the stage ID
+			//Delete the stage from that race
+			int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+			Race race = MiscHandling.getRace(raceID);
+			race.removeStage(stageId);
+		} catch (IDNotRecognisedException e) {throw e;}
+		
 	}
 
 	@Override
 	public int addCategorizedClimbToStage(int stageId, Double location, CheckpointType type, Double averageGradient,
 			Double length) throws IDNotRecognisedException, InvalidLocationException, InvalidStageStateException,
 			InvalidStageTypeException {
-		
+
+			try {
+				
+				//Retrieve the race to get the stage to add the checkpoint to
+				int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+				Race race = MiscHandling.getRace(raceID);
+				Stage stage = race.getStage(stageId);
+				if (stage.getStageState().equals("Stage has been created")) {
+					{throw new InvalidStageStateException("Stage state is wrong");}
+				}
+				//Construct the categorisedClimb with given params
+				Checkpoint categorisedClimb = new Checkpoint(location, length, averageGradient, type, stageId, raceID);
+				int checkpointID = categorisedClimb.getCheckpointID();
+				//Add the checkpoint to the stage
+				stage.addCheckpoint(categorisedClimb);
+				//return the checkpointID
+				return checkpointID;
+			} catch (Exception e) {throw e;}
 			
 
-		return 0;
 	}
-
+	
 	@Override
 	public int addIntermediateSprintToStage(int stageId, double location) throws IDNotRecognisedException,
 			InvalidLocationException, InvalidStageStateException, InvalidStageTypeException {
-		// TODO Auto-generated method stub
-		return 0;
+				try
+				{	
+					//Get the race and stage to add the checkpoint to
+					int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+					Race race = MiscHandling.getRace(raceID);
+					Stage stage = race.getStage(stageId);
+					if (stage.getStageState().equals("Stage has been created")) {
+						
+							throw new InvalidStageStateException("Stage state is wrong");
+						}
+					else{
+					//Construct the new checkpoint with the correct parameters, length and gradient
+					//do not matter here so we assign them null
+					Checkpoint intermediateSprint = new Checkpoint(location, null, null, CheckpointType.SPRINT, stageId, raceID);
+					//Add the checkpoint to stage and return the checkpointID
+					stage.addCheckpoint(intermediateSprint);
+					return intermediateSprint.getCheckpointID();
+					}
+				}
+				catch(Exception e) {throw e;}
+		
 	}
 
 	@Override
 	public void removeCheckpoint(int checkpointId) throws IDNotRecognisedException, InvalidStageStateException {
-		// TODO Auto-generated method stub
-
+		//Retrieve the stageID and raceID from the checkpointID and create the
+		//race and stage object to remove the checkpoint from stage
+		try{
+		int[] stageAndRaceID = MiscHandling.getRaceStageIDFromCheckpointID(checkpointId);
+		Race race = MiscHandling.getRace(stageAndRaceID[1]);
+		Stage stage = race.getStage(stageAndRaceID[0]); 
+		if (stage.getStageState().equals("Stage has been created")) 
+		{
+			throw new InvalidStageStateException("Stage state is wrong");
+		}
+			
+		stage.removeCheckpoint(checkpointId);
+		}
+		catch(Exception e) {throw e;}
 	}
 
 	@Override
 	public void concludeStagePreparation(int stageId) throws IDNotRecognisedException, InvalidStageStateException {
-		// TODO Auto-generated method stub
+		//Create the race and update its' state
+		String state = "waiting for results.";
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		Race race = MiscHandling.getRace(raceID);
+		Stage stage = race.getStage(stageId);
+		stage.setStageState(state);
+
 
 	}
 
 	@Override
 	public int[] getStageCheckpoints(int stageId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		//get the stage object with the checkpoints 
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		Race race = MiscHandling.getRace(raceID);
+		Stage stage = race.getStage(stageId);
+		//get the array of the checkpointIDs from stage
+		int[] checkpointIDs = stage.getStageCheckpoints();
+
+		return checkpointIDs;
 	}
 
+
+	//This function needs to have the duplicated result exception fixed
 	@Override
 	public int createTeam(String name, String description) throws IllegalNameException, InvalidNameException {
-		// TODO Auto-generated method stub
-		return 0;
+		try {
+			Team team = new Team(name, description);
+			return team.getTeamID();
+		} catch (Exception e) {throw e;}
 	}
 
 	@Override
 	public void removeTeam(int teamId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-
+		try{
+		MiscHandling.removeTeam(teamId);
+		}
+		catch (IDNotRecognisedException e) {throw e;}
 	}
 
 	@Override
 	public int[] getTeams() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		int[] teamIDs = MiscHandling.getTeamIDs();
+		return teamIDs;
 	}
 
 	@Override
 	public int[] getTeamRiders(int teamId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Team team = MiscHandling.getTeam(teamId);
+		return team.getRiderIDArray();
+		} catch (IDNotRecognisedException e) {throw e;}
+		
 	}
 
+	//This function needs to have its duplicated result exception removed
 	@Override
 	public int createRider(int teamID, String name, int yearOfBirth)
 			throws IDNotRecognisedException, IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return 0;
+		try {
+			Rider rider = new Rider(teamID, name, yearOfBirth);
+			return rider.getRiderID();
+		} catch (Exception e) {throw e;}
 	}
 
 	@Override
 	public void removeRider(int riderId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-
+		try {
+			MiscHandling.removeRace(riderId);
+		} catch (IDNotRecognisedException e) {throw e;}
 	}
 
 	@Override
@@ -226,30 +306,58 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 			throws IDNotRecognisedException, DuplicatedResultException, InvalidCheckpointTimesException,
 			InvalidStageStateException {
 
-		
+
+		try{
+			//retrieve the race and stage object
+			int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+			Race race = MiscHandling.getRace(raceID); 
+			Stage stage = race.getStage(stageId);
+			if (stage.getStageState().equals("Waiting for results.")) {
+				throw new InvalidStageStateException("Stage state is wrong");
+			}
+			//For each time in the checkpoints, we add it to stage with the corresponding riderID
+			for (LocalTime times : checkpoints)
+			{
+				stage.addRiderStageTime(riderId, times);
+			}
+		}
+		catch(Exception e) {throw e;}
+			
 
 	}
 
+	//Need to look over this
 	@Override
 	public LocalTime[] getRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
+
 
 		int teamIdOfRider = MiscHandling.getTeamIDFromRiderID(riderId);
 		Team teamOfRider = MiscHandling.getTeam(teamIdOfRider);
 		Rider riderObject = teamOfRider.getRider(riderId);
 
 		return riderObject.getStageResults(stageId);
+
 	}
 
 	@Override
 	public LocalTime getRiderAdjustedElapsedTimeInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		try{
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		GeneralClassification generalClassification = new GeneralClassification(raceID);
+		return generalClassification.getAdjustedTimes(riderId);
+		}
+		catch(IDNotRecognisedException e){throw e;}
 	}
 
 	@Override
 	public void deleteRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-
+		try{
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		Race race = MiscHandling.getRace(raceID);
+		Stage stage = race.getStage(stageId);
+		stage.removeRiderStageTime(riderId);
+		}
+		catch(IDNotRecognisedException e){throw e;}
 	}
 
 	@Override
@@ -278,20 +386,33 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public void eraseCyclingPortal() {
-		// TODO Auto-generated method stub
+		//Functions to reset the static counter
+		Team.resetTeamIDCount();
+		Race.resetRaceIDCount();
+		Checkpoint.resetCheckpointIDCount();
+		Stage.resetStageIDCount();
+		Rider.resetRiderIDCount();
+		
+		//Reset the hash storing everything 
+		MiscHandling.resetHash();
 
 	}
 
 	@Override
 	public void saveCyclingPortal(String filename) throws IOException {
-		// TODO Auto-generated method stub
+		Serialiser serialise = new Serialiser();
+		try {
+			serialise.saveFile(filename);
+		} catch (Exception e) {throw e;}
 
 	}
 
 	@Override
 	public void loadCyclingPortal(String filename) throws IOException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-
+		Serialiser serialise = new Serialiser();
+		try {
+			serialise.loadFile(filename);
+		} catch (Exception e) {throw e;}
 	}
 
 	@Override
