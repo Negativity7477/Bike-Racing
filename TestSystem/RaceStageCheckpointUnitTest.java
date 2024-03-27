@@ -15,7 +15,7 @@ public static void main(String args[]) throws IDNotRecognisedException, InvalidN
         //Declare all classes for a test, do it outside a for loop because i think it makes it easier to test and more readable and it literally doesn't matter
         Race race = new Race("test_race", "a race to test functions"); //Race ID should be 0 i think
         //Race race2 = new Race("A second test race", "A race to test secondary functions"); //THis should cause error (white space in name) -- IVE RUN THIS, EXCEPTION IS THROWN
-        Race race3 = new Race("test_race", "the last testing");
+        Race race3 = new Race("test_races", "the last testing");
 
         Stage stage = new Stage("first_stage", "should be in race1", LocalDateTime.now(), StageType.HIGH_MOUNTAIN, 0);
         //Stage stage2 = new Stage("SHOULD THROW", "should throw error", LocalDateTime.now(), StageType.FLAT, 0); //Should throw invalid name
@@ -24,13 +24,13 @@ public static void main(String args[]) throws IDNotRecognisedException, InvalidN
         Stage stage4 = new Stage("Stage_in_race3", "first stage in race 3", LocalDateTime.now(), StageType.HIGH_MOUNTAIN, 1);
         Stage stage5 = new Stage("Last_Stage", "Last stage, in race 3", LocalDateTime.now(), StageType.TT, 1);
 
-        Checkpoint imSpr1 = new Checkpoint(2.1, null, null, CheckpointType.SPRINT, 0, 0);
-        Checkpoint CC1 = new Checkpoint(12.0, 3.4 , 12.0, CheckpointType.HC, 0, 0);
-        Checkpoint CC2 = new Checkpoint(1.2, 3.1415, 5.3, CheckpointType.C2, 1, 0);
+        Checkpoint imSpr1 = new Checkpoint(0.0, CheckpointType.SPRINT, 0, 0);
+        Checkpoint CC1 = new Checkpoint(0.0, 3.4 , 12.0, CheckpointType.HC, 0, 0);
+        Checkpoint CC2 = new Checkpoint(0.0, 3.1415, 5.3, CheckpointType.C2, 1, 0);
 
-        Checkpoint CC3 = new Checkpoint(12.3, 15.2, 1.2, CheckpointType.C3, 2, 1);
-        Checkpoint ImSpr2 = new Checkpoint(2.3, null, null, CheckpointType.SPRINT, 2, 1);
-        Checkpoint ImSpr3 = new Checkpoint(52.2, null, null, CheckpointType.SPRINT, 3, 1);
+        Checkpoint CC3 = new Checkpoint(0.0, 15.2, 1.2, CheckpointType.C3, 2, 1);
+        Checkpoint ImSpr2 = new Checkpoint(0.0, CheckpointType.SPRINT, 2, 1);
+        Checkpoint ImSpr3 = new Checkpoint(0.0,  CheckpointType.SPRINT, 3, 1);
 
 
         //Mischandling and race checks first

@@ -198,7 +198,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 					else{
 					//Construct the new checkpoint with the correct parameters, length and gradient
 					//do not matter here so we assign them null
-					Checkpoint intermediateSprint = new Checkpoint(location, null, null, CheckpointType.SPRINT, stageId, raceID);
+					Checkpoint intermediateSprint = new Checkpoint(location, CheckpointType.SPRINT, stageId, raceID);
 					//Add the checkpoint to stage and return the checkpointID
 					stage.addCheckpoint(intermediateSprint);
 					return intermediateSprint.getCheckpointID();
