@@ -17,7 +17,7 @@ public class MiscHandling{
      * 
      * @param teamObject The object to be added to the array
      * 
-     * @throws DuplicatedResultException If the object has already been added
+     * @throws IllegalNameException If the object's name is already used
      */
     public static void addTeam(Team teamObject) throws IllegalNameException {
 
@@ -246,7 +246,119 @@ public class MiscHandling{
                 }
             }
         }
-        throw new IDNotRecognisedException("checkpoitnID given is not recognised");
+        throw new IDNotRecognisedException("checkpointID given is not recognised");
+    }
+
+    /**
+     * Finds the team ID of a rider 
+     * @param riderID
+     * @return
+     * @throws IDNotRecognisedException
+     */
+    public static int getTeamIDFromRiderID(int riderID) throws IDNotRecognisedException {
+        for (Team teamObject : teamsHash.values()) {
+            for (int riderIDQuery : teamObject.getRiderIDArray()) {
+
+                if (riderID == riderIDQuery) {
+                    return teamObject.getTeamID();
+                }
+            }
+        }
+        throw new IDNotRecognisedException("riderID given is not recognised");
+    }
+
+    /**
+     * Converts localTime to a long in nanoseconds
+     * 
+     * @param timeObject the time to be converted
+     * @return represents the time in the parameter but in nanoseconds
+     */
+    public static long localTimeToLong(LocalTime timeObject) {
+
+        long nanoseconds = 0L;
+
+        nanoseconds += timeObject.getHour();
+        nanoseconds *= 60;
+        nanoseconds += timeObject.getMinute();
+        nanoseconds *= 60;
+        nanoseconds += timeObject.getSecond();
+        nanoseconds *= 1000000000L;
+        nanoseconds += timeObject.getNano();
+
+        return nanoseconds;
+    }
+
+    /**
+     * Converts nanoseconds to hours, minutes, seconds and nanoseconds in the form of an object
+     * 
+     * @param nanoseconds the nanoseconds to be converted
+     * @return object that represents the nanoseconds
+     */
+    public static LocalTime longToLocalTime(long nanoseconds) {
+
+        LocalTime totalTime = LocalTime.of(0, 0, 0, 0);
+        long modulo;
+
+        modulo = nanoseconds / 3600000000000L;
+        totalTime = totalTime.plusHours(modulo);
+        nanoseconds -= modulo * 3600000000000L;
+
+        modulo = nanoseconds / 60000000000L;
+        totalTime = totalTime.plusMinutes(modulo);
+        nanoseconds -= modulo * 60000000000L;
+
+        modulo = nanoseconds / 1000000000L;
+        totalTime = totalTime.plusSeconds(modulo);
+        nanoseconds -= modulo * 1000000000L;
+
+        totalTime = totalTime.plusNanos(nanoseconds);
+
+        return totalTime;
+    }
+
+    /**
+     * Getter for an array of all the riderIDs in the program
+     * @return
+     */
+    public static Rider[] getRiderArray() {
+
+        int numRiders = 0;
+        for (Team teamObject : teamsHash.values()) {
+            numRiders += teamObject.getTeamSize();
+        }
+
+        Rider[] riderArray = new Rider[numRiders];
+        int counter = 0;
+        for (Team teamObject : teamsHash.values()) {
+            for (int riderID : teamObject.getRiderIDArray()) {
+                riderArray[counter] = teamObject.getRider(riderID);
+                counter++;
+            }
+        }
+
+        return riderArray;
+    }
+
+    /**
+     * Finds the sum of times as a time
+     * 
+     * @param timesToTotal Array of localTimes to be summed
+     * @return the total time as one time
+     */
+    public static LocalTime totalTimes(LocalTime[] timesToTotal) {
+
+        long totalNanoTime = 0;
+        LocalTime totalTime;
+
+        // Converts and totals time in a long format
+        for (LocalTime timeObject : timesToTotal) {
+            totalNanoTime += localTimeToLong(timeObject);
+        }
+
+        // Converts back to LocalTime object
+        totalTime = longToLocalTime(totalNanoTime);
+
+        return totalTime;
     }
 
     /**

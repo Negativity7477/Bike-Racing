@@ -305,6 +305,8 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	public void registerRiderResultsInStage(int stageId, int riderId, LocalTime... checkpoints)
 			throws IDNotRecognisedException, DuplicatedResultException, InvalidCheckpointTimesException,
 			InvalidStageStateException {
+
+
 		try{
 			//retrieve the race and stage object
 			int raceID = MiscHandling.getRaceIDFromStageID(stageId);
@@ -327,12 +329,14 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	//Need to look over this
 	@Override
 	public LocalTime[] getRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		MiscHandling.getRaceIDFromStageID(stageId);
-		Race race = MiscHandling.getRace(riderId);
-		Stage stage = race.getStage(stageId);
 
 
-		return stage.getRiderStageTime(riderId);
+		int teamIdOfRider = MiscHandling.getTeamIDFromRiderID(riderId);
+		Team teamOfRider = MiscHandling.getTeam(teamIdOfRider);
+		Rider riderObject = teamOfRider.getRider(riderId);
+
+		return riderObject.getStageResults(stageId);
+
 	}
 
 	@Override

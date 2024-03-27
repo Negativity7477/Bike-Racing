@@ -84,6 +84,16 @@ public class Team {
     }
 
     /**
+     * Gets a rider object based on the ID provided
+     * 
+     * @param riderID ID of the rider wanted
+     * @return An object representing the rider with the specified ID given
+     */
+    public Rider getRider(int riderID) {
+        return ridersHash.get(riderID);
+    }
+
+    /**
      * Removes Rider object reference which then deletes the object
      * 
      * @param riderID The ID of the rider to be removed from the rider hash
