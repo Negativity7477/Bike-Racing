@@ -235,7 +235,7 @@ public class Stage {
      * @param riderTime - the time to add to the hash for this stage
      * Adds the time the rider got in this stage to the hashmap storing them
      */
-    private void addRiderStageTime(int riderID, LocalTime riderTime)
+    public void addRiderStageTime(int riderID, LocalTime riderTime)
     {
         riderTimesHash.put(riderID, riderTime);
     }
@@ -355,7 +355,9 @@ public class Stage {
         // Totals times and adds them to a hashmap
         riderTime = MiscHandling.totalTimes(checkpointTimeArray);
         addRiderStageTime(riderID, riderTime);
+    }
 
+        /**
      * Reset the static ID counter
      */
     public static void resetStageIDCount()

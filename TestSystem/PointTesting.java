@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import cycling.*;
 public class PointTesting {
     
-    public static void main(String[] args) throws IDNotRecognisedException, InvalidNameException, DuplicatedResultException
+    public static void main(String[] args) throws IDNotRecognisedException, InvalidNameException, DuplicatedResultException, IllegalNameException, InvalidLocationException
     {
           //Declare all classes for a test, do it outside a for loop because i think it makes it easier to test and more readable and it literally doesn't matter
         Race race = new Race("test_race", "a race to test functions"); //Race ID should be 0 i think

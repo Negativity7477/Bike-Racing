@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public class RaceStageCheckpointUnitTest {
 
-public static void main(String args[]) throws IDNotRecognisedException, InvalidNameException, IllegalNameException
+public static void main(String args[]) throws IDNotRecognisedException, InvalidNameException, IllegalNameException, InvalidLocationException
 {        
         
         //Declare all classes for a test, do it outside a for loop because i think it makes it easier to test and more readable and it literally doesn't matter
