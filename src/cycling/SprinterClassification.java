@@ -139,10 +139,10 @@ public class SprinterClassification {
                     return points;
             }
 
-            private int[] getRiders()
-            {
-                return ;
-            }
+           // private int[] getRiders()
+           // {
+           //     return ;
+           // }
 
 
 

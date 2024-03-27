@@ -30,13 +30,13 @@ public class Race {
                     }
             }
             catch(Exception e){}
-        this.stageIDHash = new HashMap<Integer, Stage>();
+        this.stageIDHashmap = new HashMap<Integer, Stage>();
         this.checkName(name);
         this.name = name;
         this.totalDistance = calculateDistance();
         this.description = description;
         this.numOfStages = stageIDHashmap.size();
-        this.raceID = nextRaceID++
+        this.raceID = nextRaceID++;
         MiscHandling.addRace(this);
         }
 
@@ -291,7 +291,7 @@ public class Race {
         riderTime = MiscHandling.totalTimes(stageTimeArray);
         addRiderRaceTime(riderID, riderTime);
     }
-
+/** 
      * Reset the static ID counter
      */
     public static void resetRaceIDCount()
