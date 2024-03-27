@@ -20,16 +20,24 @@ public class Race {
      * 
      * Constructor for race
      */
-    public Race(String name, String description) throws InvalidNameException
+    public Race(String name, String description) throws InvalidNameException, IllegalNameException
     {
         try{
+            try{
+                if (MiscHandling.getRaceIDFromName(name) > -99999)
+                    {
+                        throw new IllegalNameException("This name is taken");
+                    }
+            }
+            catch(Exception e){}
+        this.stageIDHash = new HashMap<Integer, Stage>();
         this.checkName(name);
         this.name = name;
         this.totalDistance = calculateDistance();
         this.description = description;
         this.numOfStages = stageIDHash.size();
         this.raceID = nextRaceID++;
-        this.stageIDHash = new HashMap<Integer, Stage>();
+        MiscHandling.addRace(this);
         }
 
         catch (InvalidNameException e) {throw e;}    
@@ -260,4 +268,13 @@ public class Race {
         riderTimesHash.remove(riderID);
     }
 
+    /**
+     * Reset the static ID counter
+     */
+    public static void resetRaceIDCount()
+    {
+        nextRaceID = 0;
+    }
+
+    
 }

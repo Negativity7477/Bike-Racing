@@ -79,7 +79,7 @@ public class SprinterClassification {
         {
             protected int stageID;
             protected int[] positionArray;
-            protected StageType stageType;
+            private StageType stageType;
             protected HashMap<Integer, Integer> pointsHash;
 
             /**

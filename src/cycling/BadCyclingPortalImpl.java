@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import org.omg.PortableServer.IdAssignmentPolicyValue;
-
-
 
 /**
  * BadCyclingPortal is a minimally compiling, but non-functioning implementor
@@ -20,11 +17,9 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public int[] getRaceIds() {
-		// TODO Auto-generated method stub
-		return new int[] {};
+		return MiscHandling.getRaceIDs();
 	}
 
-//We need to implement IllegalNameException for this method
 	@Override
 	public int createRace(String name, String description) throws IllegalNameException, InvalidNameException {
 		try 
@@ -32,12 +27,12 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		//Create a new race, an error will be thrown if the name is invalid or illegal
 		Race race = new Race(name, description);
 		//Add the race to the handling class at the top of the hierarchy
-		MiscHandling.add(race);
+		MiscHandling.addRace(race);
 		//return the ID of the race as the method requires
 		return race.getRaceID();
 		} 
 		//In the case there is an invalid race name, throw an exception
-		catch (InvalidNameException e) {throw e;} 
+		catch (Exception e) {throw e;} 
 	}
 
 	@Override
@@ -98,10 +93,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	}
 
 
-	//We need to implement IllegalNameException for this method
-	//I think i might also have to look over InvalidLengthException,
-	//Not entirely sure on how to implement yet
-	//Just going to go for functionality for now though
+	//No time to check for invalidLengthException
 	@Override
 	public int addStageToRace(int raceId, String stageName, String description, double length, LocalDateTime startTime,
 			StageType type)
@@ -114,7 +106,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		//This will throw an exception if the raceID does not exist 
 		//or if the stageName is wrong
 		Stage stage = new Stage(stageName, description, startTime, type, raceId);
-		race.addStage(stage);
+		race.addStage(stage); 
 		int stageID = stage.getStageID();
 		//return the stageID 
 		return stageID;
@@ -170,10 +162,14 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 			InvalidStageTypeException {
 
 			try {
+				
 				//Retrieve the race to get the stage to add the checkpoint to
 				int raceID = MiscHandling.getRaceIDFromStageID(stageId);
 				Race race = MiscHandling.getRace(raceID);
 				Stage stage = race.getStage(stageId);
+				if (stage.getStageState().equals("Stage has been created")) {
+					{throw new InvalidStageStateException("Stage state is wrong");}
+				}
 				//Construct the categorisedClimb with given params
 				Checkpoint categorisedClimb = new Checkpoint(location, length, averageGradient, type, stageId, raceID);
 				int checkpointID = categorisedClimb.getCheckpointID();
@@ -185,7 +181,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 			
 
 	}
-
+	
 	@Override
 	public int addIntermediateSprintToStage(int stageId, double location) throws IDNotRecognisedException,
 			InvalidLocationException, InvalidStageStateException, InvalidStageTypeException {
@@ -195,12 +191,18 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 					int raceID = MiscHandling.getRaceIDFromStageID(stageId);
 					Race race = MiscHandling.getRace(raceID);
 					Stage stage = race.getStage(stageId);
+					if (stage.getStageState().equals("Stage has been created")) {
+						
+							throw new InvalidStageStateException("Stage state is wrong");
+						}
+					else{
 					//Construct the new checkpoint with the correct parameters, length and gradient
 					//do not matter here so we assign them null
 					Checkpoint intermediateSprint = new Checkpoint(location, null, null, CheckpointType.SPRINT, stageId, raceID);
 					//Add the checkpoint to stage and return the checkpointID
 					stage.addCheckpoint(intermediateSprint);
 					return intermediateSprint.getCheckpointID();
+					}
 				}
 				catch(Exception e) {throw e;}
 		
@@ -210,10 +212,18 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	public void removeCheckpoint(int checkpointId) throws IDNotRecognisedException, InvalidStageStateException {
 		//Retrieve the stageID and raceID from the checkpointID and create the
 		//race and stage object to remove the checkpoint from stage
-		int[] stageAndRaceID = MiscHandling.getStageIDFromCheckpointID(checkpointId);
+		try{
+		int[] stageAndRaceID = MiscHandling.getRaceStageIDFromCheckpointID(checkpointId);
 		Race race = MiscHandling.getRace(stageAndRaceID[1]);
-		Stage stage = race.getStage(stageAndRaceID[0]);
+		Stage stage = race.getStage(stageAndRaceID[0]); 
+		if (stage.getStageState().equals("Stage has been created")) 
+		{
+			throw new InvalidStageStateException("Stage state is wrong");
+		}
+			
 		stage.removeCheckpoint(checkpointId);
+		}
+		catch(Exception e) {throw e;}
 	}
 
 	@Override
@@ -295,40 +305,55 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	public void registerRiderResultsInStage(int stageId, int riderId, LocalTime... checkpoints)
 			throws IDNotRecognisedException, DuplicatedResultException, InvalidCheckpointTimesException,
 			InvalidStageStateException {
-		
+		try{
 			//retrieve the race and stage object
 			int raceID = MiscHandling.getRaceIDFromStageID(stageId);
 			Race race = MiscHandling.getRace(raceID); 
 			Stage stage = race.getStage(stageId);
+			if (stage.getStageState().equals("Waiting for results.")) {
+				throw new InvalidStageStateException("Stage state is wrong");
+			}
 			//For each time in the checkpoints, we add it to stage with the corresponding riderID
 			for (LocalTime times : checkpoints)
 			{
 				stage.addRiderStageTime(riderId, times);
 			}
+		}
+		catch(Exception e) {throw e;}
 			
 
 	}
 
+	//Need to look over this
 	@Override
 	public LocalTime[] getRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		
 		MiscHandling.getRaceIDFromStageID(stageId);
 		Race race = MiscHandling.getRace(riderId);
 		Stage stage = race.getStage(stageId);
+
 
 		return stage.getRiderStageTime(riderId);
 	}
 
 	@Override
 	public LocalTime getRiderAdjustedElapsedTimeInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		try{
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		GeneralClassification generalClassification = new GeneralClassification(raceID);
+		return generalClassification.getAdjustedTimes(riderId);
+		}
+		catch(IDNotRecognisedException e){throw e;}
 	}
 
 	@Override
 	public void deleteRiderResultsInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-
+		try{
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		Race race = MiscHandling.getRace(raceID);
+		Stage stage = race.getStage(stageId);
+		stage.removeRiderStageTime(riderId);
+		}
+		catch(IDNotRecognisedException e){throw e;}
 	}
 
 	@Override
@@ -357,20 +382,33 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public void eraseCyclingPortal() {
-		// TODO Auto-generated method stub
+		//Functions to reset the static counter
+		Team.resetTeamIDCount();
+		Race.resetRaceIDCount();
+		Checkpoint.resetCheckpointIDCount();
+		Stage.resetStageIDCount();
+		Rider.resetRiderIDCount();
+		
+		//Reset the hash storing everything 
+		MiscHandling.resetHash();
 
 	}
 
 	@Override
 	public void saveCyclingPortal(String filename) throws IOException {
-		// TODO Auto-generated method stub
+		Serialiser serialise = new Serialiser();
+		try {
+			serialise.saveFile(filename);
+		} catch (Exception e) {throw e;}
 
 	}
 
 	@Override
 	public void loadCyclingPortal(String filename) throws IOException, ClassNotFoundException {
-		// TODO Auto-generated method stub
-
+		Serialiser serialise = new Serialiser();
+		try {
+			serialise.loadFile(filename);
+		} catch (Exception e) {throw e;}
 	}
 
 	@Override

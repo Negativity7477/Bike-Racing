@@ -23,8 +23,9 @@ public class Checkpoint
      * 
      * Constructor 
      */
-    public Checkpoint(Double location, Double length, Double averageGradient, CheckpointType checkpointType, int stageID, int raceID) throws IDNotRecognisedException
+    public Checkpoint(Double location, Double length, Double averageGradient, CheckpointType checkpointType, int stageID, int raceID) throws IDNotRecognisedException, InvalidLocationException
     {
+        try{
             this.checkpointID = nextCheckpointID++;
             this.location = location;
             this.length = length;
@@ -32,15 +33,22 @@ public class Checkpoint
             this.type = checkpointType;
             this.stageID = stageID;
             this.raceID = raceID;
-        
-
             //We can get the race object for finding which stage this checkpoint
             //should be added to by using our static class that acts as a top level
             Race race = MiscHandling.getRace(raceID);
             //We need the stage object from the correct race fed into the constructor
             Stage stage = race.getStage(stageID);
+
+            //Check that the location is not > stage length
+            Double stageLength = stage.getStageLength();
+            if (location > stageID) 
+            {
+                throw new InvalidLocationException("Location cannot be greater than stage length");
+            }
             //Now we can add this checkpoint to the stage
             stage.addCheckpoint(this);
+        }
+        catch(Exception e) {throw e;}
     
 
     }
@@ -159,4 +167,11 @@ public class Checkpoint
         riderTimesHash.remove(riderID);
     }
 
+    /**
+     * Reset the static ID counter
+     */
+    public static void resetCheckpointIDCount()
+    {
+        nextCheckpointID = 0;
+    }
 }
