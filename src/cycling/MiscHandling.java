@@ -320,6 +320,12 @@ public class MiscHandling {
         return riderArray;
     }
 
+    /**
+     * Finds the sum of times as a time
+     * 
+     * @param timesToTotal Array of localTimes to be summed
+     * @return the total time as one time
+     */
     public static LocalTime totalTimes(LocalTime[] timesToTotal) {
 
         long totalNanoTime = 0;

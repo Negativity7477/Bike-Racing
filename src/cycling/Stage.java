@@ -16,6 +16,7 @@ public class Stage {
     private static int nextStageID = 0;
     private int raceID;
     private HashMap<Integer, LocalTime> riderTimesHash;
+
     
 
     /**
@@ -209,7 +210,7 @@ public class Stage {
      * @param riderTime - the time to add to the hash for this stage
      * Adds the time the rider got in this stage to the hashmap storing them
      */
-    public void addRiderStageTime(int riderID, LocalTime riderTime)
+    private void addRiderStageTime(int riderID, LocalTime riderTime)
     {
         riderTimesHash.put(riderID, riderTime);
     }
@@ -254,8 +255,7 @@ public class Stage {
 
         // Creates an array of checkpoints in the stage
         for (Checkpoint checkpointObject : checkpointIDHashMap.values()) {
-            orderedArray[counter] = checkpointObject;
-            counter++;
+            orderedArray[counter++] = checkpointObject;
         }
 
         // Bubble sort implementation
@@ -297,5 +297,28 @@ public class Stage {
                 checkpointArray[i].addRiderCheckpointTime(riderObject.getRiderID(), riderTimeArray[i]);
             }
         }
+    }
+
+    /**
+     * Adds up the checkpoint times for a stage for a specified rider
+     * and then puts them in a hashmap
+     * 
+     * @param riderID ID of the rider 
+     */
+    public void setRiderStageTime(int riderID) {
+
+        int numCheckpoints = checkpointIDHashMap.size();
+        LocalTime[] checkpointTimeArray = new LocalTime[numCheckpoints];
+        LocalTime riderTime;
+        int counter = 0;
+
+        // Loops through all checkpoints in the stage and collects the rider's times
+        for (Checkpoint checkpointObject : checkpointIDHashMap.values()) {
+            checkpointTimeArray[counter++] = checkpointObject.getRiderCheckpointTime(riderID);
+        }
+
+        // Totals times and adds them to a hashmap
+        riderTime = MiscHandling.totalTimes(checkpointTimeArray);
+        addRiderStageTime(riderID, riderTime);
     }
 }

@@ -10,7 +10,7 @@ public class Race {
     private String name;
     private String description;
     private static int nextRaceID = 0; 
-    private HashMap<Integer, Stage> stageIDHash;
+    private HashMap<Integer, Stage> stageIDHashmap;
     private HashMap<Integer, LocalTime> riderTimesHash;
 
     /**
@@ -27,9 +27,9 @@ public class Race {
         this.name = name;
         this.totalDistance = calculateDistance();
         this.description = description;
-        this.numOfStages = stageIDHash.size();
+        this.numOfStages = stageIDHashmap.size();
         this.raceID = nextRaceID++;
-        this.stageIDHash = new HashMap<Integer, Stage>();
+        this.stageIDHashmap = new HashMap<Integer, Stage>();
         }
 
         catch (InvalidNameException e) {throw e;}    
@@ -103,7 +103,7 @@ public class Race {
     public void addStage(Stage stage)
     {
         int stageID = stage.getStageID();
-        stageIDHash.put(stageID, stage);
+        stageIDHashmap.put(stageID, stage);
     }
 
     /**
@@ -117,7 +117,7 @@ public class Race {
         int position = 0;
 
         // Loops through hash table and adds all stage IDs to an array
-        for (Integer stageID : stageIDHash.keySet()) {
+        for (Integer stageID : stageIDHashmap.keySet()) {
             allStageIDs[position++] = stageID;
         }
         
@@ -131,9 +131,9 @@ public class Race {
      */
     public void removeStage(int stageID) throws IDNotRecognisedException
     {
-        if(stageIDHash.containsKey(stageID))
+        if(stageIDHashmap.containsKey(stageID))
         {
-            stageIDHash.remove(stageID);
+            stageIDHashmap.remove(stageID);
         }
         else
         {
@@ -151,7 +151,7 @@ public class Race {
      */
     public Stage getStage(int stageID) throws IDNotRecognisedException
     {
-        Stage stageObject = stageIDHash.get(stageID);
+        Stage stageObject = stageIDHashmap.get(stageID);
         if (stageObject == null) {
             throw new IDNotRecognisedException("The stage requested is not in the hashmap");
         }
@@ -211,10 +211,10 @@ public class Race {
      */
     private Stage[] returnAllStages()
     {
-        Stage[] allStages = new Stage[stageIDHash.size()];
+        Stage[] allStages = new Stage[stageIDHashmap.size()];
         int position = 0;
 
-        for (Stage stage : stageIDHash.values())
+        for (Stage stage : stageIDHashmap.values())
         {
             allStages[position++] = stage;
         }
@@ -258,6 +258,29 @@ public class Race {
     public void removeRiderRaceTime(int riderID)
     {
         riderTimesHash.remove(riderID);
+    }
+
+    /**
+     * Adds up the stage times for a race for a specified rider
+     * and then puts them in a hashmap
+     * 
+     * @param riderID ID of the rider 
+     */
+    public void setRiderRaceTime(int riderID) {
+
+        int numStages = stageIDHashmap.size();
+        LocalTime[] stageTimeArray = new LocalTime[numStages];
+        LocalTime riderTime;
+        int counter = 0;
+
+        // Loops through all checkpoints in the stage and collects the rider's times
+        for (Stage stageObject : stageIDHashmap.values()) {
+            stageTimeArray[counter++] = stageObject.getRiderStageTime(riderID);
+        }
+
+        // Totals times and adds them to a hashmap
+        riderTime = MiscHandling.totalTimes(stageTimeArray);
+        addRiderRaceTime(riderID, riderTime);
     }
 
 }
