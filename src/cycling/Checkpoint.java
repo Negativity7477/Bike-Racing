@@ -57,6 +57,22 @@ public class Checkpoint
 
     /**
      * 
+     * @param location
+     * @param checkpointType
+     * @param stageID
+     * @param raceID
+     * @throws IDNotRecognisedException
+     * @throws InvalidLocationException
+     * 
+     * Another constructor for intermediate sprint, calls the main constructor but with 0 for length and gradient
+     */
+    public Checkpoint(Double location, CheckpointType checkpointType, int stageID, int raceID) throws IDNotRecognisedException, InvalidLocationException
+    {
+        this(location, 0.0, 0.0, checkpointType, stageID, raceID);
+    }
+
+    /**
+     * 
      * @return - Unique identifier of checkpoint
      * Getter for indentifier
      */

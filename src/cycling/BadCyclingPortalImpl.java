@@ -185,32 +185,30 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	}
 	
 	@Override
-	public int addIntermediateSprintToStage(int stageId, double location) throws IDNotRecognisedException,
-			InvalidLocationException, InvalidStageStateException, InvalidStageTypeException {
-				try
-				{	
-					//Get the race and stage to add the checkpoint to
-					int raceID = MiscHandling.getRaceIDFromStageID(stageId);
-					Race race = MiscHandling.getRace(raceID);
-					Stage stage = race.getStage(stageId);
-					if (stage.getStageState().equals("Stage has been created")) {
-						
-							throw new InvalidStageStateException("Stage state is wrong");
-						}
-					else{
-					//Construct the new checkpoint with the correct parameters, length and gradient
-					//do not matter here so we assign them null
-					Checkpoint intermediateSprint = new Checkpoint(location, null, null, CheckpointType.SPRINT, stageId, raceID);
-					//Add the checkpoint to stage and return the checkpointID
-					stage.addCheckpoint(intermediateSprint);
-					return intermediateSprint.getCheckpointID();
-					}
-				}
-				catch(Exception e) {throw e;}
-		
-	}
-
-	@Override
+    public int addIntermediateSprintToStage(int stageId, double location) throws IDNotRecognisedException,
+            InvalidLocationException, InvalidStageStateException, InvalidStageTypeException {
+                try
+                {    
+                    //Get the race and stage to add the checkpoint to
+                    int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+                    Race race = MiscHandling.getRace(raceID);
+                    Stage stage = race.getStage(stageId);
+                    if (stage.getStageState().equals("Stage has been created")) {
+                        
+                            throw new InvalidStageStateException("Stage state is wrong");
+                        }
+                    else{
+                    //Construct the new checkpoint with the correct parameters, length and gradient
+                    //do not matter here so we assign them null
+                    Checkpoint intermediateSprint = new Checkpoint(location, CheckpointType.SPRINT, stageId, raceID);
+                    //Add the checkpoint to stage and return the checkpointID
+                    stage.addCheckpoint(intermediateSprint);
+                    return intermediateSprint.getCheckpointID();
+                    }
+                }
+                catch(Exception e) {throw e;}
+        
+    }
 	public void removeCheckpoint(int checkpointId) throws IDNotRecognisedException, InvalidStageStateException {
 		//Retrieve the stageID and raceID from the checkpointID and create the
 		//race and stage object to remove the checkpoint from stage
