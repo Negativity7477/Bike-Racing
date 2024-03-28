@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import cycling.SprinterClassification.PointHandling;
+
 
 /**
  * BadCyclingPortal is a minimally compiling, but non-functioning implementor
@@ -347,8 +349,12 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 	// Needs looking at
 	@Override
 	public LocalTime getRiderAdjustedElapsedTimeInStage(int stageId, int riderId) throws IDNotRecognisedException {
-		
-		
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		SprinterClassification sc = new SprinterClassification(raceID);
+		PointHandling stageToAdjust = sc.new PointHandling(raceID, stageId);
+		stageToAdjust.rankRiders();
+		stageToAdjust.adjustTimes();
+		return stageToAdjust.getAdjustedTimes(riderId);
 		
 	}
 
@@ -359,19 +365,32 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 		Race race = MiscHandling.getRace(raceID);
 		Stage stage = race.getStage(stageId);
 		stage.removeRiderStageTime(riderId);
+
+		int teamID = MiscHandling.getTeamIDFromRiderID(riderId);
+		Team teamObject = MiscHandling.getTeam(teamID);
+		Rider riderObject = teamObject.getRider(riderId);
+		riderObject.removeStageCheckpointTimes(stageId);
+
 		}
 		catch(IDNotRecognisedException e){throw e;}
 	}
 
 	@Override
 	public int[] getRidersRankInStage(int stageId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		SprinterClassification sc = new SprinterClassification(raceID);
+		PointHandling stageToAdjust = sc.new PointHandling(raceID, stageId);
+		stageToAdjust.rankRiders();
+		return stageToAdjust.getRankedRiderArray();
 	}
 
 	@Override
 	public LocalTime[] getRankedAdjustedElapsedTimesInStage(int stageId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		SprinterClassification sc = new SprinterClassification(raceID);
+		PointHandling stageToAdjust = sc.new PointHandling(raceID, stageId);
+		stageToAdjust.rankRiders();
+		stageToAdjust.adjustTimes();
 		return null;
 	}
 

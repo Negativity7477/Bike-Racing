@@ -253,6 +253,18 @@ public class Stage {
         return riderTime;
     }
 
+    public int[] getRiderIDsInStage() {
+
+        int[] riderIDArray = new int[riderTimesHash.size()];
+
+        int position = 0;
+        for (int riderID : riderTimesHash.keySet()) {
+            riderIDArray[position++] = riderID;
+        }
+
+        return riderIDArray;
+    }
+
 
     /**
      * 

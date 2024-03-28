@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class SprinterClassification {
     
     protected int raceID;
-    protected HashMap<Integer, Integer> riderPointsHash;;
+    protected HashMap<Integer, Integer> riderPointsHash;
     protected int[] ridersRanked;
     protected HashMap<Integer, PointHandling> stageLevelHash;
 
@@ -110,7 +110,13 @@ public class SprinterClassification {
             {
                 Race raceObject = MiscHandling.getRace(raceID);
                 Stage stageObject = raceObject.getStage(stageID);
-                
+                int[] riderArray = stageObject.getRiderIDsInStage();
+
+                rankedArray = new LocalTime[riderArray.length];
+                int position = 0;
+                for (int riderID : riderArray) {
+                    rankedArray[position++] = stageObject.getRiderStageTime(riderID);
+                }
             }
 
             public void calculatePoints()

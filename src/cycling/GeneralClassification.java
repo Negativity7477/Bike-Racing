@@ -19,6 +19,9 @@ public class GeneralClassification {
         //left blank for now
     }
 
+    public int[] getRankedRiderArray() {
+        return riderArray;
+    }
 
     /**
      * 
