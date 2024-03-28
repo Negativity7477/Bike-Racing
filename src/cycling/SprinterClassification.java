@@ -104,6 +104,15 @@ public class SprinterClassification {
             
             }
 
+                    
+            @Override
+            public void setRiderTimes() throws IDNotRecognisedException
+            {
+                Race raceObject = MiscHandling.getRace(raceID);
+                Stage stageObject = raceObject.getStage(stageID);
+                
+            }
+
             public void calculatePoints()
             {
 

@@ -8,7 +8,6 @@ public class Rider {
     // Hash of stageIDs to 1 or more checkpoint finishing times
     private HashMap<Integer, LocalTime[]> checkpointTimeHash;
     private int riderID;
-    private int teamID;
     private String name;
     private int yearOfBirth;
     private static int nextRiderID = 0;
@@ -34,8 +33,24 @@ public class Rider {
      *                                   for the rider being queried. The data for the
      *                                   stage is replaced anyway.
      */
-    public void addResults(int stageID, LocalTime... results) {
-        checkpointTimeHash.put(stageID, results);
+    public void addResults(int stageID, LocalTime[] results) {
+
+        LocalTime startTime = results[0];
+        LocalTime[] editedResults = new LocalTime[results.length - 1];
+        long longStartTime = MiscHandling.localTimeToLong(startTime);
+        long timeToElapse;
+
+        // Loops through all times except the start and end
+        for (int i=1; i<results.length-1; i++) {
+            editedResults[i-1] = results[i];
+        }
+
+        // Adds the elapsed finish time for stage
+        timeToElapse = MiscHandling.localTimeToLong(results[results.length-1]);
+        timeToElapse -= longStartTime;
+        editedResults[editedResults.length-1] = MiscHandling.longToLocalTime(timeToElapse);
+
+        checkpointTimeHash.put(stageID, editedResults);
     }
 
     /**
@@ -114,7 +129,6 @@ public class Rider {
 
         // Increments value with every new object so that each ID is unique
         this.riderID = nextRiderID++;
-        this.teamID = teamID;
         this.name = name;
         this.yearOfBirth = yearOfBirth;
         this.checkpointTimeHash = new HashMap<Integer, LocalTime[]>();

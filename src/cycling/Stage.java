@@ -118,7 +118,6 @@ public class Stage {
      */
     public void addCheckpoint(Checkpoint checkpoint) 
     {
-        int checkpointID = checkpoint.getCheckpointID();
         addCheckpointToHash(checkpoint);      
     }
 
@@ -313,6 +312,8 @@ public class Stage {
         Rider[] riderArray = MiscHandling.getRiderArray();
         Checkpoint[] checkpointArray = getOrderedCheckpointArray();
         LocalTime[] riderTimeArray;
+        long elapsedTime;
+        long previousTime = 0;
 
         // Loops through all riders in the program
         for (Rider riderObject : riderArray) {
@@ -323,14 +324,19 @@ public class Stage {
             } catch(Exception e) {throw e;}
 
             // Checks if the rider's results will match with the checkpoints given to this stage
-            if (numCheckpoints != checkpointArray.length) {
+            if (numCheckpoints != checkpointArray.length-1) {
                 throw new InvalidCheckpointTimesException("The number of checkpoint times given to a rider does not match the number of checkpoints in the stage");
             }
 
             // Adds the rider's times to the checkpoints in this stage
-            for (int i=0; i<numCheckpoints; i++) {
-                checkpointArray[i].addRiderCheckpointTime(riderObject.getRiderID(), riderTimeArray[i]);
-            }
+            for (int i=0; i<numCheckpoints-1; i++) {
+                elapsedTime = MiscHandling.localTimeToLong(riderTimeArray[i]) - previousTime;
+                checkpointArray[i].addRiderCheckpointTime(riderObject.getRiderID(), MiscHandling.longToLocalTime(elapsedTime));
+                previousTime = MiscHandling.localTimeToLong(riderTimeArray[i]);
+            }   
+
+            // Adds the rider's stage time
+            addRiderStageTime(riderObject.getRiderID(), riderTimeArray[riderTimeArray.length-1]);
         }
     }
 

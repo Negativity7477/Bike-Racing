@@ -14,7 +14,7 @@ public class GeneralClassification {
         this.riderArray = null; // MiscHandling.getRiderArray();
     }
 
-    public void setRiderTimes()
+    public void setRiderTimes() throws IDNotRecognisedException
     {
         //left blank for now
     }
