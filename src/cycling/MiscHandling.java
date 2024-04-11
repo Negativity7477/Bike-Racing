@@ -317,7 +317,7 @@ public class MiscHandling{
     }
 
     /**
-     * Getter for an array of all the riderIDs in the program
+     * Getter for an array of all the rider objects in the program
      * @return
      */
     public static Rider[] getRiderArray() {
@@ -332,6 +332,29 @@ public class MiscHandling{
         for (Team teamObject : teamsHash.values()) {
             for (int riderID : teamObject.getRiderIDArray()) {
                 riderArray[counter] = teamObject.getRider(riderID);
+                counter++;
+            }
+        }
+
+        return riderArray;
+    }
+
+    /**
+     * Getter for an array of all the riderIDs in the program
+     * @return
+     */
+    public static int[] getRiderIDArray() {
+
+        int numRiders = 0;
+        for (Team teamObject : teamsHash.values()) {
+            numRiders += teamObject.getTeamSize();
+        }
+
+        int[] riderArray = new int[numRiders];
+        int counter = 0;
+        for (Team teamObject : teamsHash.values()) {
+            for (int riderID : teamObject.getRiderIDArray()) {
+                riderArray[counter] = riderID;
                 counter++;
             }
         }

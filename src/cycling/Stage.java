@@ -383,5 +383,26 @@ public class Stage {
         nextStageID = 0;
 
     }
+
+    /**
+     * Checks a stage for an intermediate sprint checkpoint as intermediate sprint 
+     * is used in calculating sprinter classification points
+     * 
+     * @return An object representing the intermediate sprint checkpoint,
+     *         if there isn't one in the stage then null is returned
+     */
+    public Checkpoint findIntermediateSprint() {
+
+        Checkpoint intermediateSprint = null;
+
+        // Loops through all checkpoints in the stage
+        for (Checkpoint checkpointObject : checkpointIDHashMap.values()) {
+            if (checkpointObject.getCheckpointType() == CheckpointType.SPRINT) {
+                intermediateSprint = checkpointObject;
+            }
+        }
+
+        return intermediateSprint;
+    }
 }
 

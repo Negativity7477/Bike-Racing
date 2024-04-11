@@ -11,12 +11,17 @@ public class GeneralClassification {
     public GeneralClassification(int raceID)
     {
         this.raceID = raceID;
-        this.riderArray = null; // MiscHandling.getRiderArray();
+        this.riderArray = MiscHandling.getRiderIDArray();
+        this.rankedArray = new LocalTime[riderArray.length];
     }
 
     public void setRiderTimes() throws IDNotRecognisedException
     {
-        //left blank for now
+        Race raceObject = MiscHandling.getRace(raceID);
+        int index = 0;
+        for (int riderID : riderArray) {
+            rankedArray[index++] = raceObject.getRiderRaceTime(riderID);
+        }
     }
 
     public int[] getRankedRiderArray() {
@@ -24,6 +29,7 @@ public class GeneralClassification {
     }
 
     /**
+     * THIS IS NOT WORKING HOW I WOULD LIEK IT TO
      * 
      * @return - An array of riderTimes from the fastest time to the slowest
      * 

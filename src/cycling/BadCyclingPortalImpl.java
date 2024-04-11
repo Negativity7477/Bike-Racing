@@ -394,8 +394,21 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public int[] getRidersPointsInStage(int stageId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+
+		int raceID = MiscHandling.getRaceIDFromStageID(stageId);
+		SprinterClassification sprint = new SprinterClassification(raceID);
+		PointHandling stageRanking = sprint.new PointHandling(raceID, stageId);
+
+		stageRanking.setRiderTimes();
+		stageRanking.distributePoints();
+
+		int[] riderIDArray = getRidersRankInStage(stageId);
+		int[] pointArray = new int[riderIDArray.length];
+		for (int i = 0; i < riderIDArray.length-1; i++) {
+			pointArray[i] = sprint.getRiderPoints(riderIDArray[i]);
+		}
+
+		return pointArray;
 	}
 
 	@Override
@@ -406,7 +419,7 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public void eraseCyclingPortal() {
-		//Functions to reset the static counter
+		//Functions to reset the static counters
 		Team.resetTeamIDCount();
 		Race.resetRaceIDCount();
 		Checkpoint.resetCheckpointIDCount();
@@ -437,20 +450,51 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public void removeRaceByName(String name) throws NameNotRecognisedException {
-		// TODO Auto-generated method stub
+		
+		int raceID;
 
+		try {
+		raceID = MiscHandling.getRaceIDFromName(name);
+		MiscHandling.removeRace(raceID);
+		} catch(Exception e) {throw new NameNotRecognisedException();}
 	}
 
 	@Override
 	public LocalTime[] getGeneralClassificationTimesInRace(int raceId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Race raceObject = MiscHandling.getRace(raceId);
+		int[] riderIDArray = getRidersGeneralClassificationRank(raceId);
+		LocalTime[] timeArray = new LocalTime[riderIDArray.length];
+		for (int i = 0; i < riderIDArray.length-1; i++) {
+			timeArray[i] = raceObject.getRiderRaceTime(riderIDArray[i]);
+		}
+
+		return timeArray;
 	}
 
 	@Override
 	public int[] getRidersPointsInRace(int raceId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+
+		SprinterClassification sprint = new SprinterClassification(raceId);
+		Race raceObject = MiscHandling.getRace(raceId);
+		int[] stageIDArray = raceObject.getRaceStages();
+		PointHandling stageRanking;
+
+		// Calculates points for all stages
+		for (int stageID : stageIDArray) {
+			stageRanking = sprint.new PointHandling(raceId, stageID);
+			stageRanking.setRiderTimes();
+			stageRanking.distributePoints();
+		}
+
+		// Ordering the points to fit the function's format
+		int[] riderIDArray = getRidersGeneralClassificationRank(raceId);
+		int[] pointArray = new int[riderIDArray.length];
+		for (int i = 0; i < riderIDArray.length-1; i++) {
+			pointArray[i] = sprint.getRiderPoints(riderIDArray[i]);
+		}
+
+		return pointArray;
 	}
 
 	@Override
@@ -461,14 +505,65 @@ public class BadCyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public int[] getRidersGeneralClassificationRank(int raceId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		Race raceObject = MiscHandling.getRace(raceId);
+		int[] riderIDArray = MiscHandling.getRiderIDArray();
+
+		for (int riderID : riderIDArray) {
+			raceObject.setRiderRaceTime(riderID);
+		}
+
+		GeneralClassification raceRanking = new GeneralClassification(raceId);
+		raceRanking.setRiderTimes();
+		raceRanking.rankRiders();
+		riderIDArray = raceRanking.getRankedRiderArray();
+
+		return riderIDArray;
 	}
 
 	@Override
 	public int[] getRidersPointClassificationRank(int raceId) throws IDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		SprinterClassification sprint = new SprinterClassification(raceId);
+		Race raceObject = MiscHandling.getRace(raceId);
+		int[] stageIDArray = raceObject.getRaceStages();
+		PointHandling stageRanking;
+
+		// Calculates points for all stages
+		for (int stageID : stageIDArray) {
+			stageRanking = sprint.new PointHandling(raceId, stageID);
+			stageRanking.setRiderTimes();
+			stageRanking.distributePoints();
+		}
+
+		// Getting an array of riders and an array of points
+		int[] riderIDArray = sprint.getRidersRanked();
+		int[] pointArray = new int[riderIDArray.length];
+		int position = 0;
+		for (int riderID : riderIDArray) {
+			pointArray[position++] = sprint.getRiderPoints(riderID);
+		}
+
+		// Bubble sort on the points array with the rider ID array following along
+		int IDPlaceholder;
+		int pointPlaceholder;
+		for (int i = 0; i < riderIDArray.length-1; i++) {
+			for (int k = 0; k < riderIDArray.length-2; k++) {
+				
+				if (pointArray[k] > pointArray[k+1]) {
+
+					IDPlaceholder = riderIDArray[k+1];
+					pointPlaceholder = pointArray[k+1];
+
+					riderIDArray[k+1] = riderIDArray[k];
+					pointArray[k+1] = pointArray[k];
+
+					riderIDArray[k] = IDPlaceholder;
+					pointArray[k] = pointPlaceholder;
+				}
+			}
+		}
+
+		return riderIDArray;
 	}
 
 	@Override
