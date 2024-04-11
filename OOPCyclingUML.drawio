@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-11T08:10:52.384Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="tMR8dSsTUGhIPB6MpF2_" version="24.2.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-11T08:14:20.325Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="3pnSFJbIrXvSsfoESxc-" version="24.2.2" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
     <mxGraphModel dx="363" dy="1661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -112,7 +112,7 @@
           <mxGeometry y="150" width="315" height="140" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-35" value="Team" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
-          <mxGeometry x="2960" y="-310" width="220" height="230" as="geometry" />
+          <mxGeometry x="2950" y="-420" width="220" height="360" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-36" value="-teamID : int&lt;br&gt;-name : String&lt;br&gt;-description : String&lt;br&gt;-ridersHash : HashMap (int : Rider)&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="tfRxmP2xf75DcZiXR_N0-35" vertex="1">
           <mxGeometry y="26" width="220" height="104" as="geometry" />
@@ -120,8 +120,8 @@
         <mxCell id="tfRxmP2xf75DcZiXR_N0-37" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="tfRxmP2xf75DcZiXR_N0-35" vertex="1">
           <mxGeometry y="130" width="220" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-38" value="+Team(String, String) : void&lt;div&gt;+getTeamID() : int&lt;br&gt;+getRiderIDArray : int array&lt;br&gt;+addRider(Rider) : void&lt;br&gt;+deleteRider(int) : void&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="tfRxmP2xf75DcZiXR_N0-35" vertex="1">
-          <mxGeometry y="138" width="220" height="92" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-38" value="+Team(String, String) : void&lt;div&gt;&lt;br&gt;&lt;div&gt;+getTeamID() : int&lt;/div&gt;&lt;div&gt;+getTeamName() : String&lt;/div&gt;&lt;div&gt;+getTeamSize() : int&lt;/div&gt;&lt;div&gt;&lt;br&gt;+getRiderIDArray : int array&lt;br&gt;+addRider(Rider) : void&lt;br&gt;+deleteRider(int) : void&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="tfRxmP2xf75DcZiXR_N0-35" vertex="1">
+          <mxGeometry y="138" width="220" height="222" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=10;endArrow=diamondThin;endFill=0;endSize=10;" parent="1" source="tfRxmP2xf75DcZiXR_N0-32" target="tfRxmP2xf75DcZiXR_N0-36" edge="1">
           <mxGeometry relative="1" as="geometry" />
