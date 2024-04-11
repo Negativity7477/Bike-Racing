@@ -47,10 +47,10 @@ public class Stage {
         this.length = getStageLength();
         this.stageState = "Stage has been created";
 
-        //We can get the race we are add this stage to via 
+        //We can get the race we are adding this stage to via 
         //the static class at the top level
         Race race = MiscHandling.getRace(RaceID);
-        //We can add the stage to this race
+        //We can add this stage to the correct race
         race.addStage(this);
 
         } catch (Exception e) {throw e;}
@@ -80,7 +80,10 @@ public class Stage {
         return description;
     }
 
-
+    /**
+     * A method to update the stage state when certain methods from the implementation are called
+     * @param state
+     */
     public void setStageState(String state)
     {
         this.stageState = state;
@@ -90,7 +93,7 @@ public class Stage {
      * 
      * @return - state of the stage
      * 
-     * getter for stagestate
+     * getter for stageState
      */
     public String getStageState()
     {
@@ -106,7 +109,11 @@ public class Stage {
     {
         return stageID;
     }
-
+    
+    /**
+     * Getter for StageType
+     * @return - The type of Stage this stage is
+     */
     public StageType getStageType()
     {
         return stageType;
@@ -120,8 +127,6 @@ public class Stage {
     {
         addCheckpointToHash(checkpoint);      
     }
-
-
 
     /*
      * This function removes a checkpoint 
@@ -137,7 +142,6 @@ public class Stage {
             throw new IDNotRecognisedException("No Checkpoint correponds to ID");
         }
     }
-
 
     /**
      * 
@@ -171,7 +175,6 @@ public class Stage {
         return allCheckpoints;
     }
 
-    
     /**
      * @param checkpointHashMap - Hashmap of checkpointID to the checkpoint
      * @return - an array of all checkpoints in stage
@@ -190,7 +193,6 @@ public class Stage {
         return allCheckpoints;
     }
 
-    
     /**
      * @param checkpointHashMap - Hashmap of checkpointID to the checkpoint
      * @return = the distance of the stage
@@ -210,13 +212,19 @@ public class Stage {
         return totalDistance;
     }
 
+    /**
+     *  A method to make sure this stage fits the naming convention
+     * @param name -
+     * @throws InvalidNameException
+     */
     private void checkName(String name) throws InvalidNameException
     {
         if(name != null)
         {
+            //This method will not throw an error if this loop completes
             for(int i = 0; i < name.length(); i++)
             {
-                if(Character.isWhitespace(name.charAt(i)))
+                if(Character.isWhitespace(name.charAt(i))) //Make sure there are no blank spaces
                 {
                     throw new InvalidNameException("Name does not fit the convention");
                 }
@@ -227,7 +235,6 @@ public class Stage {
         }
     }
 
-    
     /**
      * 
      * @param riderID - unique identifier of the rider
@@ -239,7 +246,6 @@ public class Stage {
         riderTimesHash.put(riderID, riderTime);
     }
 
-    
     /**
      * 
      * @param riderID - unique identifier of the rider
@@ -253,6 +259,10 @@ public class Stage {
         return riderTime;
     }
 
+    /**
+     * Return all the Riders in this stage
+     * @return - An array of the riderIDs
+     */
     public int[] getRiderIDsInStage() {
 
         int[] riderIDArray = new int[riderTimesHash.size()];
@@ -265,7 +275,6 @@ public class Stage {
         return riderIDArray;
     }
 
-
     /**
      * 
      * @param riderID- unique identifier of the rider
@@ -273,8 +282,6 @@ public class Stage {
      * removes the rider and their time's from the hash
      */
     public void removeRiderStageTime(int riderID) throws IDNotRecognisedException
-
-
     {
         if (riderTimesHash.get(riderID) == null)
         {
@@ -318,6 +325,12 @@ public class Stage {
         return orderedArray;
     }
 
+    /**
+     * Convert all Rider's times into a form that can be processed by checkpoint and sorts
+     * stages time
+     * @throws IDNotRecognisedException
+     * @throws InvalidCheckpointTimesException
+     */
     public void setCheckpointTimes() throws IDNotRecognisedException, InvalidCheckpointTimesException {
 
         int numCheckpoints = checkpointIDHashMap.size();
