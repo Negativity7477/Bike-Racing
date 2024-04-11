@@ -9,6 +9,11 @@ public class SprinterClassification {
     protected int[] ridersRanked;
     protected HashMap<Integer, PointHandling> stageLevelHash;
 
+    /**
+     * Constructor
+     * 
+     * @param raceID A unique ID for the race being requested
+     */
     public SprinterClassification(int raceID)
     {
         this.raceID = raceID;
@@ -18,6 +23,7 @@ public class SprinterClassification {
 
     /**
      * Getter for ridersRanked
+     * 
      * @return An array of riderIDs in the sprinter classification
      */
     public int[] getRidersRanked() {
@@ -56,36 +62,39 @@ public class SprinterClassification {
     }
 
     /**
-     * 
-     * @return - An array of riders from the fastest time to the slowest in placement terms
-     * 
-     * This function is a sorting algorithm (bubble sort) to return a sorted array
+     * This function is a sorting algorithm (bubble sort) based on rider points
      */
     public void rankRiders()
     {
-        int temp;
-    for (int i = 0; i < ridersRanked.length-1; i++)
-    {
-        if(ridersRanked[i]< ridersRanked[i+1])
-        {
-            temp=ridersRanked[i];
-            ridersRanked[i]=ridersRanked[i+1];
-            ridersRanked[i+1]= temp;
-            i=-1;
+        int tempID;
+
+        // Filling out ridersRanked with all riderIDs present
+        ridersRanked = new int[riderPointsHash.size()];
+        int position = 0;
+        for (int riderID : riderPointsHash.keySet()) {
+            ridersRanked[position++] = riderID;
         }
-    }
+
+        // Bubble sort with ridersRanked based on the rider's points
+        for (int i = 0; i < ridersRanked.length-1; i++) {
+            for (int k = 0; k < ridersRanked.length-2; i++) {
+
+                if (riderPointsHash.get(ridersRanked[k]) > riderPointsHash.get(ridersRanked[k+1])) {
+                    tempID = ridersRanked[k+1];
+                    ridersRanked[k+1] = ridersRanked[k];
+                    ridersRanked[k] = tempID;
+                }
+            }
+        }
     }
 
         public class PointHandling extends GeneralClassification
         {
-            protected int raceID;
-            protected int[] riderArray;
-            protected LocalTime[] rankedArray;
-
             protected int stageID;
             protected int[] positionArray;
-            private StageType stageType;
             protected HashMap<Integer, Integer> pointsHash;
+            protected Race raceObject;
+            protected Stage stageObject;
 
             /**
              * 
@@ -98,24 +107,18 @@ public class SprinterClassification {
             {
                 super(raceID);
                 try {
-                    MiscHandling.getRaceIDFromStageID(stageID);
-                    Race race = MiscHandling.getRace(raceID);
-                    Stage stage = race.getStage(stageID);
+                    raceObject = MiscHandling.getRace(raceID);
+                    stageObject = raceObject.getStage(stageID);
                     this.stageID = stageID;
-                    this.stageType = stage.getStageType();
                     this.pointsHash = new HashMap<Integer,Integer>();
                 } catch (Exception e) {throw e;}
             
             
             }
-
-                    
-            @Override
+ 
+            @Override // Sets up riders for a stage instead of a race
             public void setRiderTimes()
-            {
-                try {
-                Race raceObject = MiscHandling.getRace(raceID);
-                Stage stageObject = raceObject.getStage(stageID);
+            {   
                 int[] riderArray = stageObject.getRiderIDsInStage();
 
                 rankedArray = new LocalTime[riderArray.length];
@@ -123,7 +126,6 @@ public class SprinterClassification {
                 for (int riderID : riderArray) {
                     rankedArray[position++] = stageObject.getRiderStageTime(riderID);
                 }
-                } catch(IDNotRecognisedException e) {} //It should not be possible for this error to be thrown
             }
 
             /**
@@ -158,16 +160,16 @@ public class SprinterClassification {
             /**
              * Describes how points should be given based on the type of the stage
              * 
-             * @param checkpoint The type of stage being queried
+             * @param competitionType The type of stage being queried
              * @return An array that describes how points should be given, 
              *         where the index of the array matches the position of the rider - 1,
              *         an empty array is returned if the stage type is not recognised
              */
-            private int[] getPointsDistribution(StageType checkpoint) {
+            private int[] getPointsDistribution(StageType competitionType) {
                 
                 int[] pointDistribution;
 
-                switch (checkpoint) {
+                switch (competitionType) {
 
                     case FLAT:
                         pointDistribution = new int[]{50, 30, 20, 18, 16, 14, 12, 10, 8, 7, 6, 5, 4, 3, 2};
@@ -243,7 +245,8 @@ public class SprinterClassification {
             /**
              * Gives riders points based on their times
              * 
-             * @param distribution
+             * @param distribution An array describing how points should be given to riders,
+             *                     where the index of the array + 1 matches the riders position
              */
             public void submitRiderPoints(int[] distribution)
             {
@@ -263,26 +266,18 @@ public class SprinterClassification {
 
             /**
              * Adds points from the stage and possible valid checkpoints for this instance of point handling
-             * 
-             * @throws IDNotRecognisedException
              */
-            public void distributePoints() throws IDNotRecognisedException {
-
-                Stage stageObject;
+            public void distributePoints() {
                 int[] distribution;
 
-                try {
-                    int raceID = MiscHandling.getRaceIDFromStageID(stageID);
-                    Race raceObject = MiscHandling.getRace(raceID);
-                    stageObject = raceObject.getStage(stageID);
-                } catch (IDNotRecognisedException e) {throw e;}
-
+                // Checking if an intermediate sprint is present as their points are considered in a Sprinter classification
                 if (stageObject.findIntermediateSprint() != null) {
 
                     distribution = getPointsDistribution(CheckpointType.SPRINT);
                     submitRiderPoints(distribution);
                 }
 
+                // Sorts out points for the stage in general
                 distribution = getPointsDistribution(stageObject.getStageType());
                 submitRiderPoints(distribution);
             }
