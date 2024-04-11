@@ -15,7 +15,7 @@ import cycling.SprinterClassification.PointHandling;
  * @version 2.0
  *
  */
-public class BadCyclingPortalImpl implements CyclingPortal {
+public class CyclingPortalImpl implements CyclingPortal {
 
 	@Override
 	public int[] getRaceIds() {
