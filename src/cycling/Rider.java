@@ -108,6 +108,11 @@ public class Rider {
         return totalTime;
     }
 
+    /**
+     * We want to add this rider to the Team class to handle it
+     * @param teamID - Identifier of the team to add to
+     * @throws IDNotRecognisedException
+     */
     private void addRiderToTeam(int teamID) throws IDNotRecognisedException  {
 
         try {

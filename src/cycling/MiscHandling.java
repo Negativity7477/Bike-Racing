@@ -251,9 +251,11 @@ public class MiscHandling{
 
     /**
      * Finds the team ID of a rider 
-     * @param riderID
-     * @return
-     * @throws IDNotRecognisedException
+     * 
+     * @param riderID ID of the rider being queried
+     * @return ID of the team the rider is a part of
+     * 
+     * @throws IDNotRecognisedException If the riderID cannot be found in the program
      */
     public static int getTeamIDFromRiderID(int riderID) throws IDNotRecognisedException {
         for (Team teamObject : teamsHash.values()) {
@@ -318,7 +320,8 @@ public class MiscHandling{
 
     /**
      * Getter for an array of all the rider objects in the program
-     * @return
+     * 
+     * @return An array of the all the riders in the program represented with their own object
      */
     public static Rider[] getRiderArray() {
 
@@ -341,7 +344,8 @@ public class MiscHandling{
 
     /**
      * Getter for an array of all the riderIDs in the program
-     * @return
+     * 
+     * @return An array of all riders in the program represented with their ID
      */
     public static int[] getRiderIDArray() {
 
@@ -384,6 +388,9 @@ public class MiscHandling{
         return totalTime;
     }
 
+    /**
+     * Clears the mains hashes in the class to reset the program
+     */
     public static void resetHash()
     {
         teamsHash = null;
