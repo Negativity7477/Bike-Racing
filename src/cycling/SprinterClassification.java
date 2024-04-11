@@ -111,8 +111,9 @@ public class SprinterClassification {
 
                     
             @Override
-            public void setRiderTimes() throws IDNotRecognisedException
+            public void setRiderTimes()
             {
+                try {
                 Race raceObject = MiscHandling.getRace(raceID);
                 Stage stageObject = raceObject.getStage(stageID);
                 int[] riderArray = stageObject.getRiderIDsInStage();
@@ -122,6 +123,7 @@ public class SprinterClassification {
                 for (int riderID : riderArray) {
                     rankedArray[position++] = stageObject.getRiderStageTime(riderID);
                 }
+                } catch(IDNotRecognisedException e) {} //It should not be possible for this error to be thrown
             }
 
             /**
