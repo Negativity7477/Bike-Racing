@@ -8,6 +8,11 @@ public class GeneralClassification {
     protected int[] riderArray;
     protected LocalTime[] rankedArray;
 
+    /**
+     * Constructor
+     * 
+     * @param raceID A unique ID for a race being requested
+     */
     public GeneralClassification(int raceID)
     {
         this.raceID = raceID;
@@ -15,13 +20,19 @@ public class GeneralClassification {
         this.rankedArray = new LocalTime[riderArray.length];
     }
 
-    public void setRiderTimes() throws IDNotRecognisedException
+    /**
+     * Sets up the classification to have all the times of all of the riders in the race
+     */
+    public void setRiderTimes()
     {
-        Race raceObject = MiscHandling.getRace(raceID);
-        int index = 0;
-        for (int riderID : riderArray) {
-            rankedArray[index++] = raceObject.getRiderRaceTime(riderID);
+        try {
+            Race raceObject = MiscHandling.getRace(raceID);
+            int index = 0;
+            for (int riderID : riderArray) {
+                rankedArray[index++] = raceObject.getRiderRaceTime(riderID);
         }
+
+        } catch (IDNotRecognisedException e) {;} //This error should not appear so it is not rethrown
     }
 
     public int[] getRankedRiderArray() {
@@ -29,25 +40,40 @@ public class GeneralClassification {
     }
 
     /**
-     * THIS IS NOT WORKING HOW I WOULD LIEK IT TO
-     * 
-     * @return - An array of riderTimes from the fastest time to the slowest
-     * 
-     * This function is a sorting algorithm (bubble sort) to return a sorted array
+     * This function is a sorting algorithm (bubble sort) to sort riderArray and rankedArray,
+     * Since both array are connected they must be sorted together
      */
     public void rankRiders()
     {
-        LocalTime temp;
-        for (int i = 0; i < rankedArray.length-1; i++)
-        {
-            //Cant directly compare localtimes, so we use a function 
-            //that returns a negative value if this element is less than
-            if(rankedArray[i].compareTo(rankedArray[i+1]) < 0)
-            {
-                temp=rankedArray[i];
-                rankedArray[i]=rankedArray[i+1];
-                rankedArray[i+1]= temp;
-                i=-1;
+        long[] secondsArray = new long[riderArray.length];
+
+        int tempID;
+        LocalTime tempTime;
+        long tempSeconds;
+
+        // Creates a matching array to rankedArray but in nanoseconds so it can be more easily processed
+        for (int i = 0; i < riderArray.length; i++) {
+            secondsArray[i] = MiscHandling.localTimeToLong(rankedArray[i]);
+        }
+
+        // Bubble sort for 3 arrays at once - based off of seconds
+        for (int i = 0; i < riderArray.length-1; i++) {
+            for (int k = 0; k < riderArray.length-2; i++) {
+
+                if (secondsArray[k] < secondsArray[k+1]) {
+
+                    tempID = riderArray[k+1];
+                    tempTime = rankedArray[k+1];
+                    tempSeconds = secondsArray[k+1];
+
+                    riderArray[k+1] = riderArray[k];
+                    rankedArray[k+1] = rankedArray[k];
+                    secondsArray[k+1] = secondsArray[k];
+
+                    riderArray[k] = tempID;
+                    rankedArray[k] = tempTime;
+                    secondsArray[k] = tempSeconds;
+                }
             }
         }
     }
@@ -56,26 +82,24 @@ public class GeneralClassification {
      * this function adjusts the riders time, so they have the same time if they are less
      * then a second apart
      * This has to be done through converting to nanoseconds 
-     * and then to miliseconds to check the placement
      */
     public void adjustTimes()
     {
-        //have to convert to nano seconds later which is stored as a long
-        long[] rankedArrayInMiliSeconds = localTimeToMiliSeconds();
-        long[] placeHolderArray = rankedArrayInMiliSeconds;
+        long[] secondsArray = new long[riderArray.length];
+        // Creates a matching array to rankedArray but in nanoseconds so it can be more easily processed
+        for (int i = 0; i < riderArray.length; i++) {
+            secondsArray[i] = MiscHandling.localTimeToLong(rankedArray[i]);
+        }
 
-        //For all the times in the rankedArray (stored as miliseconds)
-        //we check if each rider is less than a second apart 
-        //and if they are we change them in the array
-        for(long times : rankedArrayInMiliSeconds)
-        {
-            if(placeHolderArray[(int) times] - placeHolderArray[(int) ++times] >= -100)
-            {
-                rankedArrayInMiliSeconds[(int) ++times] = rankedArrayInMiliSeconds[(int) times];
+        // Loops through time arrays to adjust all the times
+        for (int i = 0; i < riderArray.length-2; i++) {
+
+            // Checks if the difference is less than to a second
+            if (secondsArray[i+1] - secondsArray[i] < 1000000000) {
+                secondsArray[i+1] = secondsArray[i];
+                rankedArray[i+1] = rankedArray[i];
             }
         }
-        //Convert from miliSeconds to LocalTime
-        rankedArray = miliSecondsToLocalTime(rankedArrayInMiliSeconds);
     }
 
     /**
@@ -96,68 +120,5 @@ public class GeneralClassification {
             counter++;
         }
         throw new IDNotRecognisedException("ID was not found");
-    }
-
-    /**
-     * 
-     * @return - the ranked array times converted to seconds
-     * 
-     * Converts every element in the rankedArray array into seconds to be
-     * adjusted easily
-     */
-    private long[] localTimeToMiliSeconds()
-    {
-        //Convert every element of the array into seconds 
-        //add those seconds to a new integer array
-        long nanoSeconds;
-        int position = 0;
-        long[] convertedRankedArray = new long[rankedArray.length];
-        for(LocalTime time : rankedArray)
-        {
-            nanoSeconds = rankedArray[position].toNanoOfDay();
-            //we store as miliseconds in order to adjust times
-            convertedRankedArray[position] = nanoSeconds / 100000;
-        }
-        return convertedRankedArray;
-    }
-
-    /**
-     * 
-     * @param array - an array that is in miliseconds
-     * @return - the array converted back to localtime
-     * 
-     * Converts each element in the array to localTime so
-     * the formatting is correct
-     */
-    private LocalTime[] miliSecondsToLocalTime(long[] array)
-    {
-        //Convert every element of the array into LocalTime 
-        //add those seconds to a new integer array
-        LocalTime localTime;
-        int position = 0;
-        LocalTime[] convertedRankedArray = new LocalTime[array.length];
-        for(long seconds : array)
-        {
-            localTime = miliSecondsToTimeConversion(array[position]);
-            convertedRankedArray[position] = localTime;
-        }
-        return convertedRankedArray;
-    }
-    
-    /**
-     * 
-     * @param seconds - Each element in the array in the method above
-     * this represents seconds 
-     * @return - a formatted dateTime
-     * 
-     * A method to abstract converting to the correct date time values
-     */
-    private static LocalTime miliSecondsToTimeConversion(long miliseconds)
-    {
-        int seconds = (int) miliseconds / 100;
-        int hours = seconds / 3600;
-        int minutes = (seconds % 3600) / 60;
-        int secs = seconds % 60;
-        return LocalTime.of(hours, minutes, secs);
     }
 }
