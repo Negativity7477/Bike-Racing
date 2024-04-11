@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-11T07:59:38.130Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="lbMl3OYnT9SbqUtZgVwm" version="24.2.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-11T08:10:52.384Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="tMR8dSsTUGhIPB6MpF2_" version="24.2.2" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
-    <mxGraphModel dx="472" dy="1809" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="363" dy="1661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -44,7 +44,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-1" value="miscHandling" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="3300" width="290" height="300" as="geometry" />
+          <mxGeometry x="3300" width="290" height="400" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-2" value="&lt;u&gt;-raceIDHash : HashMap (int : Race)&lt;br&gt;-teamIDHash : HashMap (int : Team)&lt;/u&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-1" vertex="1">
           <mxGeometry y="26" width="290" height="54" as="geometry" />
@@ -52,8 +52,8 @@
         <mxCell id="tfRxmP2xf75DcZiXR_N0-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="tfRxmP2xf75DcZiXR_N0-1" vertex="1">
           <mxGeometry y="80" width="290" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="tfRxmP2xf75DcZiXR_N0-4" value="&lt;div&gt;&lt;u&gt;+getRace(int) : Race&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+deleteRace(int) : void&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;u&gt;+removeTeam(int) : void&lt;br&gt;+addRace() : void&lt;br&gt;+addTeam() : void&lt;/u&gt;&lt;div&gt;&lt;u&gt;+getTeam(int) : Team&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getTeamIDs() : int array&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;-getIDFromName(String) : int&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+ nameChecker()&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+ getRaceIDs() : int[]&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+ getRaceIdFromStage(int) : int&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+ getStageIDFromCheckpointID(int) : int&lt;/u&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-1" vertex="1">
-          <mxGeometry y="100" width="290" height="200" as="geometry" />
+        <mxCell id="tfRxmP2xf75DcZiXR_N0-4" value="&lt;div&gt;&lt;u style=&quot;background-color: initial;&quot;&gt;+removeRace(int) : void&lt;/u&gt;&lt;br&gt;&lt;/div&gt;&lt;u&gt;+removeTeam(int) : void&lt;br&gt;+addRace(Race) : void&lt;br&gt;+addTeam(Team) : void&lt;/u&gt;&lt;div&gt;&lt;u&gt;+getRace(int) : Race&lt;/u&gt;&lt;u&gt;&lt;br&gt;&lt;/u&gt;&lt;div&gt;&lt;u&gt;+getTeam(int) : Team&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getRaceIDs() : int array&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getTeamIDs() : int array&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getRaceIDFromName(String) : int&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getRaceIDFromStageID(int) : int&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getRaceStageIDFromCheckpointID(int) : int[]&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getTeamIDFromRiderID(int) : int&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+localTimeToLong(LocalTime) : long&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+longToLocalTime(long) : LocalTime&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+totalTimes(LocalTime[]) : LocalTime&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;&lt;br&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getRiderArray() : Rider[]&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;+getRiderIDArray() : int[]&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="tfRxmP2xf75DcZiXR_N0-1" vertex="1">
+          <mxGeometry y="100" width="290" height="300" as="geometry" />
         </mxCell>
         <mxCell id="tfRxmP2xf75DcZiXR_N0-5" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="2900" width="276" height="530" as="geometry" />
