@@ -122,42 +122,6 @@ public class Checkpoint
         return averageGradient;
     }
 
-
-    /*
-     * @param - Average gradient of the checkpoint
-     * @param - Length of the gradient 
-     * This method is used in order to set checkpoint type as there are 
-     * multiple different types of categorised climb.
-     * 
-     * @return - The type of climb this checkpoint is
-     * 
-     * 
-     * Now realising this function is obselete as we get checkpointType from constructor in interface implementation
-     */
-    private CheckpointType determineClimbType()
-    {
-        if (averageGradient < 6  && averageGradient > 4 && length < 2 || averageGradient < 4 && length < 5)
-        {
-            return CheckpointType.C4;
-        }
-        else if (averageGradient < 11  && averageGradient > 9  && length < 2 || averageGradient < 6 && length < 11)
-        {
-            return CheckpointType.C3;
-        }
-        else if (averageGradient < 9  && averageGradient > 7  && length < 6 || averageGradient < 5 && length < 16)
-        {
-            return CheckpointType.C2;
-        }
-        else if (averageGradient < 9  && averageGradient > 7  && length < 9 || averageGradient < 6 && length < 21)
-        {
-            return CheckpointType.C1;
-        }
-        else
-        {
-            return CheckpointType.HC;
-        }
-    }
-
     /**
      * 
      * @param riderID - unique identifier of the rider

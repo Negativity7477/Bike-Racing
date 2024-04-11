@@ -7,13 +7,13 @@ import java.util.HashMap;
 public class Stage {
     private HashMap<Integer, LocalTime> riderTimesHash;
     private HashMap<Integer, Checkpoint> checkpointIDHashMap;
+    //Hash of checkpointID to checkpointType
     private int stageID;
     private String stageName;
     private String description; 
     private double length;
     private LocalDateTime startTime;
     private StageType stageType;
-    //Hash of checkpointID to checkpointType
     private static int nextStageID = 0;
     private int raceID;
 

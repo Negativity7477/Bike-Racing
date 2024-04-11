@@ -15,7 +15,7 @@ public static void main(String args[]) throws IDNotRecognisedException, InvalidN
         //Declare all classes for a test, do it outside a for loop because i think it makes it easier to test and more readable and it literally doesn't matter
         Race race = new Race("test_race", "a race to test functions"); //Race ID should be 0 i think
         //Race race2 = new Race("A second test race", "A race to test secondary functions"); //THis should cause error (white space in name) -- IVE RUN THIS, EXCEPTION IS THROWN
-        Race race3 = new Race("test_race", "the last testing");
+        Race race3 = new Race("test_race2", "the last testing");
 
         Stage stage = new Stage("first_stage", "should be in race1", LocalDateTime.now(), StageType.HIGH_MOUNTAIN, 0);
         //Stage stage2 = new Stage("SHOULD THROW", "should throw error", LocalDateTime.now(), StageType.FLAT, 0); //Should throw invalid name

@@ -120,6 +120,7 @@ public class Race {
      * in order they were added
      */
     public int[] getRaceStages()
+
     {
         int[] allStageIDs = new int[getNumStage()];
         int position = 0;
@@ -131,6 +132,7 @@ public class Race {
         
         return allStageIDs;
     }
+
     /**
      * 
      * @param stageID - The unique identifier of stage
@@ -277,6 +279,7 @@ public class Race {
      */
     public void setRiderRaceTime(int riderID) {
 
+
         int numStages = stageIDHashmap.size();
         LocalTime[] stageTimeArray = new LocalTime[numStages];
         LocalTime riderTime;
@@ -291,6 +294,7 @@ public class Race {
         riderTime = MiscHandling.totalTimes(stageTimeArray);
         addRiderRaceTime(riderID, riderTime);
     }
+    
 /** 
      * Reset the static ID counter
      */

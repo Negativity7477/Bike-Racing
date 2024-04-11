@@ -6,7 +6,7 @@ import java.io.*;
 public class Serialiser implements java.io.Serializable{
         
     //create an object of the implementation to save
-    BadCyclingPortalImpl impl = new BadCyclingPortalImpl(); 
+    CyclingPortalImpl impl = new CyclingPortalImpl(); 
 
 
     public void Serialising()
@@ -45,7 +45,7 @@ public class Serialiser implements java.io.Serializable{
             FileInputStream file = new FileInputStream(fileName);
             ObjectInputStream in = new ObjectInputStream(file);
 
-            impl = (BadCyclingPortalImpl) in.readObject();
+            impl = (CyclingPortalImpl) in.readObject();
             in.close();
             file.close();
 
