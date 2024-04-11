@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-11T10:05:33.400Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="uhbZYS_B5ooFoWINFUO4" version="24.2.3" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-11T10:06:19.413Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="cmo9znXzCytGdZhalFZC" version="24.2.3" type="github">
   <diagram name="Page-1" id="q9JYpEjFwvB6e5CxQERE">
     <mxGraphModel dx="1081" dy="2353" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -276,6 +276,9 @@
         </mxCell>
         <mxCell id="42w64I7irz9toIPv61Al-8" value="Team and Race are both connected to the left hand side of MiscHandling" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
           <mxGeometry x="2260" y="-790" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="42w64I7irz9toIPv61Al-9" value="Checkpoint is connected to the lefthand side of Stage" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="-818" width="80" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
